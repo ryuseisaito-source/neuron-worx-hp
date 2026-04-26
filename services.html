@@ -10,40 +10,209 @@
 <link rel="stylesheet" href="assets/theme.css"/>
 <script>const TWEAK_DEFAULTS={"theme":"dark","accent":"orange","font":"sans"};</script>
 <style>
-main{padding-top:52px;}
-.ph{padding:80px 48px 64px;border-bottom:1px solid var(--line);}
-.ph-label{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);margin-bottom:20px;}
-.ph-title{font-family:var(--display);font-style:var(--display-style);font-weight:var(--display-weight);font-size:clamp(44px,7vw,110px);line-height:.86;letter-spacing:-.04em;text-transform:uppercase;color:var(--ink);}
-.ph-sub{font-family:var(--sans);font-size:15px;color:var(--ink-2);line-height:1.8;margin-top:28px;max-width:52ch;}
-.section{padding:72px 48px;border-bottom:1px solid var(--line);}
-.section-label{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);margin-bottom:16px;}
-.section-title{font-family:var(--display);font-style:var(--display-style);font-weight:var(--display-weight);font-size:clamp(28px,3.5vw,52px);line-height:1;letter-spacing:-.025em;color:var(--ink);margin-bottom:28px;}
-.prose{font-family:"Noto Sans JP","Inter",sans-serif;font-size:15px;line-height:2;color:var(--ink-2);max-width:60ch;}
-.prose p+p{margin-top:1.2em;}
-.dl-grid{display:grid;grid-template-columns:200px 1fr;gap:0;border-top:1px solid var(--line);}
-.dl-row{display:contents;}
-.dl-row dt,.dl-row dd{padding:18px 0;border-bottom:1px solid var(--line);font-family:var(--sans);font-size:14px;line-height:1.7;}
-.dl-row dt{color:var(--ink-3);font-weight:600;letter-spacing:.04em;padding-right:32px;}
-.dl-row dd{color:var(--ink-2);}
-@media(max-width:900px){
-  .ph{padding:72px 24px 48px;}
-  .section{padding:48px 24px;}
-  .dl-grid{grid-template-columns:140px 1fr;}
+/* ── reset & vars ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+/* ── canvas ── */
+#bg-canvas{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.4;}
+
+/* ── main ── */
+main{padding-top:52px;position:relative;z-index:1;}
+
+/* ── page hero ── */
+.page-hero{
+  min-height:58vh;padding:64px 48px 52px;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  border-bottom:1px solid var(--line);position:relative;z-index:1;
 }
-.svc-block{{border-bottom:1px solid var(--line);}}
-.svc-inner{{display:grid;grid-template-columns:280px 1fr;gap:64px;align-items:start;padding:72px 48px;}}
-.svc-num{{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);margin-bottom:16px;}}
-.svc-name{{font-family:var(--display);font-style:var(--display-style);font-weight:var(--display-weight);font-size:clamp(28px,3.5vw,52px);line-height:1.05;letter-spacing:-.025em;color:var(--ink);}}
-.svc-name-en{{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin-top:10px;}}
-.svc-desc{{font-family:"Noto Sans JP","Inter",sans-serif;font-size:15px;line-height:2;color:var(--ink-2);margin-bottom:32px;}}
-.svc-list{{border-top:1px solid var(--line);list-style:none;}}
-.svc-list li{{display:flex;align-items:baseline;gap:14px;padding:14px 0;border-bottom:1px solid var(--line);font-family:var(--sans);font-size:14px;color:var(--ink-2);line-height:1.6;}}
-.svc-list li::before{{content:"—";color:var(--accent);flex-shrink:0;font-family:var(--mono);font-size:11px;}}
-@media(max-width:900px){{.svc-inner{{grid-template-columns:1fr;gap:32px;padding:48px 24px;}}}}
+.ph-eyebrow{
+  display:flex;align-items:center;gap:14px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--ink-3);margin-bottom:44px;
+}
+.ph-eyebrow::before{content:"";width:20px;height:1px;background:var(--accent);flex-shrink:0;}
+.ph-title{
+  font-family:var(--display);font-style:var(--display-style);
+  font-weight:var(--display-weight);
+  font-size:clamp(60px,11vw,168px);
+  line-height:.84;letter-spacing:-.045em;
+  text-transform:uppercase;color:var(--ink);
+}
+.ph-title .accent{color:var(--accent);}
+.ph-bottom{
+  border-top:1px solid var(--line);padding-top:28px;margin-top:36px;
+  display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;
+}
+.ph-desc{
+  font-family:"Noto Sans JP","Inter",sans-serif;
+  font-size:clamp(13px,1.3vw,17px);line-height:1.75;
+  color:var(--ink-2);max-width:46ch;
+}
+
+/* ── section ── */
+.sec{padding:72px 48px;border-bottom:1px solid var(--line);position:relative;z-index:1;}
+.sec-hdr{
+  display:flex;align-items:center;justify-content:space-between;
+  border-top:1px solid var(--line);padding-top:14px;margin-bottom:56px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ink-3);
+}
+.sec-hdr .n{color:var(--accent);}
+.sec-hdr a{color:var(--ink-3);transition:color .2s;}
+.sec-hdr a:hover{color:var(--ink);}
+
+/* ── service rows (services.html) ── */
+.svc-item{border-bottom:1px solid var(--line);position:relative;}
+.svc-item::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:var(--accent);transform:scaleY(0);transform-origin:bottom;
+  transition:transform .35s cubic-bezier(.2,.8,.2,1);
+}
+.svc-item:hover::before{transform:scaleY(1);}
+.svc-head{
+  display:grid;grid-template-columns:96px 1fr auto;
+  align-items:center;gap:32px;padding:40px 48px;
+}
+.svc-num{display:flex;flex-direction:column;gap:4px;}
+.svc-num .idx{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--ink-3);}
+.svc-num .big{
+  font-family:var(--display);font-style:var(--display-style);
+  font-weight:var(--display-weight);
+  font-size:52px;line-height:1;color:var(--accent);letter-spacing:-.04em;
+}
+.svc-names{}
+.svc-name{
+  font-family:var(--display);font-style:var(--display-style);
+  font-weight:var(--display-weight);
+  font-size:clamp(28px,3.8vw,60px);line-height:1;letter-spacing:-.025em;color:var(--ink);
+}
+.svc-name-en{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin-top:8px;}
+.svc-arr{font-size:22px;color:var(--ink-3);flex-shrink:0;transition:transform .25s,color .2s;}
+.svc-item:hover .svc-arr{transform:translateX(8px);color:var(--accent);}
+.svc-body{padding:0 48px 48px 176px;}
+.svc-desc{font-family:var(--sans);font-size:15px;line-height:2;color:var(--ink-2);max-width:58ch;margin-bottom:28px;}
+.svc-ul{list-style:none;border-top:1px solid var(--line);}
+.svc-ul li{
+  display:flex;align-items:baseline;gap:14px;
+  padding:13px 0;border-bottom:1px solid var(--line);
+  font-family:var(--sans);font-size:14px;color:var(--ink-2);line-height:1.6;
+}
+.svc-ul li::before{content:"—";color:var(--accent);flex-shrink:0;font-family:var(--mono);font-size:11px;}
+
+/* ── works table ── */
+.wk-list{border-top:1px solid var(--line);}
+.wk-row{
+  display:grid;grid-template-columns:64px 1fr 180px 32px;
+  align-items:baseline;gap:24px;
+  padding:28px 0;border-bottom:1px solid var(--line);
+  cursor:pointer;position:relative;transition:padding .2s;
+}
+.wk-row::before{
+  content:"";position:absolute;left:-48px;top:0;bottom:0;
+  width:3px;background:var(--accent);
+  transform:scaleY(0);transform-origin:top;
+  transition:transform .28s cubic-bezier(.2,.8,.2,1);
+}
+.wk-row:hover::before{transform:scaleY(1);}
+.wk-row:hover{padding-left:8px;}
+.wk-n{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--ink-3);}
+.wk-t{font-family:var(--display);font-style:var(--display-style);font-weight:var(--display-weight);font-size:clamp(18px,2.2vw,34px);letter-spacing:-.015em;line-height:1.05;color:var(--ink);}
+.wk-t small{display:block;font-family:var(--sans);font-style:normal;font-size:12px;color:var(--ink-3);margin-top:5px;font-weight:400;}
+.wk-cat{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);}
+.wk-arr{color:var(--ink-3);font-family:var(--mono);transition:color .2s,transform .2s;}
+.wk-row:hover .wk-arr{color:var(--accent);transform:translateX(4px);}
+
+/* ── company dl ── */
+.co-dl{border-top:1px solid var(--line);}
+.co-row{
+  display:grid;grid-template-columns:200px 1fr;
+  padding:20px 0;border-bottom:1px solid var(--line);
+  font-family:var(--sans);font-size:14px;line-height:1.7;gap:32px;
+}
+.co-row dt{color:var(--ink-3);font-weight:600;letter-spacing:.04em;padding-right:16px;}
+.co-row dd{color:var(--ink-2);}
+
+/* ── prose ── */
+.prose{font-family:"Noto Sans JP","Inter",sans-serif;font-size:15px;line-height:2.1;color:var(--ink-2);max-width:60ch;}
+.prose p+p{margin-top:1.1em;}
+.prose b{color:var(--ink);font-weight:700;}
+.prose a{color:var(--accent);border-bottom:1px solid var(--accent);}
+
+/* ── contact grid ── */
+.ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;}
+.ct-block{margin-bottom:40px;}
+.ct-label{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);margin-bottom:12px;}
+.ct-val{font-family:var(--sans);font-size:17px;color:var(--ink);line-height:1.5;}
+.ct-val a{border-bottom:1px solid var(--line-2);transition:border-color .2s;}
+.ct-val a:hover{border-color:var(--accent);color:var(--accent);}
+.ct-note{font-family:var(--sans);font-size:13px;color:var(--ink-3);margin-top:6px;}
+
+/* ── careers ── */
+.job-list{border-top:1px solid var(--line);}
+.job-item{
+  display:grid;grid-template-columns:160px 1fr;gap:32px;
+  padding:36px 0;border-bottom:1px solid var(--line);
+}
+.job-type{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);padding-top:6px;}
+.job-title{font-family:var(--display);font-style:var(--display-style);font-weight:var(--display-weight);font-size:clamp(20px,2.5vw,38px);letter-spacing:-.02em;color:var(--ink);margin-bottom:12px;line-height:1.1;}
+.job-desc{font-family:var(--sans);font-size:14px;color:var(--ink-2);line-height:1.8;max-width:56ch;}
+
+/* ── team grid ── */
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line);border-left:1px solid var(--line);}
+.team-card{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:40px 32px;}
+.tc-role{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
+.tc-name{font-family:var(--display);font-style:var(--display-style);font-weight:var(--display-weight);font-size:clamp(20px,2.2vw,36px);letter-spacing:-.02em;color:var(--ink);margin-bottom:12px;line-height:1.1;}
+.tc-bio{font-family:var(--sans);font-size:13px;color:var(--ink-3);line-height:1.8;}
+
+/* ── news list ── */
+.news-list{border-top:1px solid var(--line);}
+.news-row{
+  display:grid;grid-template-columns:140px 1fr auto;
+  align-items:baseline;gap:24px;
+  padding:26px 0;border-bottom:1px solid var(--line);cursor:pointer;
+  transition:padding .2s;position:relative;
+}
+.news-row::before{content:"";position:absolute;left:-48px;top:0;bottom:0;width:3px;background:var(--accent);transform:scaleY(0);transform-origin:top;transition:transform .28s cubic-bezier(.2,.8,.2,1);}
+.news-row:hover::before{transform:scaleY(1);}
+.news-row:hover{padding-left:8px;}
+.nw-date{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--ink-3);}
+.nw-title{font-family:var(--display);font-style:var(--display-style);font-weight:var(--display-weight);font-size:clamp(18px,2vw,30px);letter-spacing:-.015em;color:var(--ink);line-height:1.1;}
+.nw-cat{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);}
+.nw-arr{color:var(--ink-3);font-family:var(--mono);transition:color .2s,transform .2s;}
+.news-row:hover .nw-arr{color:var(--accent);transform:translateX(4px);}
+
+/* ── btn ── */
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:13px 26px;border:1px solid var(--line-2);color:var(--ink);cursor:pointer;transition:all .2s;}
+.btn:hover{background:var(--ink);color:var(--bg);border-color:var(--ink);}
+.btn.primary{background:var(--accent);color:#000;border-color:var(--accent);}
+.btn.primary:hover{background:var(--bg);color:var(--accent);border-color:var(--accent);}
+
+/* ── responsive ── */
+@media(max-width:900px){
+  .page-hero{padding:64px 24px 48px;min-height:auto;padding-top:80px;}
+  .sec{padding:56px 24px;}
+  .svc-head{grid-template-columns:64px 1fr auto;gap:16px;padding:32px 24px;}
+  .svc-num .big{font-size:36px;}
+  .svc-body{padding:0 24px 40px;}
+  .wk-row{grid-template-columns:40px 1fr;}.wk-cat,.wk-arr{display:none;}
+  .wk-row::before{left:-24px;}
+  .co-row{grid-template-columns:1fr;gap:4px;}
+  .ct-grid{grid-template-columns:1fr;gap:40px;}
+  .job-item{grid-template-columns:1fr;gap:12px;}
+  .team-grid{grid-template-columns:1fr 1fr;}
+  .news-row{grid-template-columns:100px 1fr;}.nw-arr{display:none;}
+  .news-row::before{left:-24px;}
+  .ph-bottom{flex-direction:column;align-items:flex-start;}
+}
+@media(max-width:600px){
+  .team-grid{grid-template-columns:1fr;}
+  .wk-row::before,.news-row::before{display:none;}
+}
 </style>
 </head>
 <body data-theme="dark" data-accent="orange" data-font="sans">
 
+<canvas id="bg-canvas"></canvas>
 <div class="menu-overlay" id="menu">
   <button class="menu-close" id="menu-close">×</button>
   <nav><ul class="menu-links">
@@ -59,12 +228,8 @@ main{padding-top:52px;}
   </ul></nav>
   <div class="menu-foot"><span>© 2026 合同会社 Neuron Worx</span><span>Tokyo, Japan</span></div>
 </div>
-
 <nav class="site-nav">
-  <a class="logo" href="index.html">
-    <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none"><defs><linearGradient id="nwlg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#252745"/><stop offset="1" stop-color="#3a3d70"/></linearGradient></defs><circle cx="6" cy="6" r="1.8" fill="currentColor"/><circle cx="18" cy="6" r="1.8" fill="currentColor"/><circle cx="6" cy="18" r="1.8" fill="currentColor"/><circle cx="18" cy="18" r="1.8" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="url(#nwlg)"/><path d="M6 6 L12 12 L18 6 M6 18 L12 12 L18 18" stroke="currentColor" stroke-width="0.85"/></svg></span>
-    NEURON WORX
-  </a>
+  <a class="logo" href="index.html"><span class="logo-mark"><svg viewBox="0 0 24 24" fill="none"><defs><linearGradient id="nwlg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#252745"/><stop offset="1" stop-color="#3a3d70"/></linearGradient></defs><circle cx="6" cy="6" r="1.8" fill="currentColor"/><circle cx="18" cy="6" r="1.8" fill="currentColor"/><circle cx="6" cy="18" r="1.8" fill="currentColor"/><circle cx="18" cy="18" r="1.8" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="url(#nwlg)"/><path d="M6 6 L12 12 L18 6 M6 18 L12 12 L18 18" stroke="currentColor" stroke-width="0.85"/></svg></span>NEURON WORX</a>
   <div class="nav-right">
     <a class="nav-contact" href="contact.html">CONTACT</a>
     <button class="nav-hamburger" id="menu-open"><span></span><span></span><span></span></button>
@@ -72,111 +237,104 @@ main{padding-top:52px;}
 </nav>
 
 <main>
-  <div class="ph">
-    <p class="ph-label">Services — 事業内容</p>
+  <section class="page-hero">
+    <div class="ph-eyebrow"><span>N°&thinsp;02</span><span>Services — 事業内容</span></div>
     <h1 class="ph-title">SERVICES</h1>
-    <p class="ph-sub">Neuron Worxは五つの事業領域において、クライアントの成長を支援します。コンサルファーム出身者、元スタートアップCEO、トップクリエイターが専門性を活かしてプロジェクトに取り組みます。</p>
-  </div>
+    <div class="ph-bottom">
+      <p class="ph-desc">五つの事業領域において、クライアントの成長を支援します。コンサルファーム出身者、元スタートアップCEO、トップクリエイターが専門性を活かして取り組みます。</p>
+      <a class="btn" href="contact.html">お問い合わせ →</a>
+    </div>
+  </section>
 
-  <div class="svc-block" id="ai">
-    <div class="svc-inner reveal">
-      <div>
-        <p class="svc-num">01 / AI・DX</p>
-        <h2 class="svc-name">AI・DX<br/>コンサル</h2>
-        <p class="svc-name-en">AI &amp; DX Consulting</p>
-      </div>
-      <div>
-        <p class="svc-desc">AI・デジタルトランスフォーメーションの戦略立案から実行支援まで、企業変革をトータルでサポートします。最新のLLM技術や自動化ツールを活用し、業務効率化と新しい価値創出を実現します。</p>
-        <ul class="svc-list">
-          <li>AI導入戦略の立案・推進</li>
-          <li>LLMを活用した業務プロセス改善</li>
-          <li>DX推進ロードマップの策定</li>
-          <li>FC本部・大企業向けDXコンサルティング</li>
-          <li>システム選定・ベンダー選定支援</li>
-          <li>データ活用・分析基盤の構築支援</li>
-        </ul>
-      </div>
+  <div class="svc-item reveal" id="ai">
+    <div class="svc-head">
+      <div class="svc-num"><span class="idx">DIV</span><span class="big">01</span></div>
+      <div class="svc-names"><div class="svc-name">AI・DXコンサル</div><div class="svc-name-en">AI &amp; DX Consulting</div></div>
+      <span class="svc-arr">→</span>
+    </div>
+    <div class="svc-body">
+      <p class="svc-desc">AI・デジタルトランスフォーメーションの戦略立案から実行支援まで、企業変革をトータルでサポートします。最新のLLM技術や自動化ツールを活用し、業務効率化と新しい価値創出を実現します。</p>
+      <ul class="svc-ul">
+        <li>AI導入戦略の立案・推進</li>
+        <li>LLMを活用した業務プロセス改善</li>
+        <li>DX推進ロードマップの策定</li>
+        <li>FC本部・大企業向けDXコンサルティング</li>
+        <li>システム選定・ベンダー選定支援</li>
+        <li>データ活用・分析基盤の構築支援</li>
+      </ul>
     </div>
   </div>
 
-  <div class="svc-block" id="sap">
-    <div class="svc-inner reveal">
-      <div>
-        <p class="svc-num">02 / SAP</p>
-        <h2 class="svc-name">SAP<br/>コンサル</h2>
-        <p class="svc-name-en">SAP Consulting</p>
-      </div>
-      <div>
-        <p class="svc-desc">SAP ERPの導入・移行・運用保守において、豊富な経験を持つコンサルタントが伴走支援します。業務要件の整理から本番稼働後のサポートまで、一貫した体制でプロジェクトを成功に導きます。</p>
-        <ul class="svc-list">
-          <li>SAP導入・バージョンアップ支援</li>
-          <li>S/4HANA移行プロジェクト管理</li>
-          <li>業務要件定義・フィット&amp;ギャップ分析</li>
-          <li>カスタマイズ開発・テスト支援</li>
-          <li>運用保守・ユーザー教育</li>
-          <li>ABAP開発・インターフェース設計</li>
-        </ul>
-      </div>
+  <div class="svc-item reveal" id="sap">
+    <div class="svc-head">
+      <div class="svc-num"><span class="idx">DIV</span><span class="big">02</span></div>
+      <div class="svc-names"><div class="svc-name">SAPコンサル</div><div class="svc-name-en">SAP Consulting</div></div>
+      <span class="svc-arr">→</span>
+    </div>
+    <div class="svc-body">
+      <p class="svc-desc">SAP ERPの導入・移行・運用保守において、豊富な経験を持つコンサルタントが伴走します。業務要件の整理から本番稼働後のサポートまで、一貫した体制でプロジェクトを成功に導きます。</p>
+      <ul class="svc-ul">
+        <li>SAP導入・バージョンアップ支援</li>
+        <li>S/4HANA移行プロジェクト管理</li>
+        <li>業務要件定義・フィット&amp;ギャップ分析</li>
+        <li>カスタマイズ開発・テスト支援</li>
+        <li>運用保守・ユーザー教育</li>
+        <li>ABAP開発・インターフェース設計</li>
+      </ul>
     </div>
   </div>
 
-  <div class="svc-block" id="branding">
-    <div class="svc-inner reveal">
-      <div>
-        <p class="svc-num">03 / BRANDING</p>
-        <h2 class="svc-name">採用<br/>ブランディング</h2>
-        <p class="svc-name-en">Recruitment Branding</p>
-      </div>
-      <div>
-        <p class="svc-desc">採用を「母集団形成」ではなく「ブランディング」として設計します。企業の魅力を言語化し、採用広報・SNS・求人票を統一した世界観で構築することで、自然と優秀な人材が集まる仕組みをつくります。</p>
-        <ul class="svc-list">
-          <li>採用ブランド戦略の策定</li>
-          <li>採用コンセプト・メッセージ開発</li>
-          <li>採用サイト・LP制作ディレクション</li>
-          <li>求人票のライティング・最適化</li>
-          <li>SNS採用広報の運用支援</li>
-          <li>採用動画・コンテンツ制作</li>
-        </ul>
-      </div>
+  <div class="svc-item reveal" id="branding">
+    <div class="svc-head">
+      <div class="svc-num"><span class="idx">DIV</span><span class="big">03</span></div>
+      <div class="svc-names"><div class="svc-name">採用ブランディング</div><div class="svc-name-en">Recruitment Branding</div></div>
+      <span class="svc-arr">→</span>
+    </div>
+    <div class="svc-body">
+      <p class="svc-desc">採用を「母集団形成」ではなく「ブランディング」として設計します。企業の魅力を言語化し、採用広報・SNS・求人票を統一した世界観で構築することで、自然と優秀な人材が集まる仕組みをつくります。</p>
+      <ul class="svc-ul">
+        <li>採用ブランド戦略の策定</li>
+        <li>採用コンセプト・メッセージ開発</li>
+        <li>採用サイト・LP制作ディレクション</li>
+        <li>求人票のライティング・最適化</li>
+        <li>SNS採用広報の運用支援</li>
+        <li>採用動画・コンテンツ制作</li>
+      </ul>
     </div>
   </div>
 
-  <div class="svc-block" id="sns">
-    <div class="svc-inner reveal">
-      <div>
-        <p class="svc-num">04 / SNS</p>
-        <h2 class="svc-name">SNS<br/>運用代行</h2>
-        <p class="svc-name-en">SNS Management</p>
-      </div>
-      <div>
-        <p class="svc-desc">YouTube・TikTok・Instagram・X（旧Twitter）など、各プラットフォームに特化した運用戦略を立案し、コンテンツ制作から分析・改善まで一貫して対応します。フォロワー数ではなく、事業インパクトの最大化を目指します。</p>
-        <ul class="svc-list">
-          <li>SNS戦略立案・アカウント設計</li>
-          <li>YouTube動画の企画・撮影・編集・投稿</li>
-          <li>TikTokショート動画の制作・運用</li>
-          <li>Instagramフィード・リール運用</li>
-          <li>X（旧Twitter）運用・エンゲージメント向上</li>
-          <li>データ分析・レポーティング・改善提案</li>
-        </ul>
-      </div>
+  <div class="svc-item reveal" id="sns">
+    <div class="svc-head">
+      <div class="svc-num"><span class="idx">DIV</span><span class="big">04</span></div>
+      <div class="svc-names"><div class="svc-name">SNS運用代行</div><div class="svc-name-en">SNS Management</div></div>
+      <span class="svc-arr">→</span>
+    </div>
+    <div class="svc-body">
+      <p class="svc-desc">YouTube・TikTok・Instagram・X（旧Twitter）など、各プラットフォームに特化した運用戦略を立案し、コンテンツ制作から分析・改善まで一貫して対応します。</p>
+      <ul class="svc-ul">
+        <li>SNS戦略立案・アカウント設計</li>
+        <li>YouTube動画の企画・撮影・編集・投稿</li>
+        <li>TikTokショート動画の制作・運用</li>
+        <li>Instagramフィード・リール運用</li>
+        <li>X（旧Twitter）運用・エンゲージメント向上</li>
+        <li>データ分析・レポーティング・改善提案</li>
+      </ul>
     </div>
   </div>
 
-  <div class="svc-block" id="fnb">
-    <div class="svc-inner reveal">
-      <div>
-        <p class="svc-num">05 / F&amp;B</p>
-        <h2 class="svc-name">飲食事業</h2>
-        <p class="svc-name-en">Food &amp; Beverage</p>
-      </div>
-      <div>
-        <p class="svc-desc">東京都内において飲食店を直営運営しています。現場で積み上げたオペレーション・原価管理・マーケティングのノウハウは、他の事業領域にも活かされています。</p>
-        <ul class="svc-list">
-          <li>都内飲食店の直営運営</li>
-          <li>原価管理・オペレーション最適化</li>
-          <li>デジタルマーケティングとの連携</li>
-        </ul>
-      </div>
+  <div class="svc-item reveal" id="fnb">
+    <div class="svc-head">
+      <div class="svc-num"><span class="idx">DIV</span><span class="big">05</span></div>
+      <div class="svc-names"><div class="svc-name">飲食事業</div><div class="svc-name-en">Food &amp; Beverage</div></div>
+      <span class="svc-arr">→</span>
+    </div>
+    <div class="svc-body">
+      <p class="svc-desc">東京都内において飲食店を直営運営しています。現場で積み上げたオペレーション・原価管理・マーケティングのノウハウは、他の事業領域にも活かされています。</p>
+      <ul class="svc-ul">
+        <li>都内飲食店の直営運営</li>
+        <li>原価管理・オペレーション最適化</li>
+        <li>デジタルマーケティングとの連携</li>
+      </ul>
     </div>
   </div>
 </main>
