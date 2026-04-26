@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="ja"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>News — Neuron Worx</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;700&display=swap"/>
+<link rel="stylesheet" href="assets/theme.css"/>
+<script>const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{"theme":"dark","accent":"violet","font":"serif-italic","heroLayout":"neural","motionIntensity":2}/*EDITMODE-END*/;</script>
+<style>
+main{ padding: 0 40px; }
+.container{ max-width: var(--max); margin: 0 auto; }
+
+.news-grid{ display: grid; grid-template-columns: 2fr 1fr; gap: 64px; margin-top: 48px;}
+.featured{ border: 1px solid var(--line-gold); padding: 48px; position: relative; background: linear-gradient(180deg, rgba(212,178,116,0.05), transparent 60%);}
+.featured::before{ content:"FEATURED · 特集"; position: absolute; top: -1px; left: 28px; background: var(--bg); padding: 0 12px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .22em; color: var(--gold);}
+.featured .cat{ font-family: var(--mono); font-size: 10.5px; letter-spacing: .22em; color: var(--gold); text-transform: uppercase;}
+.featured .date{ font-family: var(--mono); font-size: 11px; letter-spacing: .1em; color: var(--ink-3); margin-left: 16px;}
+.featured h2{ margin: 18px 0 12px; font-family: var(--display); font-style: var(--display-style); font-weight: 400; font-size: clamp(36px, 3.8vw, 56px); line-height: 1.05; letter-spacing: -.02em; color: var(--ink);}
+.featured .jp{ font-family: var(--serif-jp); color: var(--ink-2); font-size: 13px; letter-spacing: .03em;}
+.featured .lead{ font-family: var(--serif-jp); color: var(--ink-2); font-size: 14.5px; line-height: 2; margin-top: 28px; max-width: 60ch;}
+.featured .lead b{ color: var(--ink); font-weight: 500;}
+.featured .by{ display:flex; align-items:center; gap: 16px; margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--line);}
+.featured .by .ava{ width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(180deg, rgba(212,178,116,0.3), rgba(212,178,116,0.08)); border: 1px solid var(--line-gold); display:grid; place-items: center; font-family: var(--display); font-style: var(--display-style); color: var(--gold); font-size: 18px;}
+.featured .by .name{ font-family: var(--serif-jp); color: var(--ink); font-size: 13.5px;}
+.featured .by .role{ font-family: var(--mono); color: var(--ink-3); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase;}
+.side-list{ display:grid; gap: 0; border-top: 1px solid var(--line);}
+.side-item{ padding: 20px 0; border-bottom: 1px solid var(--line); display:block;}
+.side-item .cat{ font-family: var(--mono); font-size: 10px; letter-spacing: .2em; color: var(--gold); text-transform: uppercase;}
+.side-item .date{ font-family: var(--mono); font-size: 10px; color: var(--ink-3); letter-spacing: .08em; margin-left: 12px;}
+.side-item h3{ margin: 10px 0 4px; font-family: var(--display); font-style: var(--display-style); font-weight: 400; font-size: 22px; color: var(--ink); letter-spacing: -.01em; line-height: 1.2;}
+.side-item .jp{ font-family: var(--serif-jp); font-size: 12.5px; color: var(--ink-2);}
+.all-news{ margin-top: 96px; border-top: 1px solid var(--line);}
+.news-row{ display: grid; grid-template-columns: 110px 120px 1fr 140px 100px; gap: 24px; padding: 28px 0; border-bottom: 1px solid var(--line); align-items: baseline; transition: background .3s, padding .3s; cursor: pointer;}
+.news-row:hover{ background: linear-gradient(90deg, transparent, rgba(212,178,116,0.04), transparent); padding-left: 12px;}
+.news-row .date{ font-family: var(--mono); font-size: 12px; color: var(--ink-2); letter-spacing: .1em;}
+.news-row .cat{ font-family: var(--mono); font-size: 10.5px; letter-spacing: .18em; color: var(--gold); text-transform: uppercase;}
+.news-row .t{ font-family: var(--display); font-style: var(--display-style); font-size: 22px; color: var(--ink); line-height: 1.25; letter-spacing: -.005em;}
+.news-row .t .jp{ display: block; font-family: var(--serif-jp); font-size: 11.5px; color: var(--ink-2); margin-top: 4px; letter-spacing: .03em;}
+.news-row .author{ font-family: var(--serif-jp); font-size: 12px; color: var(--ink-2);}
+.news-row .read{ font-family: var(--mono); font-size: 10.5px; letter-spacing: .18em; color: var(--gold); text-align: right; text-transform: uppercase;}
+@media (max-width: 900px){ .news-grid{ grid-template-columns: 1fr;} .featured{ padding: 28px;} .news-row{ grid-template-columns: 90px 1fr; gap: 10px;} .news-row .cat, .news-row .author, .news-row .read{ grid-column: 2;}}
+</style></head>
+<body data-theme="dark" data-accent="violet" data-font="serif-italic" data-hero="neural">
+
+<canvas id="bg-canvas"></canvas>
+<div class="bg-vignette"></div>
+
+<header class="chrome-top">
+  <a class="logo" href="index.html">
+    <span class="logo-mark">
+      <svg viewBox="0 0 24 24" fill="none">
+        <defs><linearGradient id="nwlg2" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#d4b274"/><stop offset="1" stop-color="#fae7b4"/>
+        </linearGradient></defs>
+        <circle cx="6"  cy="6"  r="1.8" fill="currentColor"/>
+        <circle cx="18" cy="6"  r="1.8" fill="currentColor"/>
+        <circle cx="6"  cy="18" r="1.8" fill="currentColor"/>
+        <circle cx="18" cy="18" r="1.8" fill="currentColor"/>
+        <circle cx="12" cy="12" r="3"   fill="url(#nwlg2)"/>
+        <path d="M6 6 L12 12 L18 6 M6 18 L12 12 L18 18" stroke="currentColor" stroke-width="0.8"/>
+      </svg>
+    </span>
+    NEURON WORX
+  </a>
+  <nav class="nav">
+    <a href="index.html">Index</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="works.html">Works</a>
+    <a href="team.html">Team</a>
+    <a href="careers.html">Careers</a>
+    <a href="news.html" class="on">News</a>
+    <a href="company.html">Company</a>
+  </nav>
+  <a class="cta-top" href="contact.html">Contact &#x2192;</a>
+</header>
+
+<div class="chrome-bottom">
+  <div><span class="tick">●</span>&nbsp; LIVE · 2026</div>
+  <div><span id="clock">--:--:--</span>&nbsp; JST · 35.676°N 139.650°E</div>
+  <div>N°<span id="cursor-coord">000,000</span></div>
+</div>
+  <div><span id="clock" class="now">--:--:--</span>&nbsp;&nbsp;JST &middot; TYO 35.676&deg;N, 139.650&deg;E</div>
+  <div>N&#xB0;<span id="cursor-coord">000,000</span></div>
+</div>
+
+<div class="tweaks" id="tweaks">
+  <h4>TWEAKS <span class="close" id="tweaks-close">&#xD7;</span></h4>
+  <div class="tw-row"><span class="label">Theme</span><div class="tw-opts" data-key="theme">
+    <button class="tw-opt" data-val="dark">Dark</button>
+    <button class="tw-opt" data-val="light">Light</button>
+  </div></div>
+  <div class="tw-row"><span class="label">Accent</span><div class="tw-opts" data-key="accent">
+    <button class="tw-opt" data-val="violet">Violet</button>
+    <button class="tw-opt" data-val="gold">Gold</button>
+    <button class="tw-opt" data-val="crimson">Crimson</button>
+    <button class="tw-opt" data-val="mono">Mono</button>
+  </div></div>
+  <div class="tw-row"><span class="label">Display Font</span><div class="tw-opts" data-key="font">
+    <button class="tw-opt" data-val="serif-italic">Italic</button>
+    <button class="tw-opt" data-val="serif-roman">Roman</button>
+    <button class="tw-opt" data-val="mincho">&#26126;&#26397;</button>
+    <button class="tw-opt" data-val="mono">Mono</button>
+  </div></div>
+  <div class="tw-row"><span class="label">Background</span><div class="tw-opts" data-key="heroLayout">
+    <button class="tw-opt" data-val="neural">Wireframe</button>
+    <button class="tw-opt" data-val="grid">Circuit</button>
+    <button class="tw-opt" data-val="noise">Warp</button>
+  </div></div>
+  <div class="tw-row"><span class="label">Motion <span id="mi-val" style="float:right;color:var(--gold)">2</span></span>
+    <input type="range" class="tw-range" id="mi" min="0" max="3" step="1" value="2"/>
+  </div>
+</div>
+
+
+
+<main>
+<section class="page-head container reveal">
+  <div class="eyebrow">N° 07 ─ NEWS / BLOG</div>
+  <h1 class="page-h1"><em class="">Signals</em><br/>from the lab.</h1>
+  <p class="page-kicker">プレスリリースと、社内の手記。AIの話も、料理の話も、採用の話も、同じところから書かれる。</p>
+  <div class="page-meta">
+    <div>Posts<b>42 本</b></div><div>RSS<b>/feed.xml</b></div><div>Cadence<b>週1-2 本</b></div><div>Editors<b>社員全員</b></div>
+  </div>
+</section>
+
+<section class="container reveal">
+  <div class="news-grid">
+    <article class="featured">
+      <div><span class="cat">ESSAY</span><span class="date">2026.04.12</span></div>
+      <h2>The fifth business<br/>doesn't have a name yet.</h2>
+      <div class="jp">第五の事業はまだ名前を持たない。</div>
+      <div class="lead">
+        <p>四つの事業を並列に動かすと、必ず予想外の接続が起きる。AIの案件で採った料理人、料理の現場から生まれたプロダクト、不動産の内覧から始まった採用案件。<b>我々は最初から接続を事業計画に織り込んでいる。</b></p>
+        <p>このエッセイでは、過去4件の「第五の事業」の実例と、どうやってその接続を意図的に生み出しているかを書いた。</p>
+      </div>
+      <div class="by">
+        <div class="ava">K</div>
+        <div><div class="name">Kei Arakawa · 荒川 圭一</div><div class="role">Co-founder</div></div>
+      </div>
+    </article>
+    <aside>
+      <div class="side-list">
+        <a class="side-item"><div><span class="cat">PRESS</span><span class="date">04.08</span></div><h3>AI事業部を分社化、Neuron Worx AI 合同会社 設立</h3><div class="jp">東京・新宿。代表社員 荒川圭一（継続兼務）。</div></a>
+        <a class="side-item"><div><span class="cat">DIARY</span><span class="date">03.28</span></div><h3>厨房とGitHub、両方の鍵を持つ人の話</h3><div class="jp">Kitchen keys and repo keys.</div></a>
+        <a class="side-item"><div><span class="cat">WORK</span><span class="date">03.14</span></div><h3>Shinkei Protocol、11部門まで展開完了</h3><div class="jp">東証プライム通信会社向け全社AI。</div></a>
+        <a class="side-item"><div><span class="cat">RECIPE</span><span class="date">03.02</span></div><h3>酒粕のバターソース、三週目の記録</h3><div class="jp">Kitsune Bistro · 春コース。</div></a>
+        <a class="side-item"><div><span class="cat">HIRING</span><span class="date">02.19</span></div><h3>Cross Producer 募集、7人目のメンバーへ</h3><div class="jp">経験不問、接続が作れる人。</div></a>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="container reveal">
+  <div class="sec-head"><div><span class="num">N° 07.1</span>&nbsp;&nbsp;ARCHIVE ─ 過去記事</div><h2><em class="serif-it">All</em><br/>posts.</h2><div class="right">2022年から書き続けている。<br/>削除しないポリシー。</div></div>
+  <div class="all-news">
+    <a class="news-row"><div class="date">2026.04.05</div><div class="cat">ESSAY</div><div class="t">Evaluation Is The Product<span class="jp">評価パイプラインがプロダクトである</span></div><div class="author">Ryo Nakamura</div><div class="read">READ →</div></a>
+    <a class="news-row"><div class="date">2026.03.22</div><div class="cat">DIARY</div><div class="t">14人目の入社、鍵の本数<span class="jp">オンボーディング記録</span></div><div class="author">Rina Mori</div><div class="read">READ →</div></a>
+    <a class="news-row"><div class="date">2026.03.11</div><div class="cat">PRESS</div><div class="t">神楽坂二号店「Kitsune Bistro」3ヶ月実績<span class="jp">月次稼働97%、予約待機1,400名</span></div><div class="author">Mao Higuchi</div><div class="read">READ →</div></a>
+    <a class="news-row"><div class="date">2026.02.28</div><div class="cat">ESSAY</div><div class="t">The retainer is the moat<span class="jp">月額契約が堀である話</span></div><div class="author">Jun Ishikawa</div><div class="read">READ →</div></a>
+    <a class="news-row"><div class="date">2026.02.14</div><div class="cat">WORK</div><div class="t">製造業の日報自動化、1年後の運用<span class="jp">月4,200時間の実測レポート</span></div><div class="author">Nina Sato</div><div class="read">READ →</div></a>
+    <a class="news-row"><div class="date">2026.01.30</div><div class="cat">RECIPE</div><div class="t">冬の根菜、煮詰めない方針<span class="jp">Sakura Counter · 1月</span></div><div class="author">Hina Kimura</div><div class="read">READ →</div></a>
+    <a class="news-row"><div class="date">2026.01.18</div><div class="cat">HIRING</div><div class="t">エグゼクティブサーチの「質」をどう測るか<span class="jp">成約率ではない指標の話</span></div><div class="author">Daisuke Hara</div><div class="read">READ →</div></a>
+    <a class="news-row"><div class="date">2025.12.20</div><div class="cat">ESSAY</div><div class="t">2025年の総括 — 接続の数<span class="jp">14人で28社と働いた1年</span></div><div class="author">Kei Arakawa</div><div class="read">READ →</div></a>
+    <a class="news-row"><div class="date">2025.11.07</div><div class="cat">PRESS</div><div class="t">Kitsune Bistro オープン<span class="jp">神楽坂・直営二号店</span></div><div class="author">Mao Higuchi</div><div class="read">READ →</div></a>
+    <a class="news-row"><div class="date">2025.10.24</div><div class="cat">WORK</div><div class="t">築古リノベ、2ヶ月で稼働91%の内訳<span class="jp">Mesh Kagurazaka 運用レポート</span></div><div class="author">Saya Fujii</div><div class="read">READ →</div></a>
+    <a class="news-row"><div class="date">2025.09.12</div><div class="cat">ESSAY</div><div class="t">合同会社という選択<span class="jp">なぜ株式会社にしなかったか</span></div><div class="author">Kei Arakawa</div><div class="read">READ →</div></a>
+    <a class="news-row"><div class="date">2025.08.30</div><div class="cat">DIARY</div><div class="t">サバティカルの一ヶ月、木と海と原稿<span class="jp">取締役の休み方</span></div><div class="author">Mao Higuchi</div><div class="read">READ →</div></a>
+  </div>
+</section>
+</main>
+
+<div class="end-mark"><span class="">NEWS·BLOG</span></div>
+
+<footer class="end">
+  <div class="end-wrap">
+    <div>
+      <div style="font-family:var(--mono);font-size:13px;letter-spacing:.22em;margin-bottom:18px;color:var(--ink);">NEURON · WORX</div>
+      <div style="font-family:var(--serif-jp);color:var(--ink-2);line-height:1.9;font-size:14px;max-width:42ch;">
+        合同会社 Neuron Worx は、AI・人材・食・不動産の四領域を編む東京の事業体です。異領域の接続を本業とします。
+      </div>
+      <div class="rule-gold" style="margin:24px 0 0;max-width:320px;"><span class="dot"></span>EST. 2021 · TOKYO</div>
+    </div>
+    <div>
+      <h5>Sitemap</h5>
+      <ul>
+        <li><a href="index.html">Index</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="works.html">Works</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Company</h5>
+      <ul>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="company.html">Company Info</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="mailto:hello@neuronworx.co.jp">hello@neuronworx.co.jp</a></li>
+        <li><a href="mailto:press@neuronworx.co.jp">press@neuronworx.co.jp</a></li>
+        <li><a href="mailto:careers@neuronworx.co.jp">careers@neuronworx.co.jp</a></li>
+        <li><a href="contact.html">→ お問い合わせ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="end-mark-row">
+    <div>© 2026 合同会社 Neuron Worx</div>
+    <div>Built in Tokyo · Signal OK</div>
+  </div>
+</footer>
+<script src="assets/app.js"></script>
+
+<div class="tweaks" id="tweaks">
+  <h4>TWEAKS <span class="close" id="tweaks-close">×</span></h4>
+  <div class="tw-row"><span class="label">Theme</span><div class="tw-opts" data-key="theme">
+    <button class="tw-opt" data-val="dark">Dark</button>
+    <button class="tw-opt" data-val="light">Light</button>
+  </div></div>
+  <div class="tw-row"><span class="label">Accent</span><div class="tw-opts" data-key="accent">
+    <button class="tw-opt" data-val="violet">Violet</button>
+    <button class="tw-opt" data-val="gold">Gold</button>
+    <button class="tw-opt" data-val="crimson">Crimson</button>
+    <button class="tw-opt" data-val="mono">Mono</button>
+  </div></div>
+  <div class="tw-row"><span class="label">Font</span><div class="tw-opts" data-key="font">
+    <button class="tw-opt" data-val="serif-italic">Italic</button>
+    <button class="tw-opt" data-val="serif-roman">Roman</button>
+    <button class="tw-opt" data-val="mincho">明朝</button>
+    <button class="tw-opt" data-val="mono">Mono</button>
+  </div></div>
+  <div class="tw-row"><span class="label">Background</span><div class="tw-opts" data-key="heroLayout">
+    <button class="tw-opt" data-val="neural">Wireframe</button>
+    <button class="tw-opt" data-val="grid">Circuit</button>
+    <button class="tw-opt" data-val="noise">Warp</button>
+  </div></div>
+  <div class="tw-row"><span class="label">Motion <span id="mi-val" style="float:right;color:var(--gold)">2</span></span>
+    <input type="range" class="tw-range" id="mi" min="0" max="3" step="1" value="2"/>
+  </div>
+</div>
+<div class="page-trans" id="page-trans"></div>
+</body></html>

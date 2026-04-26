@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="ja"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Contact — Neuron Worx</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;700&display=swap"/>
+<link rel="stylesheet" href="assets/theme.css"/>
+<script>const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{"theme":"dark","accent":"violet","font":"serif-italic","heroLayout":"neural","motionIntensity":2}/*EDITMODE-END*/;</script>
+<style>
+main{ padding: 0 40px; }
+.container{ max-width: var(--max); margin: 0 auto; }
+
+.contact-grid{ display:grid; grid-template-columns: 1.1fr 1fr; gap: 72px; margin-top: 48px; align-items: start;}
+.form{ border: 1px solid var(--line); padding: 40px; background: linear-gradient(180deg, rgba(212,178,116,0.04), transparent 30%);}
+.form h3{ margin: 0 0 6px; font-family: var(--display); font-style: var(--display-style); font-weight: 400; font-size: 34px; color: var(--ink); letter-spacing: -.015em;}
+.form .sub{ font-family: var(--serif-jp); font-size: 12.5px; color: var(--ink-2); margin-bottom: 28px;}
+.fieldset{ display:grid; gap: 20px;}
+.field{ display:block;}
+.field > .lab{ display:flex; justify-content: space-between; align-items: baseline; font-family: var(--mono); font-size: 10.5px; letter-spacing: .2em; color: var(--ink-2); text-transform: uppercase; margin-bottom: 8px;}
+.field > .lab .req{ color: var(--gold);}
+.field input, .field textarea, .field select{ width: 100%; background: transparent; color: var(--ink); border: 0; border-bottom: 1px solid var(--line); padding: 10px 0; font-family: var(--serif-jp); font-size: 14.5px; transition: border-color .25s; }
+.field input:focus, .field textarea:focus, .field select:focus{ outline: none; border-bottom-color: var(--gold);}
+.field textarea{ min-height: 120px; resize: vertical; line-height: 1.7;}
+.topic{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 8px;}
+.topic label{ display:flex; align-items: center; gap: 10px; padding: 14px 16px; border: 1px solid var(--line); cursor: pointer; font-family: var(--serif-jp); font-size: 13px; color: var(--ink); transition: all .2s;}
+.topic label:hover{ border-color: var(--gold); color: var(--gold);}
+.topic input{ accent-color: var(--gold); width: 14px; height: 14px;}
+.topic label:has(input:checked){ border-color: var(--gold); background: rgba(212,178,116,0.06); color: var(--ink);}
+.topic label .num{ font-family: var(--mono); font-size: 10px; letter-spacing: .18em; color: var(--ink-3); margin-left: auto;}
+.side-info{ display:grid; gap: 0; border-top: 1px solid var(--line);}
+.side-info .row{ padding: 22px 0; border-bottom: 1px solid var(--line);}
+.side-info .row .k{ font-family: var(--mono); font-size: 10.5px; letter-spacing: .2em; color: var(--ink-3); text-transform: uppercase; margin-bottom: 6px;}
+.side-info .row .v{ font-family: var(--display); font-style: var(--display-style); font-size: 28px; color: var(--ink); letter-spacing: -.01em;}
+.side-info .row .sub{ font-family: var(--serif-jp); font-size: 12.5px; color: var(--ink-2); margin-top: 4px;}
+.direct-list{ margin-top: 32px;}
+.direct-list .d{ display:grid; grid-template-columns: 24px 1fr; gap: 14px; padding: 14px 0; border-bottom: 1px dashed var(--line); align-items: baseline;}
+.direct-list .d .ic{ font-family: var(--mono); font-size: 12px; color: var(--gold); letter-spacing: .12em;}
+.direct-list .d .name{ font-family: var(--serif-jp); font-size: 13px; color: var(--ink);}
+.direct-list .d .addr{ font-family: var(--mono); font-size: 11.5px; color: var(--ink-2); margin-top: 4px; letter-spacing: .04em;}
+.closing{ font-family: var(--display); font-style: var(--display-style); font-size: clamp(48px, 6vw, 120px); line-height: 1; margin: 96px 0 0; letter-spacing: -.02em; color: var(--ink); font-weight: 400;}
+.closing em{ color: var(--gold); background-size: 220% 100%; color: var(--gold);}
+.closing .jp{ display:block; font-family: var(--serif-jp); font-style: normal; font-size: 14px; letter-spacing: .1em; color: var(--ink-2); margin-top: 20px;}
+.submit-row{ display:flex; justify-content: space-between; align-items: center; margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--line); gap: 20px; flex-wrap: wrap;}
+.submit-row .policy{ font-family: var(--mono); font-size: 10.5px; letter-spacing: .12em; color: var(--ink-3); max-width: 42ch; text-transform: uppercase;}
+.sent{ padding: 32px; border: 1px solid var(--line-gold); background: rgba(212,178,116,0.05); font-family: var(--serif-jp); font-size: 14.5px; color: var(--ink); line-height: 1.9; display: none;}
+.sent.on{ display: block;}
+.sent h4{ margin: 0 0 8px; font-family: var(--display); font-style: var(--display-style); font-weight: 400; font-size: 28px; color: var(--gold);}
+@media (max-width: 900px){ .contact-grid{ grid-template-columns: 1fr;} .form{ padding: 28px;} .topic{ grid-template-columns: 1fr;}}
+</style></head>
+<body data-theme="dark" data-accent="violet" data-font="serif-italic" data-hero="neural">
+
+<canvas id="bg-canvas"></canvas>
+<div class="bg-vignette"></div>
+
+<header class="chrome-top">
+  <a class="logo" href="index.html">
+    <span class="logo-mark">
+      <svg viewBox="0 0 24 24" fill="none">
+        <defs><linearGradient id="nwlg2" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#d4b274"/><stop offset="1" stop-color="#fae7b4"/>
+        </linearGradient></defs>
+        <circle cx="6"  cy="6"  r="1.8" fill="currentColor"/>
+        <circle cx="18" cy="6"  r="1.8" fill="currentColor"/>
+        <circle cx="6"  cy="18" r="1.8" fill="currentColor"/>
+        <circle cx="18" cy="18" r="1.8" fill="currentColor"/>
+        <circle cx="12" cy="12" r="3"   fill="url(#nwlg2)"/>
+        <path d="M6 6 L12 12 L18 6 M6 18 L12 12 L18 18" stroke="currentColor" stroke-width="0.8"/>
+      </svg>
+    </span>
+    NEURON WORX
+  </a>
+  <nav class="nav">
+    <a href="index.html">Index</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="works.html">Works</a>
+    <a href="team.html">Team</a>
+    <a href="careers.html">Careers</a>
+    <a href="news.html">News</a>
+    <a href="company.html">Company</a>
+  </nav>
+  <a class="cta-top" href="contact.html">Contact &#x2192;</a>
+</header>
+
+<div class="chrome-bottom">
+  <div><span class="tick">●</span>&nbsp; LIVE · 2026</div>
+  <div><span id="clock">--:--:--</span>&nbsp; JST · 35.676°N 139.650°E</div>
+  <div>N°<span id="cursor-coord">000,000</span></div>
+</div>
+  <div><span id="clock" class="now">--:--:--</span>&nbsp;&nbsp;JST &middot; TYO 35.676&deg;N, 139.650&deg;E</div>
+  <div>N&#xB0;<span id="cursor-coord">000,000</span></div>
+</div>
+
+<div class="tweaks" id="tweaks">
+  <h4>TWEAKS <span class="close" id="tweaks-close">&#xD7;</span></h4>
+  <div class="tw-row"><span class="label">Theme</span><div class="tw-opts" data-key="theme">
+    <button class="tw-opt" data-val="dark">Dark</button>
+    <button class="tw-opt" data-val="light">Light</button>
+  </div></div>
+  <div class="tw-row"><span class="label">Accent</span><div class="tw-opts" data-key="accent">
+    <button class="tw-opt" data-val="violet">Violet</button>
+    <button class="tw-opt" data-val="gold">Gold</button>
+    <button class="tw-opt" data-val="crimson">Crimson</button>
+    <button class="tw-opt" data-val="mono">Mono</button>
+  </div></div>
+  <div class="tw-row"><span class="label">Display Font</span><div class="tw-opts" data-key="font">
+    <button class="tw-opt" data-val="serif-italic">Italic</button>
+    <button class="tw-opt" data-val="serif-roman">Roman</button>
+    <button class="tw-opt" data-val="mincho">&#26126;&#26397;</button>
+    <button class="tw-opt" data-val="mono">Mono</button>
+  </div></div>
+  <div class="tw-row"><span class="label">Background</span><div class="tw-opts" data-key="heroLayout">
+    <button class="tw-opt" data-val="neural">Wireframe</button>
+    <button class="tw-opt" data-val="grid">Circuit</button>
+    <button class="tw-opt" data-val="noise">Warp</button>
+  </div></div>
+  <div class="tw-row"><span class="label">Motion <span id="mi-val" style="float:right;color:var(--gold)">2</span></span>
+    <input type="range" class="tw-range" id="mi" min="0" max="3" step="1" value="2"/>
+  </div>
+</div>
+
+
+
+<main>
+<section class="page-head container reveal">
+  <div class="eyebrow">N° 09 ─ CONTACT</div>
+  <h1 class="page-h1"><em class="">Send</em><br/>the signal.</h1>
+  <p class="page-kicker">営業電話は受けていない。<b>接続になりそうな話だけ</b>送ってほしい。営業日 <b>2日以内</b> に人から返信する。</p>
+  <div class="page-meta">
+    <div>Response<b>&lt; 48 時間</b></div><div>Hours<b>平日 10:00 — 19:00</b></div><div>Lang<b>日本語 / English</b></div><div>Min budget<b>¥1.5M〜</b></div>
+  </div>
+</section>
+
+<section class="container reveal">
+  <div class="contact-grid">
+    <div>
+      <form class="form" id="contact-form" onsubmit="return handleSubmit(event)">
+        <h3>Write to us.</h3>
+        <div class="sub">ご依頼・採用応募・取材・投資家の方々まで。</div>
+
+        <div class="fieldset">
+          <div class="field">
+            <div class="lab"><span>Topic · 用件</span><span class="req">* 必須</span></div>
+            <div class="topic">
+              <label><input type="radio" name="topic" value="ai" checked/> AI コンサル依頼 <span class="num">01</span></label>
+              <label><input type="radio" name="topic" value="talent"/> 採用コンサル依頼 <span class="num">02</span></label>
+              <label><input type="radio" name="topic" value="fnb"/> 飲食 / R&amp;D <span class="num">03</span></label>
+              <label><input type="radio" name="topic" value="real"/> 不動産 / 運用 <span class="num">04</span></label>
+              <label><input type="radio" name="topic" value="career"/> 採用エントリー <span class="num">05</span></label>
+              <label><input type="radio" name="topic" value="press"/> 取材・登壇 <span class="num">06</span></label>
+              <label><input type="radio" name="topic" value="invest"/> 投資家 <span class="num">07</span></label>
+              <label><input type="radio" name="topic" value="other"/> その他・接続相談 <span class="num">∑</span></label>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="lab"><span>Name · 御名前</span><span class="req">*</span></div>
+            <input type="text" name="name" required placeholder="例） 山田 太郎 / Taro Yamada"/>
+          </div>
+          <div class="field">
+            <div class="lab"><span>Company · 会社 / 所属</span><span></span></div>
+            <input type="text" name="company" placeholder="例） 株式会社〇〇〇〇 (任意)"/>
+          </div>
+          <div class="field">
+            <div class="lab"><span>Email · 連絡先</span><span class="req">*</span></div>
+            <input type="email" name="email" required placeholder="your@address.jp"/>
+          </div>
+
+          <div class="field">
+            <div class="lab"><span>Budget · 概算予算</span><span></span></div>
+            <select name="budget">
+              <option>— 選択（任意）</option>
+              <option>¥1.5M 未満 / スポット相談</option>
+              <option>¥1.5M 〜 ¥5M</option>
+              <option>¥5M 〜 ¥20M</option>
+              <option>¥20M 〜 ¥50M</option>
+              <option>¥50M 以上 / 長期</option>
+              <option>未定・相談したい</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <div class="lab"><span>Message · 要件</span><span class="req">*</span></div>
+            <textarea name="message" required placeholder="状況、やりたいこと、締切などを自由に。長くても大丈夫です。箇条書き歓迎。"></textarea>
+          </div>
+        </div>
+
+        <div class="submit-row">
+          <div class="policy">送信 = プライバシーポリシーに同意。2営業日以内に人から返信します。</div>
+          <button class="btn gold" type="submit"><span class="dot"></span>SEND SIGNAL →</button>
+        </div>
+      </form>
+
+      <div class="sent" id="sent">
+        <h4>Signal received.</h4>
+        信号を受信しました。<br/>
+        このメールアドレスは個人が読んでいます。2営業日以内に返信いたします。重要な案件で急ぎの場合は、電話でご連絡ください： <b>+81-3-XXXX-XXXX</b>
+      </div>
+    </div>
+
+    <aside>
+      <div class="sec-head" style="margin-bottom: 0;"><div><span class="num">N° 09.1</span>&nbsp;&nbsp;REACH ─ 直接連絡</div></div>
+      <div class="side-info">
+        <div class="row"><div class="k">General</div><div class="v">hello@neuronworx.co.jp</div><div class="sub">事業案件・取材・その他全般</div></div>
+        <div class="row"><div class="k">Careers</div><div class="v">careers@neuronworx.co.jp</div><div class="sub">採用応募・面談希望</div></div>
+        <div class="row"><div class="k">Press</div><div class="v">press@neuronworx.co.jp</div><div class="sub">取材・登壇・寄稿依頼</div></div>
+        <div class="row"><div class="k">Phone</div><div class="v">+81-3-XXXX-XXXX</div><div class="sub">平日 10:00 — 19:00 JST</div></div>
+      </div>
+
+      <div class="sec-head" style="margin-top: 48px; margin-bottom: 8px;"><div><span class="num">N° 09.2</span>&nbsp;&nbsp;DIRECT ─ 担当者別</div></div>
+      <div class="direct-list">
+        <div class="d"><div class="ic">01</div><div><div class="name">荒川 圭一 (Kei Arakawa) — AI / R.E.</div><div class="addr">kei.arakawa@neuronworx.co.jp</div></div></div>
+        <div class="d"><div class="ic">02</div><div><div class="name">樋口 真緒 (Mao Higuchi) — Talent / F&amp;B</div><div class="addr">mao.higuchi@neuronworx.co.jp</div></div></div>
+        <div class="d"><div class="ic">03</div><div><div class="name">中村 亮 (Ryo Nakamura) — AI Tech</div><div class="addr">ryo.nakamura@neuronworx.co.jp</div></div></div>
+        <div class="d"><div class="ic">04</div><div><div class="name">黒田 彩 (Aya Kuroda) — Hiring</div><div class="addr">aya.kuroda@neuronworx.co.jp</div></div></div>
+      </div>
+
+      <h2 class="closing"><em>Send</em>.<span class="jp">─ 信号は、接続の最初の一歩。</span></h2>
+    </aside>
+  </div>
+</section>
+</main>
+
+<div class="end-mark"><span class="">CONTACT</span></div>
+
+<footer class="end">
+  <div class="end-wrap">
+    <div>
+      <div style="font-family:var(--mono);font-size:13px;letter-spacing:.22em;margin-bottom:18px;color:var(--ink);">NEURON · WORX</div>
+      <div style="font-family:var(--serif-jp);color:var(--ink-2);line-height:1.9;font-size:14px;max-width:42ch;">
+        合同会社 Neuron Worx は、AI・人材・食・不動産の四領域を編む東京の事業体です。異領域の接続を本業とします。
+      </div>
+      <div class="rule-gold" style="margin:24px 0 0;max-width:320px;"><span class="dot"></span>EST. 2021 · TOKYO</div>
+    </div>
+    <div>
+      <h5>Sitemap</h5>
+      <ul>
+        <li><a href="index.html">Index</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="works.html">Works</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Company</h5>
+      <ul>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="company.html">Company Info</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="mailto:hello@neuronworx.co.jp">hello@neuronworx.co.jp</a></li>
+        <li><a href="mailto:press@neuronworx.co.jp">press@neuronworx.co.jp</a></li>
+        <li><a href="mailto:careers@neuronworx.co.jp">careers@neuronworx.co.jp</a></li>
+        <li><a href="contact.html">→ お問い合わせ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="end-mark-row">
+    <div>© 2026 合同会社 Neuron Worx</div>
+    <div>Built in Tokyo · Signal OK</div>
+  </div>
+</footer>
+<script src="assets/app.js"></script>
+<script>
+function handleSubmit(e){ e.preventDefault(); document.getElementById('contact-form').style.display='none'; document.getElementById('sent').classList.add('on'); window.scrollTo({top: 0, behavior: 'smooth'}); return false; }
+// Preselect topic from ?type=career etc.
+const q = new URLSearchParams(location.search).get('type');
+if(q){ const el = document.querySelector(`input[name="topic"][value="${q}"]`); if(el) el.checked = true; }
+</script>
+
+<div class="tweaks" id="tweaks">
+  <h4>TWEAKS <span class="close" id="tweaks-close">×</span></h4>
+  <div class="tw-row"><span class="label">Theme</span><div class="tw-opts" data-key="theme">
+    <button class="tw-opt" data-val="dark">Dark</button>
+    <button class="tw-opt" data-val="light">Light</button>
+  </div></div>
+  <div class="tw-row"><span class="label">Accent</span><div class="tw-opts" data-key="accent">
+    <button class="tw-opt" data-val="violet">Violet</button>
+    <button class="tw-opt" data-val="gold">Gold</button>
+    <button class="tw-opt" data-val="crimson">Crimson</button>
+    <button class="tw-opt" data-val="mono">Mono</button>
+  </div></div>
+  <div class="tw-row"><span class="label">Font</span><div class="tw-opts" data-key="font">
+    <button class="tw-opt" data-val="serif-italic">Italic</button>
+    <button class="tw-opt" data-val="serif-roman">Roman</button>
+    <button class="tw-opt" data-val="mincho">明朝</button>
+    <button class="tw-opt" data-val="mono">Mono</button>
+  </div></div>
+  <div class="tw-row"><span class="label">Background</span><div class="tw-opts" data-key="heroLayout">
+    <button class="tw-opt" data-val="neural">Wireframe</button>
+    <button class="tw-opt" data-val="grid">Circuit</button>
+    <button class="tw-opt" data-val="noise">Warp</button>
+  </div></div>
+  <div class="tw-row"><span class="label">Motion <span id="mi-val" style="float:right;color:var(--gold)">2</span></span>
+    <input type="range" class="tw-range" id="mi" min="0" max="3" step="1" value="2"/>
+  </div>
+</div>
+<div class="page-trans" id="page-trans"></div>
+</body></html>

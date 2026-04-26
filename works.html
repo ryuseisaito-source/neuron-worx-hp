@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="ja"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Works — Neuron Worx</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;700&display=swap"/>
+<link rel="stylesheet" href="assets/theme.css"/>
+<script>const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{"theme":"dark","accent":"violet","font":"serif-italic","heroLayout":"neural","motionIntensity":2}/*EDITMODE-END*/;</script>
+<style>
+main{ padding: 0 40px; }
+.container{ max-width: var(--max); margin: 0 auto; }
+
+.filter{ display:flex; gap: 6px; flex-wrap: wrap; padding: 16px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-bottom: 48px;}
+.filter button{ font-family: var(--mono); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; padding: 8px 14px; border: 1px solid var(--line); background: transparent; color: var(--ink-2); cursor: pointer; transition: all .2s;}
+.filter button:hover{ color: var(--gold); border-color: var(--gold);}
+.filter button.active{ color: var(--bg); background: var(--gold); border-color: var(--gold);}
+.works-list{ border-top: 1px solid var(--line); }
+.work{ display:grid; grid-template-columns: 80px 1.2fr 2fr 1fr 100px; gap: 32px; padding: 36px 0; border-bottom: 1px solid var(--line); align-items: baseline; cursor: pointer; transition: background .4s, padding .3s; position: relative;}
+.work:hover{ background: linear-gradient(90deg, transparent, rgba(212,178,116,0.04) 40%, transparent); padding-left: 12px;}
+.work .idx{ font-family: var(--mono); font-size: 12px; color: var(--ink-3); letter-spacing: .1em;}
+.work .client{ font-family: var(--display); font-style: var(--display-style); font-size: 36px; line-height: 1; color: var(--ink); letter-spacing: -.02em;}
+.work .client .jp{ display:block; font-family: var(--serif-jp); font-style: normal; font-size: 12px; color: var(--ink-2); margin-top: 8px; letter-spacing: .04em;}
+.work .title{ font-family: var(--serif-jp); font-size: 14px; line-height: 1.8; color: var(--ink-2);}
+.work .title b{ color: var(--ink); font-weight: 500;}
+.work .tag{ font-family: var(--mono); font-size: 10.5px; letter-spacing: .18em; color: var(--gold); text-transform: uppercase;}
+.work .year{ font-family: var(--mono); font-size: 12px; color: var(--ink-2); text-align: right; letter-spacing: .1em;}
+.work .arrow{ position: absolute; right: 8px; top: 50%; transform: translateY(-50%) translateX(-8px); opacity:0; transition: all .3s; color: var(--gold); font-family: var(--mono);}
+.work:hover .arrow{ opacity: 1; transform: translateY(-50%) translateX(0);}
+.spot{ border: 1px solid var(--line); margin: 96px 0 0; padding: 64px; background: linear-gradient(180deg, rgba(212,178,116,0.05), transparent); position: relative;}
+.spot::before{ content:"SPOTLIGHT"; position: absolute; top: -1px; left: 32px; background: var(--bg); padding: 0 12px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .22em; color: var(--gold);}
+.spot-grid{ display:grid; grid-template-columns: 1fr 1.3fr; gap: 64px; align-items: start;}
+.spot .client-big{ font-family: var(--display); font-style: var(--display-style); font-size: clamp(56px, 8vw, 144px); line-height:.85; letter-spacing: -.03em; margin: 0;
+  color: var(--gold); background-size: 200% 100%; color: var(--gold);}
+.spot .client-jp{ font-family: var(--serif-jp); color: var(--ink); font-size: 18px; margin-top: 18px; letter-spacing: .04em;}
+.spot .kpi-row{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 32px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);}
+.spot .kpi{ padding: 20px 0; border-left: 1px solid var(--line); padding-left: 20px;}
+.spot .kpi:first-child{ border-left: 0; padding-left: 0;}
+.spot .kpi .v{ font-family: var(--display); font-style: var(--display-style); font-size: 48px; line-height: 1; color: var(--ink);}
+.spot .kpi .k{ font-family: var(--mono); font-size: 10px; letter-spacing: .18em; color: var(--ink-3); text-transform: uppercase; margin-top: 6px;}
+.spot-copy{ font-family: var(--serif-jp); font-size: 14.5px; line-height: 2.05; color: var(--ink-2); max-width: 56ch;}
+.spot-copy b{ color: var(--ink); font-weight: 500;}
+.spot-copy p+p{ margin-top: 1.1em;}
+.spot-quote{ margin-top: 32px; padding: 24px; border-left: 2px solid var(--gold); background: rgba(212,178,116,0.04); font-family: var(--display); font-style: var(--display-style); font-size: 22px; color: var(--ink); line-height: 1.35;}
+.spot-quote small{ display:block; font-family: var(--mono); font-style: normal; font-size: 10.5px; letter-spacing: .2em; color: var(--ink-3); margin-top: 14px; text-transform: uppercase;}
+@media (max-width: 900px){ .work{ grid-template-columns: 40px 1fr; gap: 14px; } .work .title, .work .tag, .work .year{ grid-column: 2; } .spot{ padding: 32px;} .spot-grid{ grid-template-columns: 1fr; gap: 32px;}}
+</style></head>
+<body data-theme="dark" data-accent="violet" data-font="serif-italic" data-hero="neural">
+
+<canvas id="bg-canvas"></canvas>
+<div class="bg-vignette"></div>
+
+<header class="chrome-top">
+  <a class="logo" href="index.html">
+    <span class="logo-mark">
+      <svg viewBox="0 0 24 24" fill="none">
+        <defs><linearGradient id="nwlg2" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#d4b274"/><stop offset="1" stop-color="#fae7b4"/>
+        </linearGradient></defs>
+        <circle cx="6"  cy="6"  r="1.8" fill="currentColor"/>
+        <circle cx="18" cy="6"  r="1.8" fill="currentColor"/>
+        <circle cx="6"  cy="18" r="1.8" fill="currentColor"/>
+        <circle cx="18" cy="18" r="1.8" fill="currentColor"/>
+        <circle cx="12" cy="12" r="3"   fill="url(#nwlg2)"/>
+        <path d="M6 6 L12 12 L18 6 M6 18 L12 12 L18 18" stroke="currentColor" stroke-width="0.8"/>
+      </svg>
+    </span>
+    NEURON WORX
+  </a>
+  <nav class="nav">
+    <a href="index.html">Index</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="works.html" class="on">Works</a>
+    <a href="team.html">Team</a>
+    <a href="careers.html">Careers</a>
+    <a href="news.html">News</a>
+    <a href="company.html">Company</a>
+  </nav>
+  <a class="cta-top" href="contact.html">Contact &#x2192;</a>
+</header>
+
+<div class="chrome-bottom">
+  <div><span class="tick">●</span>&nbsp; LIVE · 2026</div>
+  <div><span id="clock">--:--:--</span>&nbsp; JST · 35.676°N 139.650°E</div>
+  <div>N°<span id="cursor-coord">000,000</span></div>
+</div>
+  <div><span id="clock" class="now">--:--:--</span>&nbsp;&nbsp;JST &middot; TYO 35.676&deg;N, 139.650&deg;E</div>
+  <div>N&#xB0;<span id="cursor-coord">000,000</span></div>
+</div>
+
+<div class="tweaks" id="tweaks">
+  <h4>TWEAKS <span class="close" id="tweaks-close">&#xD7;</span></h4>
+  <div class="tw-row"><span class="label">Theme</span><div class="tw-opts" data-key="theme">
+    <button class="tw-opt" data-val="dark">Dark</button>
+    <button class="tw-opt" data-val="light">Light</button>
+  </div></div>
+  <div class="tw-row"><span class="label">Accent</span><div class="tw-opts" data-key="accent">
+    <button class="tw-opt" data-val="violet">Violet</button>
+    <button class="tw-opt" data-val="gold">Gold</button>
+    <button class="tw-opt" data-val="crimson">Crimson</button>
+    <button class="tw-opt" data-val="mono">Mono</button>
+  </div></div>
+  <div class="tw-row"><span class="label">Display Font</span><div class="tw-opts" data-key="font">
+    <button class="tw-opt" data-val="serif-italic">Italic</button>
+    <button class="tw-opt" data-val="serif-roman">Roman</button>
+    <button class="tw-opt" data-val="mincho">&#26126;&#26397;</button>
+    <button class="tw-opt" data-val="mono">Mono</button>
+  </div></div>
+  <div class="tw-row"><span class="label">Background</span><div class="tw-opts" data-key="heroLayout">
+    <button class="tw-opt" data-val="neural">Wireframe</button>
+    <button class="tw-opt" data-val="grid">Circuit</button>
+    <button class="tw-opt" data-val="noise">Warp</button>
+  </div></div>
+  <div class="tw-row"><span class="label">Motion <span id="mi-val" style="float:right;color:var(--gold)">2</span></span>
+    <input type="range" class="tw-range" id="mi" min="0" max="3" step="1" value="2"/>
+  </div>
+</div>
+
+
+
+<main>
+<section class="page-head container reveal">
+  <div class="eyebrow">N° 04 ─ WORKS</div>
+  <h1 class="page-h1"><em class="">Twelve</em><br/>case files.</h1>
+  <p class="page-kicker">守秘義務で語れない案件は多い。公開できる範囲で、<b>接続が生んだ結果</b>だけを年代順に並べる。</p>
+  <div class="page-meta">
+    <div>Total<b>12 公開 / 36 非公開</b></div><div>Years<b>2022 — 2026</b></div><div>Ratio<b>AI 58% · Talent 22% · F&amp;B 12% · R.E. 8%</b></div>
+  </div>
+</section>
+
+<section class="container reveal">
+  <div class="filter">
+    <button class="active" data-f="all">ALL · 12</button>
+    <button data-f="ai">AI</button>
+    <button data-f="talent">TALENT</button>
+    <button data-f="fnb">F&amp;B</button>
+    <button data-f="real">REAL ESTATE</button>
+    <button data-f="cross">∑ CROSS</button>
+  </div>
+
+  <div class="works-list" id="works-list">
+    <div class="work" data-cat="ai"><div class="idx">N° 12</div><div class="client">Shinkei Protocol<span class="jp">東証プライム・通信</span></div><div class="title">全社AIアシスタント基盤。<b>RAG + 内製評価パイプライン</b>の構築から、社員1.8万人への展開・運用教育までを一貫支援。</div><div class="tag">AI · BUILD · RUN</div><div class="year">2025 — now</div><div class="arrow">→</div></div>
+    <div class="work" data-cat="cross"><div class="idx">N° 11</div><div class="client">Kitsune OS<span class="jp">自社 · F&amp;B × AI</span></div><div class="title">直営店のための<b>原価予測・仕込みエージェント</b>。POSと連動、週次で自動発注案を提示。ライセンス提供開始。</div><div class="tag">AI × F&amp;B</div><div class="year">2025</div><div class="arrow">→</div></div>
+    <div class="work" data-cat="talent"><div class="idx">N° 10</div><div class="client">Series C FinTech<span class="jp">スタートアップ・金融</span></div><div class="title">CTO交代に伴うエンジニア組織再設計。<b>30→56名</b>への拡張計画と、職種体系・評価制度の刷新。</div><div class="tag">TALENT · HIRING DESIGN</div><div class="year">2025</div><div class="arrow">→</div></div>
+    <div class="work" data-cat="real"><div class="idx">N° 09</div><div class="client">Mesh Kagurazaka<span class="jp">自社 · 築古リノベ</span></div><div class="title">築48年の雑居ビル一棟を<b>会員制飲食＋コワーキング</b>に用途転換。稼働率2ヶ月で91%。</div><div class="tag">REAL ESTATE · REUSE</div><div class="year">2024 — 2025</div><div class="arrow">→</div></div>
+    <div class="work" data-cat="ai"><div class="idx">N° 08</div><div class="client">Global Retail<span class="jp">外資系・小売</span></div><div class="title">商品説明文の多言語自動生成。<b>12言語 × 220k SKU</b>、人手レビュー比率を12%まで圧縮。</div><div class="tag">AI · LLM</div><div class="year">2024</div><div class="arrow">→</div></div>
+    <div class="work" data-cat="cross"><div class="idx">N° 07</div><div class="client">Ryokan Group<span class="jp">老舗旅館・3施設</span></div><div class="title">料理長サーチと、需要予測AIを同時導入。<b>平均客単価+18%</b>、食材ロス-34%。採用×AI×F&amp;Bの三接続案件。</div><div class="tag">∑ CROSS · AI × TALENT × F&amp;B</div><div class="year">2024</div><div class="arrow">→</div></div>
+    <div class="work" data-cat="ai"><div class="idx">N° 06</div><div class="client">Manufacturing.JP<span class="jp">東証プライム・製造</span></div><div class="title">現場作業の<b>音声議事録 → 日報自動化</b>エージェント。月間4,200時間の事務作業を削減。</div><div class="tag">AI · AGENT</div><div class="year">2024</div><div class="arrow">→</div></div>
+    <div class="work" data-cat="talent"><div class="idx">N° 05</div><div class="client">DeepTech Seed<span class="jp">シード・ディープテック</span></div><div class="title">研究者CEOの初期6名採用。<b>5ヶ月でPhD/MLE 6名</b>を採用、初のシリーズA調達に接続。</div><div class="tag">TALENT · EXEC SEARCH</div><div class="year">2023</div><div class="arrow">→</div></div>
+    <div class="work" data-cat="fnb"><div class="idx">N° 04</div><div class="client">Kitsune Bistro<span class="jp">自社 · 神楽坂</span></div><div class="title">会員制ビストロを14席で開業。<b>月間稼働97%</b>、年間待機リスト1,400名超。</div><div class="tag">F&amp;B · DIRECT</div><div class="year">2023 — now</div><div class="arrow">→</div></div>
+    <div class="work" data-cat="ai"><div class="idx">N° 03</div><div class="client">EdTech SaaS<span class="jp">スタートアップ・教育</span></div><div class="title">生徒の学習履歴から<b>出題と解説を自動生成</b>するエージェント。継続率 +22pt。</div><div class="tag">AI · LLM · RAG</div><div class="year">2023</div><div class="arrow">→</div></div>
+    <div class="work" data-cat="real"><div class="idx">N° 02</div><div class="client">Mesh Yotsuya<span class="jp">自社 · 一棟運用</span></div><div class="title">初期物件。小規模オフィス <b>8区画</b> を会員向けに再構成。現在も満床。</div><div class="tag">REAL ESTATE · MGMT</div><div class="year">2022 — now</div><div class="arrow">→</div></div>
+    <div class="work" data-cat="ai"><div class="idx">N° 01</div><div class="client">Enterprise SaaS<span class="jp">上場・SaaS</span></div><div class="title">社内検索の<b>RAG PoC → 本番展開</b>。CS問い合わせを 34% 自動解決。創業期の第一号案件。</div><div class="tag">AI · RAG</div><div class="year">2022</div><div class="arrow">→</div></div>
+  </div>
+
+  <div class="spot reveal">
+    <div class="spot-grid">
+      <div>
+        <h3 class="client-big">Shinkei<br/>Protocol.</h3>
+        <div class="client-jp">N° 12 · 東証プライム通信会社向け全社AI</div>
+        <div class="kpi-row">
+          <div class="kpi"><div class="v">18,400</div><div class="k">社員ライセンス</div></div>
+          <div class="kpi"><div class="v">¥1.2B</div><div class="k">初年度削減見込</div></div>
+          <div class="kpi"><div class="v">11 / 14</div><div class="k">部門導入済</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="spot-copy">
+          <p>情報システム部門の一元管理を前提にしない、<b>現場起点の全社展開</b>。各事業部にチャンピオンを立て、社内のワークフローに溶け込むまで伴走した。</p>
+          <p>特徴は、<b>評価パイプラインの内製化</b>。回答品質を外注せず、社内で継続的に計測・改善できる体制を構築した。LLMの入れ替わりに対して耐性を持たせ、将来の乗り換えコストを劇的に下げている。</p>
+          <p>2025年3月稼働。現在11部門まで展開、12月に全14部門完了予定。</p>
+        </div>
+        <div class="spot-quote">"PoCで止まる他社の2年目が、我々の3ヶ月目だった。"<small>— CIO / クライアント提供コメント</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<div class="end-mark"><span class="">WORKS</span></div>
+
+<footer class="end">
+  <div class="end-wrap">
+    <div>
+      <div style="font-family:var(--mono);font-size:13px;letter-spacing:.22em;margin-bottom:18px;color:var(--ink);">NEURON · WORX</div>
+      <div style="font-family:var(--serif-jp);color:var(--ink-2);line-height:1.9;font-size:14px;max-width:42ch;">
+        合同会社 Neuron Worx は、AI・人材・食・不動産の四領域を編む東京の事業体です。異領域の接続を本業とします。
+      </div>
+      <div class="rule-gold" style="margin:24px 0 0;max-width:320px;"><span class="dot"></span>EST. 2021 · TOKYO</div>
+    </div>
+    <div>
+      <h5>Sitemap</h5>
+      <ul>
+        <li><a href="index.html">Index</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="works.html">Works</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Company</h5>
+      <ul>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="company.html">Company Info</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="mailto:hello@neuronworx.co.jp">hello@neuronworx.co.jp</a></li>
+        <li><a href="mailto:press@neuronworx.co.jp">press@neuronworx.co.jp</a></li>
+        <li><a href="mailto:careers@neuronworx.co.jp">careers@neuronworx.co.jp</a></li>
+        <li><a href="contact.html">→ お問い合わせ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="end-mark-row">
+    <div>© 2026 合同会社 Neuron Worx</div>
+    <div>Built in Tokyo · Signal OK</div>
+  </div>
+</footer>
+<script src="assets/app.js"></script>
+<script>
+document.querySelectorAll('.filter button').forEach(b=>{
+  b.onclick = ()=>{
+    document.querySelectorAll('.filter button').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    const f = b.dataset.f;
+    document.querySelectorAll('.work').forEach(w=>{
+      w.style.display = (f==='all' || w.dataset.cat===f) ? '' : 'none';
+    });
+  };
+});
+</script>
+
+<div class="tweaks" id="tweaks">
+  <h4>TWEAKS <span class="close" id="tweaks-close">×</span></h4>
+  <div class="tw-row"><span class="label">Theme</span><div class="tw-opts" data-key="theme">
+    <button class="tw-opt" data-val="dark">Dark</button>
+    <button class="tw-opt" data-val="light">Light</button>
+  </div></div>
+  <div class="tw-row"><span class="label">Accent</span><div class="tw-opts" data-key="accent">
+    <button class="tw-opt" data-val="violet">Violet</button>
+    <button class="tw-opt" data-val="gold">Gold</button>
+    <button class="tw-opt" data-val="crimson">Crimson</button>
+    <button class="tw-opt" data-val="mono">Mono</button>
+  </div></div>
+  <div class="tw-row"><span class="label">Font</span><div class="tw-opts" data-key="font">
+    <button class="tw-opt" data-val="serif-italic">Italic</button>
+    <button class="tw-opt" data-val="serif-roman">Roman</button>
+    <button class="tw-opt" data-val="mincho">明朝</button>
+    <button class="tw-opt" data-val="mono">Mono</button>
+  </div></div>
+  <div class="tw-row"><span class="label">Background</span><div class="tw-opts" data-key="heroLayout">
+    <button class="tw-opt" data-val="neural">Wireframe</button>
+    <button class="tw-opt" data-val="grid">Circuit</button>
+    <button class="tw-opt" data-val="noise">Warp</button>
+  </div></div>
+  <div class="tw-row"><span class="label">Motion <span id="mi-val" style="float:right;color:var(--gold)">2</span></span>
+    <input type="range" class="tw-range" id="mi" min="0" max="3" step="1" value="2"/>
+  </div>
+</div>
+<div class="page-trans" id="page-trans"></div>
+</body></html>

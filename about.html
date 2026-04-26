@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="ja"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>About — Neuron Worx</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;600;700;800&display=swap"/>
+<link rel="stylesheet" href="assets/theme.css"/>
+<script>const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{"theme":"dark","accent":"violet","font":"serif-italic","heroLayout":"neural","motionIntensity":2}/*EDITMODE-END*/;</script>
+<style>
+main{ padding: 0 40px; }
+.container{ max-width: var(--max); margin: 0 auto; }
+
+.about-lead{ font-family: var(--display); font-style: var(--display-style); font-weight:400; font-size: clamp(44px,5.5vw,96px); line-height:1.02; letter-spacing:-.028em; margin:0 0 56px; max-width: 22ch;}
+.about-lead em{ color: var(--gold); background-size: 200% 100%; color: var(--gold); }
+.two-col{ display:grid; grid-template-columns: 1.1fr 1fr; gap: 72px; }
+.prose{ font-family: var(--serif-jp); font-size: 15px; line-height: 2.1; color: var(--ink-2); max-width: 56ch; }
+.prose p+p{ margin-top: 1.2em; } .prose b{ color: var(--ink); font-weight: 500;}
+.quote{ border-left: 2px solid var(--gold); padding: 8px 0 8px 24px; font-family: var(--display); font-style: var(--display-style); font-size: 28px; color: var(--ink); line-height: 1.25; }
+.quote small{ display:block; font-family: var(--mono); font-style: normal; font-size: 10.5px; letter-spacing:.2em; color: var(--ink-3); margin-top: 14px; text-transform: uppercase; }
+.timeline{ border-top: 1px solid var(--line); margin-top: 32px;}
+.tl-row{ display:grid; grid-template-columns: 140px 1fr; gap: 32px; padding: 24px 0; border-bottom: 1px solid var(--line); }
+.tl-row .y{ font-family: var(--display); font-style: var(--display-style); font-size: 48px; line-height: 1; color: var(--ink); letter-spacing: -.02em;}
+.tl-row .c{ font-family: var(--serif-jp); font-size: 14px; line-height: 1.9; color: var(--ink-2);}
+.tl-row .c b{ color: var(--ink); font-weight: 500;}
+.values{ display:grid; grid-template-columns: repeat(3,1fr); gap: 0; border: 1px solid var(--line); margin-top: 48px;}
+.val{ padding: 36px 28px; border-left: 1px solid var(--line); min-height: 260px; display:flex; flex-direction: column; gap: 14px;}
+.val:first-child{ border-left: 0; }
+.val .n{ font-family: var(--mono); font-size: 10.5px; letter-spacing: .22em; color: var(--gold); text-transform: uppercase;}
+.val h3{ margin:0; font-family: var(--display); font-style: var(--display-style); font-size: 38px; font-weight: 400; letter-spacing: -.02em; color: var(--ink);}
+.val .jp{ font-family: var(--serif-jp); color: var(--ink); font-size: 14px;}
+.val .desc{ font-family: var(--serif-jp); color: var(--ink-2); font-size: 13px; line-height: 2; margin-top: auto;}
+@media (max-width: 900px){ .two-col{ grid-template-columns: 1fr; } .values{ grid-template-columns: 1fr; } .val{ border-left: 0; border-top: 1px solid var(--line); } }
+</style></head>
+<body data-theme="dark" data-accent="violet" data-font="serif-italic" data-hero="neural">
+
+<canvas id="bg-canvas"></canvas>
+<div class="bg-vignette"></div>
+
+<header class="chrome-top">
+  <a class="logo" href="index.html">
+    <span class="logo-mark">
+      <svg viewBox="0 0 24 24" fill="none">
+        <defs><linearGradient id="nwlg2" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#d4b274"/><stop offset="1" stop-color="#fae7b4"/>
+        </linearGradient></defs>
+        <circle cx="6"  cy="6"  r="1.8" fill="currentColor"/>
+        <circle cx="18" cy="6"  r="1.8" fill="currentColor"/>
+        <circle cx="6"  cy="18" r="1.8" fill="currentColor"/>
+        <circle cx="18" cy="18" r="1.8" fill="currentColor"/>
+        <circle cx="12" cy="12" r="3"   fill="url(#nwlg2)"/>
+        <path d="M6 6 L12 12 L18 6 M6 18 L12 12 L18 18" stroke="currentColor" stroke-width="0.8"/>
+      </svg>
+    </span>
+    NEURON WORX
+  </a>
+  <nav class="nav">
+    <a href="index.html">Index</a>
+    <a href="about.html" class="on">About</a>
+    <a href="services.html">Services</a>
+    <a href="works.html">Works</a>
+    <a href="team.html">Team</a>
+    <a href="careers.html">Careers</a>
+    <a href="news.html">News</a>
+    <a href="company.html">Company</a>
+  </nav>
+  <a class="cta-top" href="contact.html">Contact &#x2192;</a>
+</header>
+
+<div class="chrome-bottom">
+  <div><span class="tick">●</span>&nbsp; LIVE · 2026</div>
+  <div><span id="clock">--:--:--</span>&nbsp; JST · 35.676°N 139.650°E</div>
+  <div>N°<span id="cursor-coord">000,000</span></div>
+</div>
+  <div><span id="clock" class="now">--:--:--</span>&nbsp;&nbsp;JST &middot; TYO 35.676&deg;N, 139.650&deg;E</div>
+  <div>N&#xB0;<span id="cursor-coord">000,000</span></div>
+</div>
+
+<div class="tweaks" id="tweaks">
+  <h4>TWEAKS <span class="close" id="tweaks-close">&#xD7;</span></h4>
+  <div class="tw-row"><span class="label">Theme</span><div class="tw-opts" data-key="theme">
+    <button class="tw-opt" data-val="dark">Dark</button>
+    <button class="tw-opt" data-val="light">Light</button>
+  </div></div>
+  <div class="tw-row"><span class="label">Accent</span><div class="tw-opts" data-key="accent">
+    <button class="tw-opt" data-val="violet">Violet</button>
+    <button class="tw-opt" data-val="gold">Gold</button>
+    <button class="tw-opt" data-val="crimson">Crimson</button>
+    <button class="tw-opt" data-val="mono">Mono</button>
+  </div></div>
+  <div class="tw-row"><span class="label">Display Font</span><div class="tw-opts" data-key="font">
+    <button class="tw-opt" data-val="serif-italic">Italic</button>
+    <button class="tw-opt" data-val="serif-roman">Roman</button>
+    <button class="tw-opt" data-val="mincho">&#26126;&#26397;</button>
+    <button class="tw-opt" data-val="mono">Mono</button>
+  </div></div>
+  <div class="tw-row"><span class="label">Background</span><div class="tw-opts" data-key="heroLayout">
+    <button class="tw-opt" data-val="neural">Wireframe</button>
+    <button class="tw-opt" data-val="grid">Circuit</button>
+    <button class="tw-opt" data-val="noise">Warp</button>
+  </div></div>
+  <div class="tw-row"><span class="label">Motion <span id="mi-val" style="float:right;color:var(--gold)">2</span></span>
+    <input type="range" class="tw-range" id="mi" min="0" max="3" step="1" value="2"/>
+  </div>
+</div>
+
+
+
+
+<main>
+<section class="page-head container reveal">
+  <div class="eyebrow">N° 02 ─ ABOUT</div>
+  <h1 class="page-h1"><em class="">About</em><br/>us.</h1>
+  <p class="page-kicker">合同会社 Neuron Worx は、AI・人材・食・不動産の四領域を編む、東京の小さなコングロマリット。規模ではなく、接続密度で仕事をする。</p>
+  <div class="page-meta">
+    <div>Founded<b>2021.04</b></div><div>Form<b>合同会社 LLC</b></div><div>Divisions<b>04 — AI · Talent · F&B · R.E.</b></div><div>Base<b>Tokyo · Shinjuku</b></div>
+  </div>
+</section>
+
+<section class="container reveal" style="margin-top: 96px;">
+  <h2 class="about-lead">私たちは<em>接続</em>を<br/>本業と<br/>している。</h2>
+  <div class="two-col">
+    <div class="prose">
+      <p>Neuron Worx は単一の専門会社ではない。<b>AIコンサル</b>で得た抽象を、<b>採用コンサル</b>で個人の物語に、<b>飲食の現場</b>で身体化し、<b>不動産の器</b>に収める。異なる領域を接続したときにだけ立ち上がる<b>第五の事業</b>こそ、我々の本業である。</p>
+      <p>合同会社という最小構成を選んだ理由は、意思決定を一本のシナプスのように速くするため。提案から実装・運営までを、人・資本・空間で最短距離に結ぶ。</p>
+      <p>大企業にもスタートアップにも、投資家にも、我々は同じ言語で応答する。相手の規模ではなく、解くべき問題の構造で価格と時間を決める。</p>
+    </div>
+    <div>
+      <div class="quote">"The brain is plural.<br/>So is the work."<small>— Kei Arakawa, Founder / 荒川 圭一</small></div>
+      <div style="margin-top: 48px;" class="prose">
+        <p><b>社名の由来。</b><br/>Neuron は脳細胞、Worx は「作る」の古綴。知性を作ること。接続することで現れる知性に名前を与えたかった。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container reveal">
+  <div class="sec-head"><div><span class="num">N° 02.2</span>&nbsp;&nbsp;VALUES ─ 価値観</div><h2><em class="serif-it">Five</em><br/>principles.</h2><div class="right">四事業を貫く、五つの原則。</div></div>
+  <div class="values">
+    <div class="val"><div class="n">N° 01</div><h3>Connect.</h3><div class="jp">接続する。</div><div class="desc">専門家よりも、分野を越えて接続できる人を集める。境界線は既に引かれている、我々の仕事はそれを跨ぐこと。</div></div>
+    <div class="val"><div class="n">N° 02</div><h3>Operate.</h3><div class="jp">運営する。</div><div class="desc">提案で終わらない。実装、運営、撤退まで伴走する。数字で追えないものを作らない。</div></div>
+    <div class="val"><div class="n">N° 03</div><h3>Craft.</h3><div class="jp">手で作る。</div><div class="desc">コードも、料理も、ビジネスも、手で作る。スケールは手仕事の先にのみ来る。</div></div>
+    <div class="val"><div class="n">N° 04</div><h3>Narrate.</h3><div class="jp">語る。</div><div class="desc">数字だけでは事業は動かない。誰が・なぜ・どこで、の物語を一緒に編む。</div></div>
+    <div class="val"><div class="n">N° 05</div><h3>Sharpen.</h3><div class="jp">鋭くする。</div><div class="desc">鈍い仕事はしない。関わる仕事の輪郭を、関わるたび鋭くして返す。</div></div>
+    <div class="val" style="background: linear-gradient(180deg, rgba(212,178,116,0.07), transparent);"><div class="n">N° 00</div><h3 class="">∑</h3><div class="jp">接続の数だけ、<br/>事業は増える。</div><div class="desc">四つの事業は、最終的にCn2 = 6通りの組合せを作る。我々は、その組合せそのものを売り物にする。</div></div>
+  </div>
+</section>
+
+<section class="container reveal">
+  <div class="sec-head"><div><span class="num">N° 02.3</span>&nbsp;&nbsp;TIMELINE ─ 歩み</div><h2>From<br/><em class="serif-it">2021</em>.</h2><div class="right">五年間の主要な節目。</div></div>
+  <div class="timeline">
+    <div class="tl-row"><div class="y">2021</div><div class="c"><b>04 月</b> — 合同会社 Neuron Worx 設立。初期はAIコンサル単体、創業メンバー3名。<br/><b>09 月</b> — 初の大手企業向けAI PoC案件。</div></div>
+    <div class="tl-row"><div class="y">2022</div><div class="c"><b>02 月</b> — 採用コンサルティング事業を開始。<br/><b>11 月</b> — 不動産事業を始動。最初の物件「Mesh Yotsuya」を取得・運用開始。</div></div>
+    <div class="tl-row"><div class="y">2023</div><div class="c"><b>05 月</b> — LLMブームを受け、AI部門が本格拡大。<br/><b>10 月</b> — 飲食事業を開始、神楽坂に直営一号店。</div></div>
+    <div class="tl-row"><div class="y">2024</div><div class="c"><b>01 月</b> — 飲食の原価最適化AIを内製、自社店舗で運用開始。<br/><b>07 月</b> — 採用事業でエンジニア領域の仕組み化プロダクト提供開始。</div></div>
+    <div class="tl-row"><div class="y">2025</div><div class="c"><b>03 月</b> — 東証プライム企業向け全社AI導入案件「Shinkei Protocol」受注。<br/><b>11 月</b> — 飲食直営二号店「Kitsune Bistro」(神楽坂) オープン。</div></div>
+    <div class="tl-row"><div class="y">2026</div><div class="c"><b>03 月</b> — AI事業部を分社化、Neuron Worx AI 合同会社 設立。<br/><b>現在</b> — 従業員 14名 / 外部パートナー 28名 / 直営店 2店舗 / 運用不動産 3物件。</div></div>
+  </div>
+</section>
+</main>
+
+<div class="end-mark"><span class="">ABOUT·US</span></div>
+
+<footer class="end">
+  <div class="end-wrap">
+    <div>
+      <div style="font-family:var(--mono);font-size:13px;letter-spacing:.22em;margin-bottom:18px;color:var(--ink);">NEURON · WORX</div>
+      <div style="font-family:var(--serif-jp);color:var(--ink-2);line-height:1.9;font-size:14px;max-width:42ch;">
+        合同会社 Neuron Worx は、AI・人材・食・不動産の四領域を編む東京の事業体です。異領域の接続を本業とします。
+      </div>
+      <div class="rule-gold" style="margin:24px 0 0;max-width:320px;"><span class="dot"></span>EST. 2021 · TOKYO</div>
+    </div>
+    <div>
+      <h5>Sitemap</h5>
+      <ul>
+        <li><a href="index.html">Index</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="works.html">Works</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Company</h5>
+      <ul>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="company.html">Company Info</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="mailto:hello@neuronworx.co.jp">hello@neuronworx.co.jp</a></li>
+        <li><a href="mailto:press@neuronworx.co.jp">press@neuronworx.co.jp</a></li>
+        <li><a href="mailto:careers@neuronworx.co.jp">careers@neuronworx.co.jp</a></li>
+        <li><a href="contact.html">→ お問い合わせ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="end-mark-row">
+    <div>© 2026 合同会社 Neuron Worx</div>
+    <div>Built in Tokyo · Signal OK</div>
+  </div>
+</footer>
+<script src="assets/app.js"></script>
+
+<div class="tweaks" id="tweaks">
+  <h4>TWEAKS <span class="close" id="tweaks-close">×</span></h4>
+  <div class="tw-row"><span class="label">Theme</span><div class="tw-opts" data-key="theme">
+    <button class="tw-opt" data-val="dark">Dark</button>
+    <button class="tw-opt" data-val="light">Light</button>
+  </div></div>
+  <div class="tw-row"><span class="label">Accent</span><div class="tw-opts" data-key="accent">
+    <button class="tw-opt" data-val="violet">Violet</button>
+    <button class="tw-opt" data-val="gold">Gold</button>
+    <button class="tw-opt" data-val="crimson">Crimson</button>
+    <button class="tw-opt" data-val="mono">Mono</button>
+  </div></div>
+  <div class="tw-row"><span class="label">Font</span><div class="tw-opts" data-key="font">
+    <button class="tw-opt" data-val="serif-italic">Italic</button>
+    <button class="tw-opt" data-val="serif-roman">Roman</button>
+    <button class="tw-opt" data-val="mincho">明朝</button>
+    <button class="tw-opt" data-val="mono">Mono</button>
+  </div></div>
+  <div class="tw-row"><span class="label">Background</span><div class="tw-opts" data-key="heroLayout">
+    <button class="tw-opt" data-val="neural">Wireframe</button>
+    <button class="tw-opt" data-val="grid">Circuit</button>
+    <button class="tw-opt" data-val="noise">Warp</button>
+  </div></div>
+  <div class="tw-row"><span class="label">Motion <span id="mi-val" style="float:right;color:var(--gold)">2</span></span>
+    <input type="range" class="tw-range" id="mi" min="0" max="3" step="1" value="2"/>
+  </div>
+</div>
+<div class="page-trans" id="page-trans"></div>
+</body></html>
