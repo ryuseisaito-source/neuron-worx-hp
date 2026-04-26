@@ -6,247 +6,310 @@
 <title>Neuron Worx — 合同会社ニューロンワークス</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;1,6..96,400;1,6..96,700&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@300;400;500;700&display=swap"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@1,6..96,400;1,6..96,500&family=Inter:wght@300;400;500;700;800;900&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@400;700&display=swap"/>
 <link rel="stylesheet" href="assets/theme.css"/>
 
-<!-- Loader: lime bg + growing text, like RYDEN -->
+<!--
+  LOADER
+  Inspired by RYDEN's energy: colored panel slides up from below,
+  company name is revealed, panel exits upward.
+  Color: electric violet (distinctly NOT lime like RYDEN).
+-->
 <style>
-#nw-loader{
-  position:fixed;inset:0;z-index:9999;
-  background:#d4ff00;
-  display:flex;align-items:center;justify-content:center;
+#nw-loader {
+  position:fixed; inset:0; z-index:9999;
+  background:#0a0b14;   /* dark bg — panel slides over this */
   overflow:hidden;
+  pointer-events:all;
 }
-#nw-loader.out{
-  transform:translateY(-100%);
-  transition:transform .7s cubic-bezier(.77,0,.18,1);
+/* The colored panel that rises */
+.nwl-panel {
+  position:absolute;
+  left:0; right:0; bottom:0;
+  height:100%;
+  background:#5500ff;
+  transform:translateY(100%);
+  animation:panel-rise .72s cubic-bezier(.77,0,.18,1) .15s forwards;
+  display:flex; align-items:center; justify-content:center; flex-direction:column;
+  gap:24px;
 }
-.nwl-text{
+@keyframes panel-rise {
+  to { transform:translateY(0); }
+}
+/* Name inside panel */
+.nwl-name {
   font-family:"Inter","Noto Sans JP",sans-serif;
-  font-weight:900; font-size:12vw; line-height:1;
-  letter-spacing:-.04em; text-transform:uppercase;
-  color:#000; white-space:nowrap;
-  animation:nwl-grow .9s cubic-bezier(.2,.8,.2,1) forwards;
+  font-weight:900;
+  font-size:clamp(48px,10vw,140px);
+  letter-spacing:-.04em;
+  text-transform:uppercase;
+  color:#fff;
+  line-height:1;
+  opacity:0;
+  transform:translateY(16px);
+  animation:name-in .38s ease .76s forwards;
 }
-@keyframes nwl-grow{
-  from{ opacity:0; transform:scale(.7); }
-  to{   opacity:1; transform:scale(1);  }
+@keyframes name-in {
+  to { opacity:1; transform:translateY(0); }
 }
+.nwl-sub {
+  font-family:"JetBrains Mono","Inter",monospace;
+  font-size:10px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.5);
+  opacity:0;
+  animation:name-in .38s ease .96s forwards;
+}
+/* Exit: panel slides up and off */
+#nw-loader.exit .nwl-panel {
+  animation:panel-exit .72s cubic-bezier(.77,0,.18,1) forwards;
+}
+@keyframes panel-exit {
+  to { transform:translateY(-100%); }
+}
+#nw-loader.gone { display:none; }
 </style>
+
 <div id="nw-loader">
-  <div class="nwl-text">NEURON WORX</div>
+  <div class="nwl-panel">
+    <div class="nwl-name">NEURON WORX</div>
+    <div class="nwl-sub">合同会社 · Tokyo · Est. 2021</div>
+  </div>
 </div>
-<!-- /Loader -->
 
 <script>
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "theme":           "light",
-  "accent":          "lime",
-  "font":            "sans",
-  "motionIntensity": 2
+  "theme":  "light",
+  "accent": "violet",
+  "font":   "sans"
 }/*EDITMODE-END*/;
 </script>
 
 <style>
-/* ═══════════ index.html — page styles ═══════════ */
+/* ══════════════════════════════
+   index.html page-level styles
+══════════════════════════════ */
 
 /* ── HERO ── */
 .s-hero {
-  min-height:100svh; padding:0;
+  min-height:100svh;
   display:flex; flex-direction:column; justify-content:flex-end;
-  position:relative;
+  padding-top:56px; /* nav clearance */
 }
 .hero-title {
   font-family:var(--display); font-style:var(--display-style);
   font-weight:var(--display-weight);
-  font-size:min(18.5vw, 260px);
+  font-size:clamp(64px,17.5vw,256px);
   line-height:.82; letter-spacing:-.04em;
   text-transform:uppercase; color:var(--ink);
-  padding:0 48px; max-width:100%;
+  padding:0 48px 0;
 }
-.hero-title .accent { color:var(--accent); }
+.hero-title .dot { color:var(--accent); }
 .hero-bottom {
   display:flex; align-items:flex-end; justify-content:space-between;
-  padding:32px 48px 48px;
+  padding:28px 48px 48px;
   border-top:1px solid var(--line);
-  margin-top:32px;
+  margin-top:28px; gap:40px;
 }
 .hero-copy {
-  font-family:var(--sans); font-size:clamp(14px,1.4vw,18px);
-  font-weight:400; line-height:1.7; color:var(--ink-2); max-width:40ch;
+  font-family:var(--sans); font-size:clamp(13px,1.3vw,17px);
+  line-height:1.75; color:var(--ink-2); max-width:42ch;
 }
 .hero-copy b { color:var(--ink); font-weight:700; }
-.hero-since {
-  font-family:var(--mono); font-size:10px; letter-spacing:.22em;
-  text-transform:uppercase; color:var(--ink-3);
-  text-align:right; flex-shrink:0;
+.hero-meta {
+  flex-shrink:0; text-align:right;
+  font-family:var(--mono); font-size:10px; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--ink-3); line-height:2;
 }
 
-/* ── STATEMENT (lime block) ── */
+/* ── STATEMENT (violet block) ── */
 .s-statement {
-  background:var(--accent); padding:80px 48px;
-  position:relative; z-index:1;
+  background:var(--accent);
+  padding:88px 48px; position:relative; z-index:1;
 }
 .statement-text {
   font-family:"Noto Sans JP","Inter",sans-serif;
-  font-weight:700; font-size:clamp(28px,4vw,64px);
-  line-height:1.45; color:#000;
-  max-width:1000px;
+  font-weight:700; font-size:clamp(24px,3.8vw,58px);
+  line-height:1.5; color:#fff;
+  max-width:960px;
 }
-.statement-sub {
-  font-family:var(--sans); font-size:13px; font-weight:500;
-  letter-spacing:.12em; text-transform:uppercase; color:rgba(0,0,0,.55);
-  margin-top:32px;
+.statement-credit {
+  font-family:var(--mono); font-size:10px; letter-spacing:.22em;
+  text-transform:uppercase; color:rgba(255,255,255,.45);
+  margin-top:40px;
 }
 
 /* ── DIVISIONS ── */
-.s-divisions { background:var(--white); padding:0; position:relative; z-index:1; }
-[data-theme="dark"] .s-divisions { background:var(--bg-2); }
+.s-divisions { position:relative; z-index:1; }
 .div-header {
-  display:flex; align-items:baseline; justify-content:space-between;
-  padding:40px 48px 0; border-bottom:1px solid var(--line);
+  display:flex; align-items:center; justify-content:space-between;
+  padding:36px 48px 0; border-bottom:1px solid var(--line);
+  padding-bottom:16px;
 }
-.div-header-label {
-  font-family:var(--mono); font-size:10px; letter-spacing:.22em;
-  text-transform:uppercase; color:var(--ink-3);
-}
-.div-header-link {
-  font-family:var(--mono); font-size:10px; letter-spacing:.18em;
-  text-transform:uppercase; color:var(--ink-2); transition:color .2s;
-}
-.div-header-link:hover { color:var(--ink); }
+.div-label { font-family:var(--mono); font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:var(--ink-3); }
+.div-all { font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-2); transition:color .2s; }
+.div-all:hover { color:var(--ink); }
+
 .div-row {
-  display:grid; grid-template-columns:64px 1fr auto;
+  display:grid;
+  grid-template-columns:80px 1fr auto;
   align-items:center; gap:32px;
-  padding:28px 48px; border-bottom:1px solid var(--line);
+  padding:32px 48px;
+  border-bottom:1px solid var(--line);
   cursor:pointer; transition:background .2s;
-  position:relative; text-decoration:none; color:inherit;
+  text-decoration:none; color:inherit;
+  position:relative; overflow:hidden;
 }
 .div-row::before {
-  content:""; position:absolute; left:0; top:0; bottom:0; width:0;
-  background:var(--accent); transition:width .3s cubic-bezier(.2,.8,.2,1);
+  content:"";
+  position:absolute; left:0; top:0; bottom:0;
+  width:3px; background:var(--accent);
+  transform:scaleY(0); transform-origin:bottom;
+  transition:transform .35s cubic-bezier(.2,.8,.2,1);
 }
-.div-row:hover::before { width:4px; }
-.div-row:hover { background:color-mix(in srgb, var(--accent) 6%, var(--white)); }
-[data-theme="dark"] .div-row:hover { background:color-mix(in srgb, var(--accent) 8%, var(--bg-2)); }
+.div-row:hover::before { transform:scaleY(1); }
+.div-row:hover { background:color-mix(in srgb, var(--accent) 5%, var(--bg)); }
+
 .div-num {
-  font-family:var(--mono); font-size:11px; letter-spacing:.1em;
-  color:var(--accent); text-align:center;
+  font-family:var(--mono); font-size:11px; letter-spacing:.12em;
+  color:var(--ink-3);
 }
-.div-info {}
+.div-num span {
+  display:block; font-size:28px; font-weight:700; color:var(--accent);
+  letter-spacing:0; font-family:var(--sans); line-height:1; margin-top:4px;
+}
 .div-name {
   font-family:var(--display); font-style:var(--display-style);
   font-weight:var(--display-weight);
-  font-size:clamp(24px,3.5vw,52px); line-height:1;
-  letter-spacing:-.02em; color:var(--ink);
+  font-size:clamp(28px,4vw,62px); line-height:1;
+  letter-spacing:-.025em; color:var(--ink);
 }
 .div-jp {
   font-family:"Noto Sans JP",sans-serif; font-size:12px;
-  color:var(--ink-3); margin-top:6px; letter-spacing:.04em;
+  color:var(--ink-3); margin-top:8px; letter-spacing:.04em;
 }
 .div-arrow {
-  font-family:var(--mono); font-size:20px; color:var(--ink-3);
+  font-size:24px; color:var(--ink-3);
   transition:transform .25s, color .2s; flex-shrink:0;
 }
-.div-row:hover .div-arrow { transform:translateX(6px); color:var(--ink); }
+.div-row:hover .div-arrow { transform:translateX(8px); color:var(--accent); }
 
-/* ── WORKS TEASER ── */
-.s-works { padding:80px 0; position:relative; z-index:1; }
-.works-label {
-  font-family:var(--mono); font-size:10px; letter-spacing:.22em;
-  text-transform:uppercase; color:var(--ink-3);
-  padding:0 48px; margin-bottom:40px;
-  display:flex; align-items:center; gap:16px;
-}
-.works-label::before { content:""; flex:1; height:1px; background:var(--line); }
-.works-grid {
-  display:grid; grid-template-columns:repeat(3,1fr); gap:0;
-  border-top:1px solid var(--line); border-left:1px solid var(--line);
-}
-.work-card {
-  border-right:1px solid var(--line); border-bottom:1px solid var(--line);
-  padding:40px 36px; cursor:pointer; transition:background .2s;
-  position:relative; overflow:hidden;
-}
-.work-card::after {
-  content:""; position:absolute; bottom:0; left:0; right:0; height:3px;
-  background:var(--accent); transform:scaleX(0); transform-origin:left;
-  transition:transform .4s cubic-bezier(.2,.8,.2,1);
-}
-.work-card:hover::after { transform:scaleX(1); }
-.work-card:hover { background:color-mix(in srgb, var(--accent) 5%, var(--bg)); }
-.wcard-num { font-family:var(--mono); font-size:10px; letter-spacing:.2em; color:var(--ink-3); margin-bottom:20px; }
-.wcard-title {
-  font-family:var(--display); font-style:var(--display-style);
-  font-weight:var(--display-weight);
-  font-size:clamp(20px,2.2vw,36px); line-height:1.05;
-  letter-spacing:-.02em; color:var(--ink);
-}
-.wcard-sub { font-family:var(--sans); font-size:12px; color:var(--ink-3); margin-top:8px; line-height:1.6; }
-.wcard-tag { font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--accent); margin-top:24px; }
-.works-more { text-align:center; margin-top:48px; }
-
-/* ── CTA (dark section) ── */
-.s-cta {
-  background:var(--bg-dark); padding:120px 48px;
+/* ── FIGURES bar ── */
+.s-figures {
+  display:grid; grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--line); border-bottom:1px solid var(--line);
   position:relative; z-index:1;
 }
-.cta-inner { max-width:var(--max); margin:0 auto; }
+.fig-cell {
+  padding:44px 36px; border-left:1px solid var(--line);
+  display:flex; flex-direction:column; gap:8px;
+}
+.fig-cell:first-child { border-left:0; }
+.fig-label { font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-3); }
+.fig-value {
+  font-family:var(--display); font-style:var(--display-style);
+  font-weight:var(--display-weight);
+  font-size:clamp(40px,5vw,72px); line-height:1; color:var(--ink); letter-spacing:-.03em;
+}
+.fig-value sup { font-size:.3em; color:var(--accent); font-family:var(--mono); font-style:normal; margin-left:2px; vertical-align:top; margin-top:.18em; }
+.fig-note { font-family:var(--mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-3); margin-top:auto; }
+
+/* ── WORKS teaser ── */
+.s-works { padding:80px 0; position:relative; z-index:1; }
+.works-hdr {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 48px; margin-bottom:0;
+}
+.works-hdr-label { font-family:var(--mono); font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:var(--ink-3); }
+.works-hdr-link { font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-2); transition:color .2s; }
+.works-hdr-link:hover { color:var(--ink); }
+.works-list { margin-top:0; border-top:1px solid var(--line); }
+.work-row {
+  display:grid; grid-template-columns:64px 1fr 160px 80px 32px;
+  align-items:baseline; gap:24px;
+  padding:28px 48px; border-bottom:1px solid var(--line);
+  cursor:pointer; transition:padding .2s; position:relative;
+}
+.work-row::before {
+  content:""; position:absolute; left:0; top:0; bottom:0;
+  width:0; background:var(--accent);
+  transition:width .3s cubic-bezier(.2,.8,.2,1);
+}
+.work-row:hover::before { width:3px; }
+.work-row:hover { padding-left:60px; }
+.wn { font-family:var(--mono); font-size:10px; letter-spacing:.1em; color:var(--ink-3); }
+.wt {
+  font-family:var(--display); font-style:var(--display-style);
+  font-weight:var(--display-weight);
+  font-size:clamp(18px,2vw,30px); letter-spacing:-.015em; line-height:1.05; color:var(--ink);
+}
+.wt small { display:block; font-family:var(--sans); font-style:normal; font-size:11px; color:var(--ink-3); margin-top:4px; font-weight:400; letter-spacing:.02em; }
+.wcat { font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); }
+.wyr { font-family:var(--mono); font-size:10px; color:var(--ink-3); text-align:right; }
+.warr { color:var(--ink-3); font-family:var(--mono); transition:color .2s, transform .2s; }
+.work-row:hover .warr { color:var(--accent); transform:translateX(4px); }
+.works-foot { padding:36px 48px 0; }
+
+/* ── CTA dark section ── */
+.s-cta { background:var(--bg-dark); padding:112px 48px; position:relative; z-index:1; }
 .cta-heading {
   font-family:var(--display); font-style:var(--display-style);
   font-weight:var(--display-weight);
-  font-size:clamp(56px,12vw,180px); line-height:.84;
+  font-size:clamp(52px,11vw,160px); line-height:.84;
   letter-spacing:-.04em; text-transform:uppercase; color:#f0ede4;
-  margin-bottom:64px;
+  margin-bottom:72px;
 }
-.cta-heading .lime { color:var(--lime); }
+.cta-heading .accent { color:var(--violet-2); }
 .cta-row {
   display:flex; align-items:center; justify-content:space-between; gap:40px;
-  border-top:1px solid rgba(255,255,255,.1); padding-top:40px;
-  flex-wrap:wrap;
+  border-top:1px solid rgba(255,255,255,.1); padding-top:40px; flex-wrap:wrap;
 }
-.cta-email { font-family:var(--mono); font-size:14px; letter-spacing:.12em; color:#888; }
+.cta-email { font-family:var(--mono); font-size:13px; letter-spacing:.1em; color:#666; }
 .cta-btns { display:flex; gap:12px; flex-wrap:wrap; }
 .btn-dark {
-  display:inline-flex; align-items:center; gap:12px;
-  font-family:var(--sans); font-size:11px; font-weight:600;
-  letter-spacing:.2em; text-transform:uppercase;
-  padding:14px 28px; border:2px solid rgba(255,255,255,.2);
-  color:#f0ede4; cursor:pointer; transition:all .2s;
-}
-.btn-dark:hover { background:#f0ede4; color:#000; border-color:#f0ede4; }
-.btn-lime {
-  display:inline-flex; align-items:center; gap:12px;
+  display:inline-flex; align-items:center; gap:10px;
   font-family:var(--sans); font-size:11px; font-weight:700;
   letter-spacing:.2em; text-transform:uppercase;
-  padding:14px 28px; background:var(--lime); border:2px solid var(--lime);
-  color:#000; cursor:pointer; transition:all .2s;
+  padding:14px 28px; border:2px solid rgba(255,255,255,.2); color:#f0ede4;
+  cursor:pointer; transition:all .2s;
 }
-.btn-lime:hover { background:#000; color:var(--lime); border-color:#000; }
+.btn-dark:hover { background:#f0ede4; color:#0a0b14; border-color:#f0ede4; }
+.btn-violet {
+  display:inline-flex; align-items:center; gap:10px;
+  font-family:var(--sans); font-size:11px; font-weight:700;
+  letter-spacing:.2em; text-transform:uppercase;
+  padding:14px 28px; background:var(--violet); border:2px solid var(--violet); color:#fff;
+  cursor:pointer; transition:all .2s;
+}
+.btn-violet:hover { background:var(--violet-2); border-color:var(--violet-2); }
 
-/* ── Responsive ── */
-@media(max-width:900px){
-  .hero-title { font-size:min(16vw, 120px); padding:0 24px; }
-  .hero-bottom { padding:24px 24px 40px; flex-direction:column; align-items:flex-start; gap:20px; }
-  .s-statement { padding:56px 24px; }
-  .div-header { padding:28px 24px 0; }
-  .div-row { padding:22px 24px; grid-template-columns:48px 1fr auto; gap:16px; }
-  .works-grid { grid-template-columns:1fr 1fr; }
-  .work-card { padding:28px 20px; }
-  .s-cta { padding:80px 24px; }
-  .works-label { padding:0 24px; }
-  .cta-row { flex-direction:column; align-items:flex-start; }
+/* Responsive */
+@media(max-width:1100px){
+  .s-figures { grid-template-columns:1fr 1fr; }
+  .fig-cell { border-left:0; border-top:1px solid var(--line); }
+  .fig-cell:first-child,.fig-cell:nth-child(2) { border-top:0; }
 }
-@media(max-width:600px){
-  .works-grid { grid-template-columns:1fr; }
+@media(max-width:900px){
+  .hero-title { font-size:min(16vw,100px); padding:0 24px; }
+  .hero-bottom { padding:24px 24px 40px; flex-direction:column; align-items:flex-start; }
+  .s-statement { padding:64px 24px; }
+  .div-header,.works-hdr,.works-foot { padding-left:24px; padding-right:24px; }
+  .div-row { padding:24px; grid-template-columns:60px 1fr auto; gap:16px; }
+  .work-row { padding:22px 24px; grid-template-columns:40px 1fr; }
+  .work-row:hover { padding-left:22px; }
+  .wcat,.wyr,.warr { display:none; }
+  .s-cta { padding:80px 24px; }
+  .cta-row { flex-direction:column; align-items:flex-start; }
+  .s-figures { grid-template-columns:1fr 1fr; }
 }
 </style>
 </head>
-<body data-theme="light" data-accent="lime" data-font="sans">
+<body data-theme="light" data-accent="violet" data-font="sans">
 
-<!-- Full-screen menu -->
-<div class="menu-overlay" id="menu" role="dialog" aria-label="Navigation menu">
-  <button class="menu-close" id="menu-close" aria-label="Close menu">×</button>
+<!-- ── Menu overlay ── -->
+<div class="menu-overlay" id="menu">
+  <button class="menu-close" id="menu-close">×</button>
   <nav>
     <ul class="menu-links">
       <li><a href="index.html">Index</a></li>
@@ -262,17 +325,17 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   </nav>
   <div class="menu-foot">
     <span>© 2026 合同会社 Neuron Worx</span>
-    <span>Tokyo, Japan</span>
+    <span>Tokyo, Japan · Est. 2021</span>
   </div>
 </div>
 
-<!-- Nav -->
+<!-- ── Nav ── -->
 <nav class="site-nav">
   <a class="logo" href="index.html">
     <span class="logo-mark">
       <svg viewBox="0 0 24 24" fill="none">
         <defs><linearGradient id="nwlg" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="#d4ff00"/><stop offset="1" stop-color="#000"/>
+          <stop offset="0" stop-color="#5500ff"/><stop offset="1" stop-color="#8844ff"/>
         </linearGradient></defs>
         <circle cx="6"  cy="6"  r="1.8" fill="currentColor"/>
         <circle cx="18" cy="6"  r="1.8" fill="currentColor"/>
@@ -287,13 +350,13 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   <span class="nav-center">知性を編む。事業を接続する。</span>
   <div class="nav-right">
     <a class="nav-contact" href="contact.html">CONTACT</a>
-    <button class="nav-hamburger" id="menu-open" aria-label="Open menu">
+    <button class="nav-hamburger" id="menu-open">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
-<!-- Tweaks panel -->
+<!-- ── Tweaks ── -->
 <div class="tweaks" id="tweaks">
   <h4>TWEAKS <span class="close" id="tweaks-close">×</span></h4>
   <div class="tw-row"><span class="label">Theme</span><div class="tw-opts" data-key="theme">
@@ -301,10 +364,10 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
     <button class="tw-opt" data-val="dark">Dark</button>
   </div></div>
   <div class="tw-row"><span class="label">Accent</span><div class="tw-opts" data-key="accent">
-    <button class="tw-opt" data-val="lime">Lime</button>
     <button class="tw-opt" data-val="violet">Violet</button>
-    <button class="tw-opt" data-val="crimson">Crimson</button>
-    <button class="tw-opt" data-val="blue">Blue</button>
+    <button class="tw-opt" data-val="orange">Orange</button>
+    <button class="tw-opt" data-val="cyan">Cyan</button>
+    <button class="tw-opt" data-val="lime">Lime</button>
     <button class="tw-opt" data-val="mono">Mono</button>
   </div></div>
   <div class="tw-row"><span class="label">Font</span><div class="tw-opts" data-key="font">
@@ -319,65 +382,64 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   <!-- ═══ HERO ═══ -->
   <section class="s-hero">
     <h1 class="hero-title">
-      NEURON<br/>WORX<span class="accent">.</span>
+      NEURON<br/>WORX<span class="dot">.</span>
     </h1>
     <div class="hero-bottom">
       <p class="hero-copy">
         <b>知性を、編む。事業を、接続する。</b><br/>
-        AIコンサル、採用ブランディング、SNS運用、飲食。四つの事業がひとつのニューラルネットで繋がる。
+        AIコンサル、採用ブランディング、SNS運用、飲食。四つの事業がひとつのニューラルネットで繋がる。異領域の接続から生まれる第五の事業が私たちの本業です。
       </p>
-      <div class="hero-since">
+      <div class="hero-meta">
         N°&thinsp;001 — Tokyo LLC<br/>
-        Est. 2021
+        合同会社 · Est. 2021<br/>
+        AI · Branding · SNS · F&amp;B
       </div>
     </div>
   </section>
 
-  <!-- ═══ STATEMENT (lime block) ═══ -->
+  <!-- ═══ STATEMENT ═══ -->
   <section class="s-statement">
-    <div class="wrap" style="padding:0;">
-      <p class="statement-text reveal">
-        どれだけ技術が進化しても、<br/>
-        ビジネスを動かすのは人と、知性の接続だ。<br/>
-        Neuron Worx はその接点で、事業を設計する。
-      </p>
-      <p class="statement-sub reveal">Your Intelligence, Our Mission. — We Are Neuron Worx.</p>
-    </div>
+    <p class="statement-text reveal">
+      どれだけ技術が進化しても、<br/>
+      ビジネスを動かすのは人と、知性の接続だ。<br/>
+      Neuron Worx はその接点で、事業を設計する。
+    </p>
+    <p class="statement-credit reveal">Your Intelligence, Our Mission. — Neuron Worx.</p>
   </section>
 
   <!-- ═══ DIVISIONS ═══ -->
   <section class="s-divisions">
     <div class="div-header">
-      <span class="div-header-label">Divisions — 四つの事業</span>
-      <a class="div-header-link" href="services.html">すべて見る →</a>
+      <span class="div-label">Divisions — 四つの事業</span>
+      <a class="div-all" href="services.html">すべて見る →</a>
     </div>
     <a class="div-row reveal" href="services.html#ai">
-      <div class="div-num">01</div>
-      <div class="div-info">
+      <div class="div-num">DIV<span>01</span></div>
+      <div>
         <div class="div-name">Intelligence.</div>
         <div class="div-jp">AIコンサルティング事業</div>
       </div>
       <span class="div-arrow">→</span>
     </a>
     <a class="div-row reveal" href="services.html#branding">
-      <div class="div-num">02</div>
-      <div class="div-info">
+      <div class="div-num">DIV<span>02</span></div>
+      <div>
         <div class="div-name">Branding.</div>
         <div class="div-jp">採用ブランディング・コンサルティング事業</div>
       </div>
       <span class="div-arrow">→</span>
     </a>
     <a class="div-row reveal" href="services.html#sns">
-      <div class="div-num">03</div>
-      <div class="div-info">
+      <div class="div-num">DIV<span>03</span></div>
+      <div>
         <div class="div-name">Social.</div>
         <div class="div-jp">SNS運用代行事業</div>
       </div>
       <span class="div-arrow">→</span>
     </a>
     <a class="div-row reveal" href="services.html#fnb">
-      <div class="div-num">04</div>
-      <div class="div-info">
+      <div class="div-num">DIV<span>04</span></div>
+      <div>
         <div class="div-name">Appetite.</div>
         <div class="div-jp">飲食店事業</div>
       </div>
@@ -385,46 +447,81 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
     </a>
   </section>
 
+  <!-- ═══ FIGURES ═══ -->
+  <section class="s-figures reveal">
+    <div class="fig-cell">
+      <div class="fig-label">Projects</div>
+      <div class="fig-value">87<sup>+</sup></div>
+      <div class="fig-note">2021 — 2026</div>
+    </div>
+    <div class="fig-cell">
+      <div class="fig-label">Partners</div>
+      <div class="fig-value">42<sup>社</sup></div>
+      <div class="fig-note">Enterprise · Startup · VC</div>
+    </div>
+    <div class="fig-cell">
+      <div class="fig-label">SNS Accounts</div>
+      <div class="fig-value">24<sup>+</sup></div>
+      <div class="fig-note">運用中アカウント</div>
+    </div>
+    <div class="fig-cell">
+      <div class="fig-label">Founded</div>
+      <div class="fig-value">'21</div>
+      <div class="fig-note">Tokyo · Self-funded</div>
+    </div>
+  </section>
+
   <!-- ═══ WORKS TEASER ═══ -->
   <section class="s-works">
-    <div class="works-label">Recent Works — 最近の実績</div>
-    <div class="works-grid reveal">
-      <div class="work-card">
-        <div class="wcard-num">N° 012 · 2025</div>
-        <div class="wcard-title">Shinkei Protocol.</div>
-        <div class="wcard-sub">大手通信会社 全社AI導入伴走、18,400名対象</div>
-        <div class="wcard-tag">AI Consulting</div>
-      </div>
-      <div class="work-card">
-        <div class="wcard-num">N° 011 · 2025</div>
-        <div class="wcard-title">Kitsune OS.</div>
-        <div class="wcard-sub">自社飲食 × AI 原価予測エージェント</div>
-        <div class="wcard-tag">AI × F&B</div>
-      </div>
-      <div class="work-card">
-        <div class="wcard-num">N° 010 · 2025</div>
-        <div class="wcard-title">Series C FinTech.</div>
-        <div class="wcard-sub">採用ブランディング設計 · 30→56名</div>
-        <div class="wcard-tag">Branding</div>
-      </div>
+    <div class="works-hdr">
+      <span class="works-hdr-label">Recent Works — 最近の実績</span>
+      <a class="works-hdr-link" href="works.html">全実績を見る →</a>
     </div>
-    <div class="works-more">
+    <div class="works-list reveal">
+      <a class="work-row" href="works.html">
+        <div class="wn">012</div>
+        <div class="wt">Shinkei Protocol. <small>大手通信 · 全社AI導入伴走 · 18,400名対象</small></div>
+        <div class="wcat">AI Consulting</div>
+        <div class="wyr">2025</div>
+        <div class="warr">↗</div>
+      </a>
+      <a class="work-row" href="works.html">
+        <div class="wn">011</div>
+        <div class="wt">Kitsune OS. <small>飲食 × AI · 原価予測エージェント 自社開発</small></div>
+        <div class="wcat">AI × F&B</div>
+        <div class="wyr">2025</div>
+        <div class="warr">↗</div>
+      </a>
+      <a class="work-row" href="works.html">
+        <div class="wn">010</div>
+        <div class="wt">Series C FinTech. <small>採用ブランディング設計 · エンジニア組織 30→56名</small></div>
+        <div class="wcat">Branding</div>
+        <div class="wyr">2025</div>
+        <div class="warr">↗</div>
+      </a>
+      <a class="work-row" href="works.html">
+        <div class="wn">009</div>
+        <div class="wt">D2C アパレル. <small>TikTok × Instagram 同時運用 · 0→42k</small></div>
+        <div class="wcat">SNS</div>
+        <div class="wyr">2025</div>
+        <div class="warr">↗</div>
+      </a>
+    </div>
+    <div class="works-foot">
       <a class="btn" href="works.html">全実績を見る (12件) →</a>
     </div>
   </section>
 
-  <!-- ═══ CTA (dark) ═══ -->
+  <!-- ═══ CTA ═══ -->
   <section class="s-cta">
-    <div class="cta-inner">
-      <h2 class="cta-heading reveal">
-        LET'S<br/>BUILD<br/><span class="lime">TOGETHER.</span>
-      </h2>
-      <div class="cta-row">
-        <div class="cta-email">hello@neuronworx.com</div>
-        <div class="cta-btns">
-          <a class="btn-lime" href="contact.html">お問い合わせ →</a>
-          <a class="btn-dark" href="careers.html">採用情報 →</a>
-        </div>
+    <h2 class="cta-heading reveal">
+      LET'S<br/>BUILD<br/><span class="accent">TOGETHER.</span>
+    </h2>
+    <div class="cta-row">
+      <div class="cta-email">hello@neuronworx.com</div>
+      <div class="cta-btns">
+        <a class="btn-violet" href="contact.html">お問い合わせ →</a>
+        <a class="btn-dark" href="careers.html">採用情報 →</a>
       </div>
     </div>
   </section>
@@ -435,11 +532,11 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 <footer class="site-footer">
   <div class="footer-grid">
     <div>
-      <div style="font-family:var(--sans);font-size:14px;font-weight:700;letter-spacing:.22em;color:#f0ede4;margin-bottom:16px;text-transform:uppercase;">Neuron Worx</div>
-      <p style="font-family:var(--sans);font-size:14px;color:#888;line-height:1.9;max-width:36ch;">
+      <div style="font-family:var(--sans);font-size:13px;font-weight:800;letter-spacing:.22em;color:#f0ede4;margin-bottom:16px;text-transform:uppercase;">Neuron Worx</div>
+      <p style="font-family:var(--sans);font-size:14px;color:#666;line-height:1.9;max-width:36ch;">
         合同会社 Neuron Worx。AI・採用ブランディング・SNS・飲食の四領域を編む東京の事業体。
       </p>
-      <p style="font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:#555;margin-top:20px;">Est. 2021 · Tokyo, Japan</p>
+      <p style="font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:#444;margin-top:20px;">Est. 2021 · Tokyo, Japan</p>
     </div>
     <div>
       <h5>Sitemap</h5>
@@ -470,27 +567,47 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
     </div>
   </div>
   <div class="footer-copy">
-    <div>© 2026 合同会社 Neuron Worx</div>
-    <div>Built in Tokyo</div>
+    <span>© 2026 合同会社 Neuron Worx</span>
+    <span>Built in Tokyo</span>
   </div>
 </footer>
 
 <div class="page-trans" id="page-trans"></div>
 
 <script>
-/* ─── Loader ─── */
+/* ─── Loader: panel rises, shows brand, then exits upward ─── */
 (function(){
   const loader = document.getElementById('nw-loader');
-  if(!loader) return;
-  function done(){
-    loader.classList.add('out');
-    setTimeout(()=>{ loader.style.display='none'; }, 750);
+  const panel  = loader.querySelector('.nwl-panel');
+  if(!loader || !panel) return;
+
+  function exitLoader(){
+    /* slide panel up and off screen */
+    panel.style.transition = 'transform .72s cubic-bezier(.77,0,.18,1)';
+    panel.style.transform  = 'translateY(-100%)';
+    /* fade out the dark bg behind it */
+    setTimeout(()=>{
+      loader.style.transition = 'opacity .3s ease';
+      loader.style.opacity = '0';
+      setTimeout(()=>{ loader.style.display='none'; }, 320);
+    }, 560);
   }
-  if(document.readyState==='complete'){ setTimeout(done, 600); }
-  else { window.addEventListener('load', ()=> setTimeout(done, 400)); setTimeout(done, 2400); }
+
+  /* minimum display time so animation is seen */
+  const minTime = 1400;
+  const start   = Date.now();
+
+  function tryExit(){
+    const elapsed = Date.now() - start;
+    const wait    = Math.max(0, minTime - elapsed);
+    setTimeout(exitLoader, wait);
+  }
+
+  if(document.readyState === 'complete'){ tryExit(); }
+  else { window.addEventListener('load', tryExit); setTimeout(exitLoader, 3000); }
 })();
 
-/* ─── Tweaks ─── */
+/* ─── Tweaks state ─── */
 const state = Object.assign({}, TWEAK_DEFAULTS);
 function applyState(){
   document.body.dataset.theme  = state.theme;
@@ -517,31 +634,25 @@ window.addEventListener('message', e=>{
 try{ window.parent.postMessage({type:'__edit_mode_available'},'*'); }catch(e){}
 applyState();
 
-/* ─── Hamburger menu ─── */
+/* ─── Menu ─── */
 const menu = document.getElementById('menu');
-const menuOpen = document.getElementById('menu-open');
-const menuClose = document.getElementById('menu-close');
-menuOpen.addEventListener('click', ()=>{ menu.classList.add('open'); document.body.style.overflow='hidden'; });
-menuClose.addEventListener('click', ()=>{ menu.classList.remove('open'); document.body.style.overflow=''; });
+document.getElementById('menu-open').addEventListener('click', ()=>{ menu.classList.add('open'); document.body.style.overflow='hidden'; });
+document.getElementById('menu-close').addEventListener('click', ()=>{ menu.classList.remove('open'); document.body.style.overflow=''; });
 document.addEventListener('keydown', e=>{ if(e.key==='Escape'){ menu.classList.remove('open'); document.body.style.overflow=''; }});
 
-/* ─── Reveal ─── */
-const io=new IntersectionObserver(ents=>{
+/* ─── Reveal on scroll ─── */
+const io = new IntersectionObserver(ents=>{
   ents.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }});
-},{threshold:0.06, rootMargin:'0px 0px -40px 0px'});
+},{threshold:0.05, rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
-setTimeout(()=>{
-  document.querySelectorAll('.reveal:not(.in)').forEach(el=>{
-    if(el.getBoundingClientRect().top < window.innerHeight) el.classList.add('in');
-  });
-}, 800);
+setTimeout(()=>{ document.querySelectorAll('.reveal:not(.in)').forEach(el=>{ if(el.getBoundingClientRect().top<window.innerHeight) el.classList.add('in'); }); }, 1500);
 
 /* ─── Page transitions ─── */
 const trans = document.getElementById('page-trans');
 window.addEventListener('pageshow', ()=> trans.classList.remove('enter'));
 document.addEventListener('click', e=>{
-  const a=e.target.closest('a[href]'); if(!a) return;
-  const href=a.getAttribute('href');
+  const a = e.target.closest('a[href]'); if(!a) return;
+  const href = a.getAttribute('href');
   if(!href||href.startsWith('#')||href.startsWith('http')||href.startsWith('mailto:')||a.target==='_blank') return;
   e.preventDefault();
   trans.classList.add('enter');
