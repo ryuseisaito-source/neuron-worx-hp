@@ -330,6 +330,11 @@ p,.ph-desc,.prose,.svc-desc,.job-desc,.tc-bio,.wk-t small{
           <label class="cf-label">メッセージ <span class="cf-req">*</span></label>
           <textarea class="cf-input cf-textarea" name="message" required rows="6" placeholder="お問い合わせ内容をご記入ください。"></textarea>
         </div>
+        <!-- Honeypot: ボットが自動入力する隠しフィールド。人間には見えない -->
+        <div style="position:absolute;left:-9999px;opacity:0;pointer-events:none;" aria-hidden="true">
+          <input type="text" name="website" tabindex="-1" autocomplete="off" value=""/>
+        </div>
+
         <button type="submit" class="cf-btn" id="cf-btn">
           <span id="cf-btn-text">送信する</span>
           <span id="cf-btn-icon">→</span>
@@ -376,9 +381,26 @@ p,.ph-desc,.prose,.svc-desc,.job-desc,.tc-bio,.wk-t small{
 
   if(!form) return;
 
+  // Rate limit: 送信後60秒間は再送信不可
+  const RATE_LIMIT_MS = 60000;
+  let lastSent = 0;
+
   form.addEventListener('submit', async function(e){
     e.preventDefault();
     if(!form.checkValidity()){ form.reportValidity(); return; }
+
+    // Honeypot check: botが自動入力する隠しフィールドに値があれば送信しない
+    const honeypot = form.querySelector('input[name="website"]');
+    if(honeypot && honeypot.value.trim() !== '') return;
+
+    // Rate limit check
+    const now = Date.now();
+    if(now - lastSent < RATE_LIMIT_MS){
+      const wait = Math.ceil((RATE_LIMIT_MS - (now - lastSent)) / 1000);
+      msgErr.textContent = `送信間隔を空けてください（あと${wait}秒）`;
+      msgErr.hidden = false;
+      return;
+    }
 
     btn.disabled = true;
     btnText.textContent = '送信中...';
@@ -388,10 +410,12 @@ p,.ph-desc,.prose,.svc-desc,.job-desc,.tc-bio,.wk-t small{
 
     try {
       await emailjs.sendForm('service_sg5zl04', 'template_bpmbz99', form);
+      lastSent = Date.now();
       msgOk.hidden = false;
       form.reset();
     } catch(err) {
       console.error('EmailJS error:', err);
+      msgErr.textContent = '送信に失敗しました。時間をおいて再度お試しください。';
       msgErr.hidden = false;
     } finally {
       btn.disabled = false;
