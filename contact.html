@@ -143,11 +143,46 @@ p,.ph-desc,.prose,.svc-desc,.job-desc,.tc-bio,.wk-t small{
 .prose p+p{margin-top:1.1em;}
 .prose b{color:var(--ink);font-weight:700;}
 
-.ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;}
 .ct-block{margin-bottom:40px;}
 .ct-label{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);margin-bottom:12px;}
 .ct-val{font-family:var(--sans);font-size:17px;color:var(--ink);line-height:1.5;}
 .ct-note{font-family:var(--sans);font-size:13px;color:var(--ink-3);margin-top:6px;}
+
+/* Contact form */
+.cf-wrap{display:grid;grid-template-columns:280px 1fr;gap:80px;align-items:start;}
+.cf-info{padding-top:8px;}
+.cf-form{display:flex;flex-direction:column;gap:28px;}
+.cf-row2{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.cf-field{display:flex;flex-direction:column;gap:8px;}
+.cf-label{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);}
+.cf-req{color:var(--accent);}
+.cf-input{
+  background:transparent;border:none;border-bottom:1px solid var(--line-2);
+  padding:12px 0;font-family:var(--sans);font-size:15px;color:var(--ink);
+  outline:none;transition:border-color .2s;width:100%;
+  appearance:none;-webkit-appearance:none;
+}
+.cf-input:focus{border-color:var(--accent);}
+.cf-input::placeholder{color:var(--ink-3);}
+.cf-select{cursor:pointer;background-color:var(--bg);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23888'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 4px center;}
+.cf-select option{background:var(--bg);color:var(--ink);}
+.cf-textarea{resize:vertical;min-height:140px;line-height:1.8;}
+.cf-btn{
+  display:flex;align-items:center;justify-content:space-between;
+  font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  padding:16px 28px;background:var(--ink);color:var(--bg);
+  border:none;cursor:pointer;transition:all .2s;
+  margin-top:8px;
+}
+.cf-btn:hover{background:var(--accent);color:#000;}
+.cf-btn:disabled{opacity:.5;cursor:not-allowed;}
+.cf-msg{font-family:var(--sans);font-size:14px;line-height:1.7;padding:16px 20px;margin-top:4px;}
+.cf-success{background:rgba(0,200,100,.08);border:1px solid rgba(0,200,100,.25);color:#4ade80;}
+.cf-error{background:rgba(255,50,50,.08);border:1px solid rgba(255,50,50,.25);color:#f87171;}
+@media(max-width:900px){
+  .cf-wrap{grid-template-columns:1fr;gap:40px;}
+  .cf-row2{grid-template-columns:1fr;}
+}
 
 .job-list{border-top:1px solid var(--line);}
 .job-item{
@@ -246,28 +281,67 @@ p,.ph-desc,.prose,.svc-desc,.job-desc,.tc-bio,.wk-t small{
   </section>
 
   <section class="sec reveal">
-    <div class="sec-hdr"><span><span class="n">—</span>&nbsp;&nbsp;お問い合わせ</span></div>
-    <div class="ct-grid">
-      <div>
+    <div class="sec-hdr"><span><span class="n">—</span>&nbsp;&nbsp;お問い合わせフォーム</span></div>
+    <div class="cf-wrap">
+
+      <!-- Left: info -->
+      <div class="cf-info">
         <div class="ct-block">
-          <p class="ct-label">General</p>
-          <p class="ct-val">一般のご相談・事業に関するお問い合わせ</p>
+          <p class="ct-label">Office</p>
+          <p class="ct-val" style="font-size:15px;line-height:1.9;">〒151-0066<br/>東京都渋谷区西原3丁目36-3-201</p>
         </div>
         <div class="ct-block">
-          <p class="ct-label">Press</p>
-          <p class="ct-val">取材・メディア関連のお問い合わせ</p>
+          <p class="ct-label">Response Time</p>
+          <p class="ct-val" style="font-size:15px;">24時間以内にご返信します</p>
         </div>
         <div class="ct-block">
           <p class="ct-label">Careers</p>
-          <p class="ct-val">採用・カジュアル面談のご希望</p>
           <p class="ct-note"><a href="careers.html" style="color:var(--accent);">採用情報はこちら →</a></p>
         </div>
       </div>
-      <div>
-        <p class="ct-label">Office</p>
-        <p class="ct-val" style="font-size:15px;line-height:1.9;">〒151-0066<br/>東京都渋谷区西原3丁目36-3-201</p>
-        <p class="ct-note" style="margin-top:20px;">お問い合わせフォームは準備中です。詳細はSNS等よりお気軽にご連絡ください。</p>
-      </div>
+
+      <!-- Right: form -->
+      <form id="cf" class="cf-form" novalidate>
+        <div class="cf-row2">
+          <div class="cf-field">
+            <label class="cf-label">お名前 <span class="cf-req">*</span></label>
+            <input class="cf-input" type="text" name="name" required placeholder="山田 太郎"/>
+          </div>
+          <div class="cf-field">
+            <label class="cf-label">メールアドレス <span class="cf-req">*</span></label>
+            <input class="cf-input" type="email" name="email" required placeholder="example@email.com"/>
+          </div>
+        </div>
+        <div class="cf-field">
+          <label class="cf-label">お問い合わせ種別 <span class="cf-req">*</span></label>
+          <select class="cf-input cf-select" name="type" required>
+            <option value="">選択してください</option>
+            <option value="AI・DXコンサルティング">AI・DXコンサルティング</option>
+            <option value="SAPコンサルティング">SAPコンサルティング</option>
+            <option value="採用ブランディング">採用ブランディング</option>
+            <option value="SNS運用代行">SNS運用代行</option>
+            <option value="飲食事業">飲食事業</option>
+            <option value="その他・一般的なお問い合わせ">その他・一般的なお問い合わせ</option>
+            <option value="取材・メディア">取材・メディア</option>
+            <option value="採用・カジュアル面談">採用・カジュアル面談</option>
+          </select>
+        </div>
+        <div class="cf-field">
+          <label class="cf-label">メッセージ <span class="cf-req">*</span></label>
+          <textarea class="cf-input cf-textarea" name="message" required rows="6" placeholder="お問い合わせ内容をご記入ください。"></textarea>
+        </div>
+        <button type="submit" class="cf-btn" id="cf-btn">
+          <span id="cf-btn-text">送信する</span>
+          <span id="cf-btn-icon">→</span>
+        </button>
+        <div id="cf-success" class="cf-msg cf-success" hidden>
+          ✓ メッセージを送信しました。24時間以内にご返信いたします。
+        </div>
+        <div id="cf-error" class="cf-msg cf-error" hidden>
+          送信に失敗しました。時間をおいて再度お試しください。
+        </div>
+      </form>
+
     </div>
   </section>
 </main>
@@ -286,5 +360,46 @@ p,.ph-desc,.prose,.svc-desc,.job-desc,.tc-bio,.wk-t small{
 </footer>
 <div class="page-trans" id="page-trans"></div>
 <script src="assets/app.js"></script>
+
+<!-- EmailJS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+(function(){
+  emailjs.init("LaqS4s_X_6lLdb8_c");
+
+  const form    = document.getElementById('cf');
+  const btn     = document.getElementById('cf-btn');
+  const btnText = document.getElementById('cf-btn-text');
+  const btnIcon = document.getElementById('cf-btn-icon');
+  const msgOk   = document.getElementById('cf-success');
+  const msgErr  = document.getElementById('cf-error');
+
+  if(!form) return;
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    if(!form.checkValidity()){ form.reportValidity(); return; }
+
+    btn.disabled = true;
+    btnText.textContent = '送信中...';
+    btnIcon.textContent = '…';
+    msgOk.hidden = true;
+    msgErr.hidden = true;
+
+    try {
+      await emailjs.sendForm('service_sg5zl04', 'template_bpmbz99', form);
+      msgOk.hidden = false;
+      form.reset();
+    } catch(err) {
+      console.error('EmailJS error:', err);
+      msgErr.hidden = false;
+    } finally {
+      btn.disabled = false;
+      btnText.textContent = '送信する';
+      btnIcon.textContent = '→';
+    }
+  });
+})();
+</script>
 </body>
 </html>
