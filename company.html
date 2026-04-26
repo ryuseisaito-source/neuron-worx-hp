@@ -1,293 +1,112 @@
 <!doctype html>
-<html lang="ja"><head>
-<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Company — Neuron Worx</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;700&display=swap"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700;900&display=swap"/>
 <link rel="stylesheet" href="assets/theme.css"/>
-<script>const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{"theme":"dark","accent":"violet","font":"serif-italic","heroLayout":"neural","motionIntensity":2}/*EDITMODE-END*/;</script>
+<script>const TWEAK_DEFAULTS={"theme":"dark","accent":"orange","font":"sans"};</script>
 <style>
-main{ padding: 0 40px; }
-.container{ max-width: var(--max); margin: 0 auto; }
+main{padding-top:52px;}
+.ph{padding:80px 48px 64px;border-bottom:1px solid var(--line);}
+.ph-label{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);margin-bottom:20px;}
+.ph-title{font-family:var(--display);font-style:var(--display-style);font-weight:var(--display-weight);font-size:clamp(44px,7vw,110px);line-height:.86;letter-spacing:-.04em;text-transform:uppercase;color:var(--ink);}
+.ph-sub{font-family:var(--sans);font-size:15px;color:var(--ink-2);line-height:1.8;margin-top:28px;max-width:52ch;}
+.section{padding:72px 48px;border-bottom:1px solid var(--line);}
+.section-label{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);margin-bottom:16px;}
+.section-title{font-family:var(--display);font-style:var(--display-style);font-weight:var(--display-weight);font-size:clamp(28px,3.5vw,52px);line-height:1;letter-spacing:-.025em;color:var(--ink);margin-bottom:28px;}
+.prose{font-family:"Noto Sans JP","Inter",sans-serif;font-size:15px;line-height:2;color:var(--ink-2);max-width:60ch;}
+.prose p+p{margin-top:1.2em;}
+.dl-grid{display:grid;grid-template-columns:200px 1fr;gap:0;border-top:1px solid var(--line);}
+.dl-row{display:contents;}
+.dl-row dt,.dl-row dd{padding:18px 0;border-bottom:1px solid var(--line);font-family:var(--sans);font-size:14px;line-height:1.7;}
+.dl-row dt{color:var(--ink-3);font-weight:600;letter-spacing:.04em;padding-right:32px;}
+.dl-row dd{color:var(--ink-2);}
+@media(max-width:900px){
+  .ph{padding:72px 24px 48px;}
+  .section{padding:48px 24px;}
+  .dl-grid{grid-template-columns:140px 1fr;}
+}
 
-.co-grid{ display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-top: 48px;}
-.info-table{ border-top: 1px solid var(--line);}
-.info-row{ display:grid; grid-template-columns: 180px 1fr; gap: 20px; padding: 18px 0; border-bottom: 1px solid var(--line); align-items: baseline;}
-.info-row .k{ font-family: var(--mono); font-size: 10.5px; letter-spacing: .22em; color: var(--ink-3); text-transform: uppercase;}
-.info-row .k .jp{ display: block; color: var(--ink-2); font-family: var(--serif-jp); font-size: 11.5px; letter-spacing: .04em; text-transform: none; margin-top: 4px;}
-.info-row .v{ font-family: var(--serif-jp); font-size: 14px; color: var(--ink); line-height: 1.8;}
-.info-row .v .sub{ display:block; color: var(--ink-2); font-size: 12.5px; margin-top: 2px;}
-.info-row .v b{ color: var(--gold); font-weight: 500; font-family: var(--display); font-style: var(--display-style); font-size: 20px; letter-spacing: -.01em;}
-.map-card{ border: 1px solid var(--line); aspect-ratio: 3/4; background: var(--bg-2); position: relative; overflow: hidden;}
-.map-card .label{ position: absolute; top: 16px; left: 16px; z-index: 2; font-family: var(--mono); font-size: 10.5px; letter-spacing: .18em; color: var(--gold); text-transform: uppercase;}
-.map-card .cap{ position: absolute; bottom: 16px; left: 16px; right: 16px; z-index: 2; font-family: var(--serif-jp); font-size: 13px; color: var(--ink); padding-top: 12px; border-top: 1px solid var(--line);}
-.map-card .cap small{ display:block; font-family: var(--mono); font-size: 10px; color: var(--ink-3); letter-spacing: .12em; margin-top: 4px;}
-.map-card svg{ position: absolute; inset: 0; width: 100%; height: 100%;}
-.map-card .pin{ position: absolute; top: 38%; left: 52%; width: 24px; height: 24px; margin: -12px 0 0 -12px; z-index: 2;}
-.map-card .pin::before{ content:""; position: absolute; inset: 8px; background: var(--gold); border-radius: 50%; box-shadow: 0 0 0 6px rgba(212,178,116,0.18);}
-.map-card .pin::after{ content:""; position: absolute; inset: 0; border: 1px solid var(--gold); border-radius: 50%; animation: pulse 2.4s ease-out infinite;}
-@keyframes pulse{ 0%{ transform: scale(.4); opacity: 1;} 100%{ transform: scale(2.2); opacity: 0;}}
-.entities{ display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 48px; border: 1px solid var(--line);}
-.entity{ padding: 36px; border-left: 1px solid var(--line);}
-.entity:first-child{ border-left: 0;}
-.entity .n{ font-family: var(--mono); font-size: 10.5px; letter-spacing: .22em; color: var(--gold); text-transform: uppercase;}
-.entity h3{ margin: 12px 0 6px; font-family: var(--display); font-style: var(--display-style); font-weight: 400; font-size: 34px; letter-spacing: -.015em; color: var(--ink);}
-.entity .jp{ font-family: var(--serif-jp); color: var(--ink-2); font-size: 13px;}
-.entity .mini{ margin-top: 18px; font-family: var(--serif-jp); font-size: 12.5px; line-height: 1.9; color: var(--ink-2);}
-.entity .row{ display:grid; grid-template-columns: 110px 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px dashed var(--line); font-family: var(--mono); font-size: 11px; color: var(--ink-2); letter-spacing: .08em;}
-.entity .row b{ color: var(--ink); font-family: var(--serif-jp); font-weight: 400; letter-spacing: 0; font-size: 12.5px;}
-.banks{ border: 1px solid var(--line); padding: 28px 32px; margin-top: 32px; display:grid; grid-template-columns: repeat(4, 1fr); gap: 24px;}
-.bank .k{ font-family: var(--mono); font-size: 10px; letter-spacing: .18em; color: var(--ink-3); text-transform: uppercase;}
-.bank .v{ font-family: var(--serif-jp); font-size: 13px; color: var(--ink); margin-top: 6px;}
-@media (max-width: 900px){ .co-grid, .entities, .banks{ grid-template-columns: 1fr;} .entity{ border-left: 0; border-top: 1px solid var(--line);} .entity:first-child{ border-top: 0;} .info-row{ grid-template-columns: 1fr;}}
-</style></head>
-<body data-theme="dark" data-accent="violet" data-font="serif-italic" data-hero="neural">
+</style>
+</head>
+<body data-theme="dark" data-accent="orange" data-font="sans">
 
-<canvas id="bg-canvas"></canvas>
-<div class="bg-vignette"></div>
+<div class="menu-overlay" id="menu">
+  <button class="menu-close" id="menu-close">×</button>
+  <nav><ul class="menu-links">
+    <li><a href="index.html">Index <span class="arr">↗</span></a></li>
+    <li><a href="about.html">About <span class="arr">↗</span></a></li>
+    <li><a href="services.html">Services <span class="arr">↗</span></a></li>
+    <li><a href="works.html">Works <span class="arr">↗</span></a></li>
+    <li><a href="team.html">Team <span class="arr">↗</span></a></li>
+    <li><a href="careers.html">Careers <span class="arr">↗</span></a></li>
+    <li><a href="news.html">News <span class="arr">↗</span></a></li>
+    <li><a href="company.html">Company <span class="arr">↗</span></a></li>
+    <li><a href="contact.html">Contact <span class="arr">↗</span></a></li>
+  </ul></nav>
+  <div class="menu-foot"><span>© 2026 合同会社 Neuron Worx</span><span>Tokyo, Japan</span></div>
+</div>
 
-<header class="chrome-top">
+<nav class="site-nav">
   <a class="logo" href="index.html">
-    <span class="logo-mark">
-      <svg viewBox="0 0 24 24" fill="none">
-        <defs><linearGradient id="nwlg2" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="#d4b274"/><stop offset="1" stop-color="#fae7b4"/>
-        </linearGradient></defs>
-        <circle cx="6"  cy="6"  r="1.8" fill="currentColor"/>
-        <circle cx="18" cy="6"  r="1.8" fill="currentColor"/>
-        <circle cx="6"  cy="18" r="1.8" fill="currentColor"/>
-        <circle cx="18" cy="18" r="1.8" fill="currentColor"/>
-        <circle cx="12" cy="12" r="3"   fill="url(#nwlg2)"/>
-        <path d="M6 6 L12 12 L18 6 M6 18 L12 12 L18 18" stroke="currentColor" stroke-width="0.8"/>
-      </svg>
-    </span>
+    <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none"><defs><linearGradient id="nwlg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#252745"/><stop offset="1" stop-color="#3a3d70"/></linearGradient></defs><circle cx="6" cy="6" r="1.8" fill="currentColor"/><circle cx="18" cy="6" r="1.8" fill="currentColor"/><circle cx="6" cy="18" r="1.8" fill="currentColor"/><circle cx="18" cy="18" r="1.8" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="url(#nwlg)"/><path d="M6 6 L12 12 L18 6 M6 18 L12 12 L18 18" stroke="currentColor" stroke-width="0.85"/></svg></span>
     NEURON WORX
   </a>
-  <nav class="nav">
-    <a href="index.html">Index</a>
-    <a href="about.html">About</a>
-    <a href="services.html">Services</a>
-    <a href="works.html">Works</a>
-    <a href="team.html">Team</a>
-    <a href="careers.html">Careers</a>
-    <a href="news.html">News</a>
-    <a href="company.html" class="on">Company</a>
-  </nav>
-  <a class="cta-top" href="contact.html">Contact &#x2192;</a>
-</header>
-
-<div class="chrome-bottom">
-  <div><span class="tick">●</span>&nbsp; LIVE · 2026</div>
-  <div><span id="clock">--:--:--</span>&nbsp; JST · 35.676°N 139.650°E</div>
-  <div>N°<span id="cursor-coord">000,000</span></div>
-</div>
-  <div><span id="clock" class="now">--:--:--</span>&nbsp;&nbsp;JST &middot; TYO 35.676&deg;N, 139.650&deg;E</div>
-  <div>N&#xB0;<span id="cursor-coord">000,000</span></div>
-</div>
-
-<div class="tweaks" id="tweaks">
-  <h4>TWEAKS <span class="close" id="tweaks-close">&#xD7;</span></h4>
-  <div class="tw-row"><span class="label">Theme</span><div class="tw-opts" data-key="theme">
-    <button class="tw-opt" data-val="dark">Dark</button>
-    <button class="tw-opt" data-val="light">Light</button>
-  </div></div>
-  <div class="tw-row"><span class="label">Accent</span><div class="tw-opts" data-key="accent">
-    <button class="tw-opt" data-val="violet">Violet</button>
-    <button class="tw-opt" data-val="gold">Gold</button>
-    <button class="tw-opt" data-val="crimson">Crimson</button>
-    <button class="tw-opt" data-val="mono">Mono</button>
-  </div></div>
-  <div class="tw-row"><span class="label">Display Font</span><div class="tw-opts" data-key="font">
-    <button class="tw-opt" data-val="serif-italic">Italic</button>
-    <button class="tw-opt" data-val="serif-roman">Roman</button>
-    <button class="tw-opt" data-val="mincho">&#26126;&#26397;</button>
-    <button class="tw-opt" data-val="mono">Mono</button>
-  </div></div>
-  <div class="tw-row"><span class="label">Background</span><div class="tw-opts" data-key="heroLayout">
-    <button class="tw-opt" data-val="neural">Wireframe</button>
-    <button class="tw-opt" data-val="grid">Circuit</button>
-    <button class="tw-opt" data-val="noise">Warp</button>
-  </div></div>
-  <div class="tw-row"><span class="label">Motion <span id="mi-val" style="float:right;color:var(--gold)">2</span></span>
-    <input type="range" class="tw-range" id="mi" min="0" max="3" step="1" value="2"/>
+  <div class="nav-right">
+    <a class="nav-contact" href="contact.html">CONTACT</a>
+    <button class="nav-hamburger" id="menu-open"><span></span><span></span><span></span></button>
   </div>
-</div>
-
-
+</nav>
 
 <main>
-<section class="page-head container reveal">
-  <div class="eyebrow">N° 08 ─ COMPANY INFO</div>
-  <h1 class="page-h1"><em class="">Legal</em><br/>&amp; ledger.</h1>
-  <p class="page-kicker">法的には退屈なページ。登記、所在、資本、口座。ただし<b>事実だけ</b>が書かれている。</p>
-  <div class="page-meta">
-    <div>Incorporated<b>2021.04</b></div><div>Entity<b>合同会社 · LLC</b></div><div>Capital<b>¥12M</b></div><div>Fiscal<b>3月末</b></div>
+  <div class="ph">
+    <p class="ph-label">Company — 会社情報</p>
+    <h1 class="ph-title">COMPANY</h1>
   </div>
-</section>
 
-<section class="container reveal">
-  <div class="co-grid">
-    <div>
-      <div class="sec-head" style="margin-bottom: 16px;"><div><span class="num">N° 08.1</span>&nbsp;&nbsp;CORPORATE ─ 会社概要</div></div>
-      <div class="info-table">
-        <div class="info-row"><div class="k">Company<span class="jp">商号</span></div><div class="v">合同会社 Neuron Worx<span class="sub">Neuron Worx LLC</span></div></div>
-        <div class="info-row"><div class="k">Founded<span class="jp">設立</span></div><div class="v">2021年4月1日<span class="sub">5期目 · 6期目へ</span></div></div>
-        <div class="info-row"><div class="k">Capital<span class="jp">資本金</span></div><div class="v"><b>¥12,000,000</b><span class="sub">(2026.03末時点)</span></div></div>
-        <div class="info-row"><div class="k">Representatives<span class="jp">代表社員</span></div><div class="v">荒川 圭一 (Kei Arakawa)<span class="sub">業務執行社員：樋口 真緒 (Mao Higuchi)</span></div></div>
-        <div class="info-row"><div class="k">Employees<span class="jp">従業員</span></div><div class="v"><b>14 名</b><span class="sub">外部パートナー 28名 / 契約シェフ・士業含む</span></div></div>
-        <div class="info-row"><div class="k">Address<span class="jp">所在地</span></div><div class="v">〒160-0022<span class="sub">東京都新宿区新宿X-X-XX · Mesh Yotsuya 5F</span></div></div>
-        <div class="info-row"><div class="k">Phone<span class="jp">電話</span></div><div class="v">+81-3-XXXX-XXXX<span class="sub">平日 10:00 — 19:00 (JST)</span></div></div>
-        <div class="info-row"><div class="k">Email<span class="jp">メール</span></div><div class="v">hello@neuronworx.co.jp<span class="sub">採用: careers@ / プレス: press@</span></div></div>
-        <div class="info-row"><div class="k">Fiscal Year<span class="jp">決算</span></div><div class="v">3月末<span class="sub">翌6月に決算公告</span></div></div>
-        <div class="info-row"><div class="k">Licenses<span class="jp">許認可</span></div><div class="v">有料職業紹介 13-ユ-XXXXXX / 宅地建物取引業 東京都知事(1)第XXXXX号<span class="sub">食品衛生責任者・飲食店営業許可（2店舗）</span></div></div>
-        <div class="info-row"><div class="k">Auditor<span class="jp">顧問</span></div><div class="v">西新宿会計事務所 / 小林法律事務所<span class="sub">労務: 四谷社会保険労務士法人</span></div></div>
-      </div>
-      <div class="banks">
-        <div class="bank"><div class="k">Main Bank</div><div class="v">三菱UFJ銀行 新宿支店</div></div>
-        <div class="bank"><div class="k">Sub</div><div class="v">GMOあおぞらネット銀行</div></div>
-        <div class="bank"><div class="k">F&amp;B</div><div class="v">りそな銀行 飯田橋支店</div></div>
-        <div class="bank"><div class="k">Invoice</div><div class="v">T1012345678901</div></div>
-      </div>
-    </div>
-
-    <div>
-      <div class="sec-head" style="margin-bottom: 16px;"><div><span class="num">N° 08.2</span>&nbsp;&nbsp;LOCATION ─ 所在地</div></div>
-      <div class="map-card">
-        <div class="label">// TOKYO · SHINJUKU · 1:4000</div>
-        <svg viewBox="0 0 400 520" preserveAspectRatio="xMidYMid slice">
-          <g stroke="var(--gold)" stroke-opacity=".18" stroke-width=".5" fill="none">
-            <path d="M0 180 L 400 120"/><path d="M0 260 L 400 210"/><path d="M0 340 L 400 300"/><path d="M0 420 L 400 390"/>
-            <path d="M80 0 L 100 520"/><path d="M180 0 L 210 520"/><path d="M280 0 L 320 520"/><path d="M380 0 L 400 520"/>
-            <path d="M0 0 L 400 350" stroke-opacity=".12"/>
-          </g>
-          <g fill="var(--ink)" fill-opacity=".04">
-            <rect x="120" y="140" width="60" height="50"/><rect x="220" y="160" width="70" height="40"/>
-            <rect x="140" y="220" width="80" height="60"/><rect x="240" y="240" width="90" height="70"/>
-            <rect x="100" y="310" width="50" height="40"/><rect x="170" y="330" width="60" height="50"/>
-            <rect x="260" y="340" width="80" height="60"/><rect x="60" y="400" width="90" height="60"/>
-            <rect x="180" y="420" width="50" height="50"/><rect x="260" y="430" width="70" height="60"/>
-          </g>
-          <g font-family="var(--mono)" font-size="8" fill="var(--ink-3)">
-            <text x="10" y="180">B4 AVE</text><text x="10" y="260">C3 AVE</text><text x="10" y="340">D2 AVE</text>
-            <text x="80" y="14">N7</text><text x="180" y="14">N8</text><text x="280" y="14">N9</text>
-          </g>
-        </svg>
-        <div class="pin"></div>
-        <div class="cap">Mesh Yotsuya 5F · 新宿区新宿<small>新宿駅 徒歩 7分 / 新宿三丁目駅 徒歩 4分</small></div>
-      </div>
-      <div style="margin-top: 28px; padding: 24px; border: 1px dashed var(--line); font-family: var(--serif-jp); font-size: 13px; line-height: 1.9; color: var(--ink-2);">
-        <b style="color: var(--ink); font-weight: 500;">直営店舗。</b><br/>
-        · Kitsune Bistro — 新宿区神楽坂X-X-X · 2F<br/>
-        · Sakura Counter — 新宿区神楽坂X-X-X · B1F<br/>
-        いずれも会員制。予約は各店舗LINEまたは <u>reservations@neuronworx.co.jp</u> まで。
-      </div>
-    </div>
+  <div class="section reveal">
+    <p class="section-label">Company Overview — 会社概要</p>
+    <dl class="dl-grid">
+      <div class="dl-row"><dt>社名</dt><dd>合同会社 Neuron Worx</dd></div>
+      <div class="dl-row"><dt>英語名</dt><dd>Neuron Worx LLC</dd></div>
+      <div class="dl-row"><dt>法人番号</dt><dd>9011003023549</dd></div>
+      <div class="dl-row"><dt>設立</dt><dd>2026年2月</dd></div>
+      <div class="dl-row"><dt>所在地</dt><dd>〒151-0066 東京都渋谷区西原3丁目36-3-201</dd></div>
+      <div class="dl-row"><dt>事業内容</dt><dd>AI・DXコンサルティング、SAPコンサルティング、採用ブランディング・コンサルティング、SNS運用代行、飲食店事業</dd></div>
+      <div class="dl-row"><dt>Email</dt><dd>hello@neuronworx.com</dd></div>
+    </dl>
   </div>
-</section>
 
-<section class="container reveal">
-  <div class="sec-head"><div><span class="num">N° 08.3</span>&nbsp;&nbsp;GROUP ─ グループ法人</div><h2><em class="serif-it">Two</em><br/>entities.</h2><div class="right">2026年3月、AI事業を分社化。<br/>二社体制で運営。</div></div>
-  <div class="entities">
-    <div class="entity">
-      <div class="n">N° 01 · PARENT</div>
-      <h3>合同会社 Neuron Worx</h3>
-      <div class="jp">Neuron Worx LLC — 本体</div>
-      <div class="mini">採用 / 飲食 / 不動産 / コーポレート機能を保有。AI事業部を除く全事業を統括する持株兼事業会社。</div>
-      <div style="margin-top: 18px;">
-        <div class="row"><div>Incorporated</div><b>2021.04.01</b></div>
-        <div class="row"><div>Capital</div><b>¥12,000,000</b></div>
-        <div class="row"><div>Divisions</div><b>Talent · F&amp;B · R.E.</b></div>
-        <div class="row"><div>Rep.</div><b>荒川 圭一 · 樋口 真緒</b></div>
-      </div>
-    </div>
-    <div class="entity">
-      <div class="n">N° 02 · SUBSIDIARY</div>
-      <h3>Neuron Worx AI 合同会社</h3>
-      <div class="jp">Neuron Worx AI LLC — AI事業会社</div>
-      <div class="mini">AIコンサルティング事業専任。大手企業向けの長期案件、自社AIプロダクトのライセンス事業を担う。</div>
-      <div style="margin-top: 18px;">
-        <div class="row"><div>Incorporated</div><b>2026.03.15</b></div>
-        <div class="row"><div>Capital</div><b>¥8,000,000</b></div>
-        <div class="row"><div>Divisions</div><b>AI · Build · Run</b></div>
-        <div class="row"><div>Rep.</div><b>荒川 圭一（兼務）</b></div>
-      </div>
-    </div>
+  <div class="section reveal">
+    <p class="section-label">Services — 事業内容</p>
+    <dl class="dl-grid">
+      <div class="dl-row"><dt>01</dt><dd>AI・DXコンサルティング<br/><span style="font-size:12px;color:var(--ink-3);">AI導入支援、DX戦略立案、業務プロセス改善</span></dd></div>
+      <div class="dl-row"><dt>02</dt><dd>SAPコンサルティング<br/><span style="font-size:12px;color:var(--ink-3);">SAP導入・移行支援、S/4HANA、運用保守</span></dd></div>
+      <div class="dl-row"><dt>03</dt><dd>採用ブランディング・コンサルティング<br/><span style="font-size:12px;color:var(--ink-3);">採用戦略設計、求人広報、採用サイト制作</span></dd></div>
+      <div class="dl-row"><dt>04</dt><dd>SNS運用代行<br/><span style="font-size:12px;color:var(--ink-3);">YouTube・TikTok・Instagram・X運用</span></dd></div>
+      <div class="dl-row"><dt>05</dt><dd>飲食店事業<br/><span style="font-size:12px;color:var(--ink-3);">東京都内での直営飲食店運営</span></dd></div>
+    </dl>
   </div>
-</section>
 </main>
 
-<div class="end-mark"><span class="">COMPANY</span></div>
-
-<footer class="end">
-  <div class="end-wrap">
+<footer class="site-footer">
+  <div class="footer-grid">
     <div>
-      <div style="font-family:var(--mono);font-size:13px;letter-spacing:.22em;margin-bottom:18px;color:var(--ink);">NEURON · WORX</div>
-      <div style="font-family:var(--serif-jp);color:var(--ink-2);line-height:1.9;font-size:14px;max-width:42ch;">
-        合同会社 Neuron Worx は、AI・人材・食・不動産の四領域を編む東京の事業体です。異領域の接続を本業とします。
-      </div>
-      <div class="rule-gold" style="margin:24px 0 0;max-width:320px;"><span class="dot"></span>EST. 2021 · TOKYO</div>
+      <div style="font-family:var(--sans);font-size:11px;font-weight:800;letter-spacing:.24em;color:var(--ink);margin-bottom:16px;text-transform:uppercase;">Neuron Worx</div>
+      <p style="font-family:var(--sans);font-size:13px;color:var(--ink-3);line-height:1.9;max-width:36ch;">合同会社 Neuron Worx。AI・DXコンサル、SAPコンサル、採用ブランディング、SNS運用代行、飲食事業。</p>
+      <p style="font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--ink-3);margin-top:20px;">設立 2026年2月 · 東京都渋谷区</p>
     </div>
-    <div>
-      <h5>Sitemap</h5>
-      <ul>
-        <li><a href="index.html">Index</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="works.html">Works</a></li>
-      </ul>
-    </div>
-    <div>
-      <h5>Company</h5>
-      <ul>
-        <li><a href="team.html">Team</a></li>
-        <li><a href="careers.html">Careers</a></li>
-        <li><a href="news.html">News</a></li>
-        <li><a href="company.html">Company Info</a></li>
-      </ul>
-    </div>
-    <div>
-      <h5>Contact</h5>
-      <ul>
-        <li><a href="mailto:hello@neuronworx.co.jp">hello@neuronworx.co.jp</a></li>
-        <li><a href="mailto:press@neuronworx.co.jp">press@neuronworx.co.jp</a></li>
-        <li><a href="mailto:careers@neuronworx.co.jp">careers@neuronworx.co.jp</a></li>
-        <li><a href="contact.html">→ お問い合わせ</a></li>
-      </ul>
-    </div>
+    <div><h5>Sitemap</h5><ul><li><a href="index.html">Index</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="works.html">Works</a></li></ul></div>
+    <div><h5>Company</h5><ul><li><a href="team.html">Team</a></li><li><a href="careers.html">Careers</a></li><li><a href="news.html">News</a></li><li><a href="company.html">Company</a></li></ul></div>
+    <div><h5>Contact</h5><ul><li><a href="mailto:hello@neuronworx.com">hello@neuronworx.com</a></li><li><a href="contact.html">→ お問い合わせ</a></li></ul></div>
   </div>
-  <div class="end-mark-row">
-    <div>© 2026 合同会社 Neuron Worx</div>
-    <div>Built in Tokyo · Signal OK</div>
-  </div>
+  <div class="footer-copy"><span>© 2026 合同会社 Neuron Worx</span><span>Built in Tokyo</span></div>
 </footer>
-<script src="assets/app.js"></script>
-
-<div class="tweaks" id="tweaks">
-  <h4>TWEAKS <span class="close" id="tweaks-close">×</span></h4>
-  <div class="tw-row"><span class="label">Theme</span><div class="tw-opts" data-key="theme">
-    <button class="tw-opt" data-val="dark">Dark</button>
-    <button class="tw-opt" data-val="light">Light</button>
-  </div></div>
-  <div class="tw-row"><span class="label">Accent</span><div class="tw-opts" data-key="accent">
-    <button class="tw-opt" data-val="violet">Violet</button>
-    <button class="tw-opt" data-val="gold">Gold</button>
-    <button class="tw-opt" data-val="crimson">Crimson</button>
-    <button class="tw-opt" data-val="mono">Mono</button>
-  </div></div>
-  <div class="tw-row"><span class="label">Font</span><div class="tw-opts" data-key="font">
-    <button class="tw-opt" data-val="serif-italic">Italic</button>
-    <button class="tw-opt" data-val="serif-roman">Roman</button>
-    <button class="tw-opt" data-val="mincho">明朝</button>
-    <button class="tw-opt" data-val="mono">Mono</button>
-  </div></div>
-  <div class="tw-row"><span class="label">Background</span><div class="tw-opts" data-key="heroLayout">
-    <button class="tw-opt" data-val="neural">Wireframe</button>
-    <button class="tw-opt" data-val="grid">Circuit</button>
-    <button class="tw-opt" data-val="noise">Warp</button>
-  </div></div>
-  <div class="tw-row"><span class="label">Motion <span id="mi-val" style="float:right;color:var(--gold)">2</span></span>
-    <input type="range" class="tw-range" id="mi" min="0" max="3" step="1" value="2"/>
-  </div>
-</div>
 <div class="page-trans" id="page-trans"></div>
-</body></html>
+<script src="assets/app.js"></script>
+</body>
+</html>

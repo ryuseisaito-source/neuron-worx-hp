@@ -1,267 +1,131 @@
 <!doctype html>
-<html lang="ja"><head>
-<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Team — Neuron Worx</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;700&display=swap"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700;900&display=swap"/>
 <link rel="stylesheet" href="assets/theme.css"/>
-<script>const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{"theme":"dark","accent":"violet","font":"serif-italic","heroLayout":"neural","motionIntensity":2}/*EDITMODE-END*/;</script>
+<script>const TWEAK_DEFAULTS={"theme":"dark","accent":"orange","font":"sans"};</script>
 <style>
-main{ padding: 0 40px; }
-.container{ max-width: var(--max); margin: 0 auto; }
+main{padding-top:52px;}
+.ph{padding:80px 48px 64px;border-bottom:1px solid var(--line);}
+.ph-label{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);margin-bottom:20px;}
+.ph-title{font-family:var(--display);font-style:var(--display-style);font-weight:var(--display-weight);font-size:clamp(44px,7vw,110px);line-height:.86;letter-spacing:-.04em;text-transform:uppercase;color:var(--ink);}
+.ph-sub{font-family:var(--sans);font-size:15px;color:var(--ink-2);line-height:1.8;margin-top:28px;max-width:52ch;}
+.section{padding:72px 48px;border-bottom:1px solid var(--line);}
+.section-label{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);margin-bottom:16px;}
+.section-title{font-family:var(--display);font-style:var(--display-style);font-weight:var(--display-weight);font-size:clamp(28px,3.5vw,52px);line-height:1;letter-spacing:-.025em;color:var(--ink);margin-bottom:28px;}
+.prose{font-family:"Noto Sans JP","Inter",sans-serif;font-size:15px;line-height:2;color:var(--ink-2);max-width:60ch;}
+.prose p+p{margin-top:1.2em;}
+.dl-grid{display:grid;grid-template-columns:200px 1fr;gap:0;border-top:1px solid var(--line);}
+.dl-row{display:contents;}
+.dl-row dt,.dl-row dd{padding:18px 0;border-bottom:1px solid var(--line);font-family:var(--sans);font-size:14px;line-height:1.7;}
+.dl-row dt{color:var(--ink-3);font-weight:600;letter-spacing:.04em;padding-right:32px;}
+.dl-row dd{color:var(--ink-2);}
+@media(max-width:900px){
+  .ph{padding:72px 24px 48px;}
+  .section{padding:48px 24px;}
+  .dl-grid{grid-template-columns:140px 1fr;}
+}
+.team-grid{{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line);border-left:1px solid var(--line);}}
+.team-card{{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:40px 32px;}}
+.tc-role{{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}}
+.tc-name{{font-family:var(--display);font-style:var(--display-style);font-weight:var(--display-weight);font-size:clamp(20px,2.2vw,36px);letter-spacing:-.02em;color:var(--ink);margin-bottom:12px;}}
+.tc-bio{{font-family:var(--sans);font-size:13px;color:var(--ink-3);line-height:1.8;}}
+@media(max-width:900px){{.team-grid{{grid-template-columns:1fr 1fr;}}}}
+@media(max-width:600px){{.team-grid{{grid-template-columns:1fr;}}}}
+</style>
+</head>
+<body data-theme="dark" data-accent="orange" data-font="sans">
 
-.leads{ display:grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);}
-.lead-card{ padding: 48px 40px; border-left: 1px solid var(--line); display:grid; grid-template-columns: 120px 1fr; gap: 28px;}
-.lead-card:first-child{ border-left: 0; }
-.lead-card .port{ aspect-ratio: 3/4; background: linear-gradient(180deg, rgba(212,178,116,0.18), rgba(212,178,116,0.02)); border: 1px solid var(--line-gold); position: relative; overflow: hidden;}
-.lead-card .port::after{ content:""; position: absolute; inset: 0; background-image: radial-gradient(circle at 50% 35%, rgba(255,255,255,0.1), transparent 60%), repeating-linear-gradient(0deg, transparent 0, transparent 2px, rgba(0,0,0,0.1) 2px, rgba(0,0,0,0.1) 3px); mix-blend-mode: overlay;}
-.lead-card .port .init{ position: absolute; inset: 0; display:grid; place-items: center; font-family: var(--display); font-style: var(--display-style); font-size: 72px; color: var(--gold); opacity: .8;}
-.lead-card .role{ font-family: var(--mono); font-size: 10.5px; letter-spacing: .22em; color: var(--gold); text-transform: uppercase;}
-.lead-card h3{ margin: 10px 0 4px; font-family: var(--display); font-style: var(--display-style); font-weight: 400; font-size: 44px; letter-spacing: -.02em; color: var(--ink);}
-.lead-card .jp{ font-family: var(--serif-jp); color: var(--ink-2); font-size: 14px; letter-spacing: .04em;}
-.lead-card .bio{ font-family: var(--serif-jp); font-size: 13.5px; line-height: 2; color: var(--ink-2); margin-top: 18px; max-width: 44ch;}
-.lead-card .meta{ display: flex; gap: 24px; margin-top: 20px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .14em; color: var(--ink-3); text-transform: uppercase;}
-.lead-card .meta b{ display:block; color: var(--ink); font-family: var(--serif-jp); font-size: 13px; font-weight: 400; letter-spacing: 0; text-transform: none; margin-top: 4px;}
-.people{ display:grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid var(--line); margin-top: 64px;}
-.person{ padding: 28px 24px; border-left: 1px solid var(--line); border-top: 1px solid var(--line); min-height: 220px; position: relative;}
-.person:nth-child(4n+1){ border-left: 0;} .person:nth-child(-n+4){ border-top: 0;}
-.person .n{ font-family: var(--mono); font-size: 10px; letter-spacing: .2em; color: var(--ink-3);}
-.person .nm{ font-family: var(--display); font-style: var(--display-style); font-size: 26px; margin: 10px 0 2px; color: var(--ink); letter-spacing: -.01em;}
-.person .jp{ font-family: var(--serif-jp); font-size: 11.5px; color: var(--ink-2);}
-.person .r{ font-family: var(--mono); font-size: 10.5px; letter-spacing: .18em; color: var(--gold); text-transform: uppercase; margin-top: 14px;}
-.person .bio{ font-family: var(--serif-jp); font-size: 12px; line-height: 1.85; color: var(--ink-2); margin-top: 10px;}
-.person .div{ position: absolute; top: 12px; right: 14px; font-family: var(--mono); font-size: 9.5px; letter-spacing: .14em; color: var(--ink-3);}
-.chart{ border: 1px solid var(--line); padding: 32px; margin-top: 96px;}
-.chart-bars{ display:grid; grid-template-columns: 120px 1fr 80px; gap: 20px; align-items: center; font-family: var(--mono); font-size: 12px;}
-.chart-row{ display: contents;}
-.chart-row .lbl{ color: var(--ink); letter-spacing: .06em;}
-.chart-row .bar{ height: 8px; background: rgba(212,178,116,0.08); position: relative; overflow: hidden;}
-.chart-row .bar::after{ content:""; position: absolute; inset: 0; width: var(--w, 50%); color: var(--gold); background-size: 200% 100%; animation: foil-sweep 6s linear infinite; animation-duration: calc(6s / max(0.2, var(--motion)));}
-.chart-row .v{ color: var(--ink-2); text-align: right; font-size: 11px; letter-spacing: .1em;}
-.chart-gap{ height: 14px; grid-column: 1 / -1;}
-@media (max-width: 900px){ .leads{ grid-template-columns: 1fr;} .lead-card{ border-left: 0; border-top: 1px solid var(--line); grid-template-columns: 80px 1fr; padding: 28px;} .lead-card:first-child{ border-top: 0;} .people{ grid-template-columns: 1fr 1fr;} .person:nth-child(4n+1){ border-left: 1px solid var(--line);} .person:nth-child(2n+1){ border-left: 0;} .person:nth-child(-n+2){ border-top: 0;} .person:nth-child(3), .person:nth-child(4){ border-top: 1px solid var(--line);}}
-</style></head>
-<body data-theme="dark" data-accent="violet" data-font="serif-italic" data-hero="neural">
+<div class="menu-overlay" id="menu">
+  <button class="menu-close" id="menu-close">×</button>
+  <nav><ul class="menu-links">
+    <li><a href="index.html">Index <span class="arr">↗</span></a></li>
+    <li><a href="about.html">About <span class="arr">↗</span></a></li>
+    <li><a href="services.html">Services <span class="arr">↗</span></a></li>
+    <li><a href="works.html">Works <span class="arr">↗</span></a></li>
+    <li><a href="team.html">Team <span class="arr">↗</span></a></li>
+    <li><a href="careers.html">Careers <span class="arr">↗</span></a></li>
+    <li><a href="news.html">News <span class="arr">↗</span></a></li>
+    <li><a href="company.html">Company <span class="arr">↗</span></a></li>
+    <li><a href="contact.html">Contact <span class="arr">↗</span></a></li>
+  </ul></nav>
+  <div class="menu-foot"><span>© 2026 合同会社 Neuron Worx</span><span>Tokyo, Japan</span></div>
+</div>
 
-<canvas id="bg-canvas"></canvas>
-<div class="bg-vignette"></div>
-
-<header class="chrome-top">
+<nav class="site-nav">
   <a class="logo" href="index.html">
-    <span class="logo-mark">
-      <svg viewBox="0 0 24 24" fill="none">
-        <defs><linearGradient id="nwlg2" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="#d4b274"/><stop offset="1" stop-color="#fae7b4"/>
-        </linearGradient></defs>
-        <circle cx="6"  cy="6"  r="1.8" fill="currentColor"/>
-        <circle cx="18" cy="6"  r="1.8" fill="currentColor"/>
-        <circle cx="6"  cy="18" r="1.8" fill="currentColor"/>
-        <circle cx="18" cy="18" r="1.8" fill="currentColor"/>
-        <circle cx="12" cy="12" r="3"   fill="url(#nwlg2)"/>
-        <path d="M6 6 L12 12 L18 6 M6 18 L12 12 L18 18" stroke="currentColor" stroke-width="0.8"/>
-      </svg>
-    </span>
+    <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none"><defs><linearGradient id="nwlg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#252745"/><stop offset="1" stop-color="#3a3d70"/></linearGradient></defs><circle cx="6" cy="6" r="1.8" fill="currentColor"/><circle cx="18" cy="6" r="1.8" fill="currentColor"/><circle cx="6" cy="18" r="1.8" fill="currentColor"/><circle cx="18" cy="18" r="1.8" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="url(#nwlg)"/><path d="M6 6 L12 12 L18 6 M6 18 L12 12 L18 18" stroke="currentColor" stroke-width="0.85"/></svg></span>
     NEURON WORX
   </a>
-  <nav class="nav">
-    <a href="index.html">Index</a>
-    <a href="about.html">About</a>
-    <a href="services.html">Services</a>
-    <a href="works.html">Works</a>
-    <a href="team.html" class="on">Team</a>
-    <a href="careers.html">Careers</a>
-    <a href="news.html">News</a>
-    <a href="company.html">Company</a>
-  </nav>
-  <a class="cta-top" href="contact.html">Contact &#x2192;</a>
-</header>
-
-<div class="chrome-bottom">
-  <div><span class="tick">●</span>&nbsp; LIVE · 2026</div>
-  <div><span id="clock">--:--:--</span>&nbsp; JST · 35.676°N 139.650°E</div>
-  <div>N°<span id="cursor-coord">000,000</span></div>
-</div>
-  <div><span id="clock" class="now">--:--:--</span>&nbsp;&nbsp;JST &middot; TYO 35.676&deg;N, 139.650&deg;E</div>
-  <div>N&#xB0;<span id="cursor-coord">000,000</span></div>
-</div>
-
-<div class="tweaks" id="tweaks">
-  <h4>TWEAKS <span class="close" id="tweaks-close">&#xD7;</span></h4>
-  <div class="tw-row"><span class="label">Theme</span><div class="tw-opts" data-key="theme">
-    <button class="tw-opt" data-val="dark">Dark</button>
-    <button class="tw-opt" data-val="light">Light</button>
-  </div></div>
-  <div class="tw-row"><span class="label">Accent</span><div class="tw-opts" data-key="accent">
-    <button class="tw-opt" data-val="violet">Violet</button>
-    <button class="tw-opt" data-val="gold">Gold</button>
-    <button class="tw-opt" data-val="crimson">Crimson</button>
-    <button class="tw-opt" data-val="mono">Mono</button>
-  </div></div>
-  <div class="tw-row"><span class="label">Display Font</span><div class="tw-opts" data-key="font">
-    <button class="tw-opt" data-val="serif-italic">Italic</button>
-    <button class="tw-opt" data-val="serif-roman">Roman</button>
-    <button class="tw-opt" data-val="mincho">&#26126;&#26397;</button>
-    <button class="tw-opt" data-val="mono">Mono</button>
-  </div></div>
-  <div class="tw-row"><span class="label">Background</span><div class="tw-opts" data-key="heroLayout">
-    <button class="tw-opt" data-val="neural">Wireframe</button>
-    <button class="tw-opt" data-val="grid">Circuit</button>
-    <button class="tw-opt" data-val="noise">Warp</button>
-  </div></div>
-  <div class="tw-row"><span class="label">Motion <span id="mi-val" style="float:right;color:var(--gold)">2</span></span>
-    <input type="range" class="tw-range" id="mi" min="0" max="3" step="1" value="2"/>
+  <div class="nav-right">
+    <a class="nav-contact" href="contact.html">CONTACT</a>
+    <button class="nav-hamburger" id="menu-open"><span></span><span></span><span></span></button>
   </div>
-</div>
-
-
+</nav>
 
 <main>
-<section class="page-head container reveal">
-  <div class="eyebrow">N° 05 ─ TEAM</div>
-  <h1 class="page-h1"><em class="">Fourteen</em><br/>people.</h1>
-  <p class="page-kicker">正社員14名、外部パートナー28名。エンジニア、料理人、ヘッドハンター、不動産のプロが同じ床で働く。</p>
-  <div class="page-meta">
-    <div>Full-time<b>14 名</b></div><div>Partners<b>28 名</b></div><div>Disciplines<b>AI · Talent · F&amp;B · R.E.</b></div><div>Avg. years<b>12.4 年</b></div>
+  <div class="ph">
+    <p class="ph-label">Team — メンバー</p>
+    <h1 class="ph-title">TEAM</h1>
+    <p class="ph-sub">コンサルファーム出身者、スタートアップの元CEO、トップクリエイターなど、多様なバックグラウンドを持つメンバーが集まっています。</p>
   </div>
-</section>
 
-<section class="container reveal">
-  <div class="sec-head"><div><span class="num">N° 05.1</span>&nbsp;&nbsp;FOUNDERS ─ 共同代表</div><h2><em class="serif-it">Two</em><br/>founders.</h2><div class="right">二人とも、四事業すべてに手を出す。<br/>専任のCEO/COOではない。</div></div>
-  <div class="leads">
-    <div class="lead-card">
-      <div class="port"><div class="init">K</div></div>
-      <div>
-        <div class="role">Co-founder · 代表社員</div>
-        <h3>Kei Arakawa</h3>
-        <div class="jp">荒川 圭一</div>
-        <div class="bio">元戦略コンサル、のちに外資系AIラボで研究開発。2021年にNeuron Worxを創業、AI事業と不動産事業を統括。休日は発酵。</div>
-        <div class="meta"><div>AT<b>AI · R.E.</b></div><div>FROM<b>Tokyo</b></div><div>YRS<b>14</b></div></div>
+  <div class="section reveal">
+    <p class="section-label">Members</p>
+    <div class="team-grid">
+      <div class="team-card">
+        <p class="tc-role">Founder / CEO</p>
+        <h2 class="tc-name">代表者名</h2>
+        <p class="tc-bio">準備中</p>
+      </div>
+      <div class="team-card">
+        <p class="tc-role">AI・DX Consulting</p>
+        <h2 class="tc-name">メンバー</h2>
+        <p class="tc-bio">コンサルティングファーム出身。AI・DX領域を担当。</p>
+      </div>
+      <div class="team-card">
+        <p class="tc-role">SAP Consulting</p>
+        <h2 class="tc-name">メンバー</h2>
+        <p class="tc-bio">SAP専門コンサルタント。導入・移行プロジェクトをリード。</p>
+      </div>
+      <div class="team-card">
+        <p class="tc-role">SNS / Creative</p>
+        <h2 class="tc-name">メンバー</h2>
+        <p class="tc-bio">トップクリエイター出身。YouTube・TikTok運用を担当。</p>
+      </div>
+      <div class="team-card">
+        <p class="tc-role">Recruitment Branding</p>
+        <h2 class="tc-name">メンバー</h2>
+        <p class="tc-bio">採用・HR領域のプロフェッショナル。採用ブランディングを担当。</p>
+      </div>
+      <div class="team-card">
+        <p class="tc-role">F&amp;B</p>
+        <h2 class="tc-name">メンバー</h2>
+        <p class="tc-bio">飲食店事業の運営・管理を担当。</p>
       </div>
     </div>
-    <div class="lead-card">
-      <div class="port"><div class="init">M</div></div>
-      <div>
-        <div class="role">Co-founder · 業務執行社員</div>
-        <h3>Mao Higuchi</h3>
-        <div class="jp">樋口 真緒</div>
-        <div class="bio">元ヘッドハンター。国内外のエグゼクティブサーチ12年、飲食店のサービス経験7年。採用事業と飲食事業を統括。</div>
-        <div class="meta"><div>AT<b>Talent · F&amp;B</b></div><div>FROM<b>Osaka</b></div><div>YRS<b>19</b></div></div>
-      </div>
-    </div>
   </div>
-</section>
-
-<section class="container reveal">
-  <div class="sec-head"><div><span class="num">N° 05.2</span>&nbsp;&nbsp;CORE ─ コアメンバー</div><h2><em class="serif-it">The</em><br/>core.</h2><div class="right">日々の業務を回す十二人。</div></div>
-  <div class="people">
-    <div class="person"><div class="n">N° 03</div><div class="div">AI</div><div class="nm">Ryo Nakamura</div><div class="jp">中村 亮</div><div class="r">Head of AI</div><div class="bio">LLM基盤・評価。元大手SIのMLリード。論文8本。</div></div>
-    <div class="person"><div class="n">N° 04</div><div class="div">AI</div><div class="nm">Nina Sato</div><div class="jp">佐藤 ニナ</div><div class="r">ML Engineer</div><div class="bio">RAG / エージェント / MLOps。英日バイリンガル。</div></div>
-    <div class="person"><div class="n">N° 05</div><div class="div">AI</div><div class="nm">Jun Ishikawa</div><div class="jp">石川 純</div><div class="r">AI Strategist</div><div class="bio">戦略コンサル出身。経営会議に出すまでを伴走。</div></div>
-    <div class="person"><div class="n">N° 06</div><div class="div">TAL</div><div class="nm">Aya Kuroda</div><div class="jp">黒田 彩</div><div class="r">Head of Talent</div><div class="bio">エンジニア採用の仕組み化専門。元大手人材紹介。</div></div>
-    <div class="person"><div class="n">N° 07</div><div class="div">TAL</div><div class="nm">Daisuke Hara</div><div class="jp">原 大輔</div><div class="r">Exec Search</div><div class="bio">CxOサーチ。年間18案件の成約実績。</div></div>
-    <div class="person"><div class="n">N° 08</div><div class="div">TAL</div><div class="nm">Sae Matsuda</div><div class="jp">松田 紗恵</div><div class="r">Employer Brand</div><div class="bio">採用広報・面接設計・入社後フォロー。</div></div>
-    <div class="person"><div class="n">N° 09</div><div class="div">F&amp;B</div><div class="nm">Takumi Ono</div><div class="jp">小野 拓</div><div class="r">Chef de Cuisine</div><div class="bio">Kitsune Bistro料理長。ビストロ15年、ミシュラン星経験。</div></div>
-    <div class="person"><div class="n">N° 10</div><div class="div">F&amp;B</div><div class="nm">Hina Kimura</div><div class="jp">木村 日菜</div><div class="r">Sommelier</div><div class="bio">日本酒唎酒師 / 仏ワイン。ペアリング設計。</div></div>
-    <div class="person"><div class="n">N° 11</div><div class="div">F&amp;B</div><div class="nm">Kenji Ueda</div><div class="jp">上田 健二</div><div class="r">GM Restaurants</div><div class="bio">店舗運営・原価・シフト。20年のオペ経験。</div></div>
-    <div class="person"><div class="n">N° 12</div><div class="div">R.E.</div><div class="nm">Saya Fujii</div><div class="jp">藤井 紗弥</div><div class="r">Head of R.E.</div><div class="bio">用途転換と中小物件運用。宅建・建築士。</div></div>
-    <div class="person"><div class="n">N° 13</div><div class="div">R.E.</div><div class="nm">Yu Tanaka</div><div class="jp">田中 優</div><div class="r">Leasing</div><div class="bio">テナント誘致。人で貸す、が信条。</div></div>
-    <div class="person"><div class="n">N° 14</div><div class="div">OPS</div><div class="nm">Rina Mori</div><div class="jp">森 里奈</div><div class="r">COO Office</div><div class="bio">四事業の横断オペレーション。経理・法務の窓口。</div></div>
-  </div>
-</section>
-
-<section class="container reveal">
-  <div class="sec-head"><div><span class="num">N° 05.3</span>&nbsp;&nbsp;SHAPE ─ チームの形</div><h2><em class="serif-it">Not</em><br/>a pyramid.</h2><div class="right">組織はピラミッドではない。事業ごとに異なる形をしている。</div></div>
-  <div class="chart">
-    <div class="chart-bars">
-      <div class="chart-row"><div class="lbl">AI</div><div class="bar" style="--w: 42%"></div><div class="v">5 / 14 名</div></div>
-      <div class="chart-row"><div class="lbl">Talent</div><div class="bar" style="--w: 25%"></div><div class="v">3 / 14 名</div></div>
-      <div class="chart-row"><div class="lbl">F&amp;B</div><div class="bar" style="--w: 25%"></div><div class="v">3 / 14 名</div></div>
-      <div class="chart-row"><div class="lbl">Real Estate</div><div class="bar" style="--w: 17%"></div><div class="v">2 / 14 名</div></div>
-      <div class="chart-row"><div class="lbl">Ops</div><div class="bar" style="--w: 8%"></div><div class="v">1 / 14 名</div></div>
-      <div class="chart-gap"></div>
-      <div class="chart-row"><div class="lbl">Tokyo</div><div class="bar" style="--w: 86%"></div><div class="v">12 / 14 名</div></div>
-      <div class="chart-row"><div class="lbl">Remote (JP)</div><div class="bar" style="--w: 14%"></div><div class="v">2 / 14 名</div></div>
-      <div class="chart-gap"></div>
-      <div class="chart-row"><div class="lbl">Ex-大手</div><div class="bar" style="--w: 57%"></div><div class="v">8 / 14 名</div></div>
-      <div class="chart-row"><div class="lbl">Ex-起業家</div><div class="bar" style="--w: 29%"></div><div class="v">4 / 14 名</div></div>
-      <div class="chart-row"><div class="lbl">Ex-職人</div><div class="bar" style="--w: 21%"></div><div class="v">3 / 14 名</div></div>
-    </div>
-  </div>
-</section>
 </main>
 
-<div class="end-mark"><span class="">TEAM</span></div>
-
-<footer class="end">
-  <div class="end-wrap">
+<footer class="site-footer">
+  <div class="footer-grid">
     <div>
-      <div style="font-family:var(--mono);font-size:13px;letter-spacing:.22em;margin-bottom:18px;color:var(--ink);">NEURON · WORX</div>
-      <div style="font-family:var(--serif-jp);color:var(--ink-2);line-height:1.9;font-size:14px;max-width:42ch;">
-        合同会社 Neuron Worx は、AI・人材・食・不動産の四領域を編む東京の事業体です。異領域の接続を本業とします。
-      </div>
-      <div class="rule-gold" style="margin:24px 0 0;max-width:320px;"><span class="dot"></span>EST. 2021 · TOKYO</div>
+      <div style="font-family:var(--sans);font-size:11px;font-weight:800;letter-spacing:.24em;color:var(--ink);margin-bottom:16px;text-transform:uppercase;">Neuron Worx</div>
+      <p style="font-family:var(--sans);font-size:13px;color:var(--ink-3);line-height:1.9;max-width:36ch;">合同会社 Neuron Worx。AI・DXコンサル、SAPコンサル、採用ブランディング、SNS運用代行、飲食事業。</p>
+      <p style="font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--ink-3);margin-top:20px;">設立 2026年2月 · 東京都渋谷区</p>
     </div>
-    <div>
-      <h5>Sitemap</h5>
-      <ul>
-        <li><a href="index.html">Index</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="works.html">Works</a></li>
-      </ul>
-    </div>
-    <div>
-      <h5>Company</h5>
-      <ul>
-        <li><a href="team.html">Team</a></li>
-        <li><a href="careers.html">Careers</a></li>
-        <li><a href="news.html">News</a></li>
-        <li><a href="company.html">Company Info</a></li>
-      </ul>
-    </div>
-    <div>
-      <h5>Contact</h5>
-      <ul>
-        <li><a href="mailto:hello@neuronworx.co.jp">hello@neuronworx.co.jp</a></li>
-        <li><a href="mailto:press@neuronworx.co.jp">press@neuronworx.co.jp</a></li>
-        <li><a href="mailto:careers@neuronworx.co.jp">careers@neuronworx.co.jp</a></li>
-        <li><a href="contact.html">→ お問い合わせ</a></li>
-      </ul>
-    </div>
+    <div><h5>Sitemap</h5><ul><li><a href="index.html">Index</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="works.html">Works</a></li></ul></div>
+    <div><h5>Company</h5><ul><li><a href="team.html">Team</a></li><li><a href="careers.html">Careers</a></li><li><a href="news.html">News</a></li><li><a href="company.html">Company</a></li></ul></div>
+    <div><h5>Contact</h5><ul><li><a href="mailto:hello@neuronworx.com">hello@neuronworx.com</a></li><li><a href="contact.html">→ お問い合わせ</a></li></ul></div>
   </div>
-  <div class="end-mark-row">
-    <div>© 2026 合同会社 Neuron Worx</div>
-    <div>Built in Tokyo · Signal OK</div>
-  </div>
+  <div class="footer-copy"><span>© 2026 合同会社 Neuron Worx</span><span>Built in Tokyo</span></div>
 </footer>
-<script src="assets/app.js"></script>
-
-<div class="tweaks" id="tweaks">
-  <h4>TWEAKS <span class="close" id="tweaks-close">×</span></h4>
-  <div class="tw-row"><span class="label">Theme</span><div class="tw-opts" data-key="theme">
-    <button class="tw-opt" data-val="dark">Dark</button>
-    <button class="tw-opt" data-val="light">Light</button>
-  </div></div>
-  <div class="tw-row"><span class="label">Accent</span><div class="tw-opts" data-key="accent">
-    <button class="tw-opt" data-val="violet">Violet</button>
-    <button class="tw-opt" data-val="gold">Gold</button>
-    <button class="tw-opt" data-val="crimson">Crimson</button>
-    <button class="tw-opt" data-val="mono">Mono</button>
-  </div></div>
-  <div class="tw-row"><span class="label">Font</span><div class="tw-opts" data-key="font">
-    <button class="tw-opt" data-val="serif-italic">Italic</button>
-    <button class="tw-opt" data-val="serif-roman">Roman</button>
-    <button class="tw-opt" data-val="mincho">明朝</button>
-    <button class="tw-opt" data-val="mono">Mono</button>
-  </div></div>
-  <div class="tw-row"><span class="label">Background</span><div class="tw-opts" data-key="heroLayout">
-    <button class="tw-opt" data-val="neural">Wireframe</button>
-    <button class="tw-opt" data-val="grid">Circuit</button>
-    <button class="tw-opt" data-val="noise">Warp</button>
-  </div></div>
-  <div class="tw-row"><span class="label">Motion <span id="mi-val" style="float:right;color:var(--gold)">2</span></span>
-    <input type="range" class="tw-range" id="mi" min="0" max="3" step="1" value="2"/>
-  </div>
-</div>
 <div class="page-trans" id="page-trans"></div>
-</body></html>
+<script src="assets/app.js"></script>
+</body>
+</html>

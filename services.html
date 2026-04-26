@@ -1,408 +1,200 @@
 <!doctype html>
-<html lang="ja"><head>
-<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Services — Neuron Worx</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;700&display=swap"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700;900&display=swap"/>
 <link rel="stylesheet" href="assets/theme.css"/>
-<script>const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{"theme":"dark","accent":"violet","font":"serif-italic","heroLayout":"neural","motionIntensity":2}/*EDITMODE-END*/;</script>
+<script>const TWEAK_DEFAULTS={"theme":"dark","accent":"orange","font":"sans"};</script>
 <style>
-main{ padding: 0 40px; }
-.container{ max-width: var(--max); margin: 0 auto; }
+main{padding-top:52px;}
+.ph{padding:80px 48px 64px;border-bottom:1px solid var(--line);}
+.ph-label{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);margin-bottom:20px;}
+.ph-title{font-family:var(--display);font-style:var(--display-style);font-weight:var(--display-weight);font-size:clamp(44px,7vw,110px);line-height:.86;letter-spacing:-.04em;text-transform:uppercase;color:var(--ink);}
+.ph-sub{font-family:var(--sans);font-size:15px;color:var(--ink-2);line-height:1.8;margin-top:28px;max-width:52ch;}
+.section{padding:72px 48px;border-bottom:1px solid var(--line);}
+.section-label{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);margin-bottom:16px;}
+.section-title{font-family:var(--display);font-style:var(--display-style);font-weight:var(--display-weight);font-size:clamp(28px,3.5vw,52px);line-height:1;letter-spacing:-.025em;color:var(--ink);margin-bottom:28px;}
+.prose{font-family:"Noto Sans JP","Inter",sans-serif;font-size:15px;line-height:2;color:var(--ink-2);max-width:60ch;}
+.prose p+p{margin-top:1.2em;}
+.dl-grid{display:grid;grid-template-columns:200px 1fr;gap:0;border-top:1px solid var(--line);}
+.dl-row{display:contents;}
+.dl-row dt,.dl-row dd{padding:18px 0;border-bottom:1px solid var(--line);font-family:var(--sans);font-size:14px;line-height:1.7;}
+.dl-row dt{color:var(--ink-3);font-weight:600;letter-spacing:.04em;padding-right:32px;}
+.dl-row dd{color:var(--ink-2);}
+@media(max-width:900px){
+  .ph{padding:72px 24px 48px;}
+  .section{padding:48px 24px;}
+  .dl-grid{grid-template-columns:140px 1fr;}
+}
+.svc-block{{border-bottom:1px solid var(--line);}}
+.svc-inner{{display:grid;grid-template-columns:280px 1fr;gap:64px;align-items:start;padding:72px 48px;}}
+.svc-num{{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);margin-bottom:16px;}}
+.svc-name{{font-family:var(--display);font-style:var(--display-style);font-weight:var(--display-weight);font-size:clamp(28px,3.5vw,52px);line-height:1.05;letter-spacing:-.025em;color:var(--ink);}}
+.svc-name-en{{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin-top:10px;}}
+.svc-desc{{font-family:"Noto Sans JP","Inter",sans-serif;font-size:15px;line-height:2;color:var(--ink-2);margin-bottom:32px;}}
+.svc-list{{border-top:1px solid var(--line);list-style:none;}}
+.svc-list li{{display:flex;align-items:baseline;gap:14px;padding:14px 0;border-bottom:1px solid var(--line);font-family:var(--sans);font-size:14px;color:var(--ink-2);line-height:1.6;}}
+.svc-list li::before{{content:"—";color:var(--accent);flex-shrink:0;font-family:var(--mono);font-size:11px;}}
+@media(max-width:900px){{.svc-inner{{grid-template-columns:1fr;gap:32px;padding:48px 24px;}}}}
+</style>
+</head>
+<body data-theme="dark" data-accent="orange" data-font="sans">
 
-.svc{ display:grid; grid-template-columns: 1fr 1.2fr; gap: 72px; padding: 96px 0; border-top: 1px solid var(--line); align-items: start; position: relative; }
-.svc .side{ position: sticky; top: 120px; align-self: start; }
-.svc .bignum{ font-family: var(--display); font-style: var(--display-style); font-size: clamp(96px, 14vw, 240px); line-height:.82; color: transparent; color: var(--gold); background-size: 220% 100%; -webkit-background-clip:text; background-clip:text; animation: foil-sweep 8s linear infinite; animation-duration: calc(8s / max(0.2, var(--motion))); letter-spacing: -.04em; margin:0;}
-.svc h2{ margin: 8px 0 16px; font-family: var(--display); font-style: var(--display-style); font-size: clamp(48px, 5.5vw, 96px); line-height:.92; letter-spacing:-.028em; font-weight: 400;}
-.svc .jp{ font-family: var(--serif-jp); color: var(--ink); font-size: 18px; letter-spacing: .04em;}
-.svc .lead{ font-family: var(--serif-jp); color: var(--ink-2); font-size: 15px; line-height: 2.05; max-width: 54ch; margin-top: 28px;}
-.svc .lead b{ color: var(--ink); font-weight: 500;}
-.offer{ display:grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--line); margin-top: 32px;}
-.offer .it{ padding: 24px; border-left: 1px solid var(--line); border-top: 1px solid var(--line); min-height: 160px;}
-.offer .it:nth-child(odd){ border-left: 0; } .offer .it:nth-child(-n+2){ border-top: 0;}
-.offer .it .n{ font-family: var(--mono); font-size: 10px; letter-spacing: .2em; color: var(--ink-3); text-transform: uppercase;}
-.offer .it h4{ margin: 8px 0 6px; font-family: var(--display); font-style: var(--display-style); font-weight: 400; font-size: 26px; letter-spacing: -.01em;}
-.offer .it p{ margin: 0; font-family: var(--serif-jp); color: var(--ink-2); font-size: 13px; line-height: 1.9;}
-.pricing{ border: 1px solid var(--line-gold); padding: 28px 32px; margin-top: 32px; background: linear-gradient(180deg, rgba(212,178,116,0.05), transparent);}
-.pricing .head{ display:flex; justify-content: space-between; align-items: baseline; padding-bottom: 14px; border-bottom: 1px solid var(--line); font-family: var(--mono); font-size: 11px; letter-spacing: .18em; color: var(--ink-2); text-transform: uppercase;}
-.pricing .head b{ color: var(--gold); font-weight: 500;}
-.pricing ul{ margin: 16px 0 0; padding: 0; list-style: none; font-family: var(--serif-jp); font-size: 14px; color: var(--ink); display: grid; gap: 10px;}
-.pricing li{ display:flex; justify-content: space-between; align-items: baseline; gap: 24px; border-bottom: 1px dashed var(--line); padding-bottom: 10px;}
-.pricing li small{ font-family: var(--mono); color: var(--ink-2); font-size: 11px; letter-spacing: .12em;}
-.svc .viz{ position: sticky; top: 120px; aspect-ratio: 4/5; border: 1px solid var(--line); background: linear-gradient(180deg, rgba(212,178,116,0.07), transparent 60%), var(--bg-2); position: relative; overflow: hidden;}
-.svc .viz .label{ position:absolute; top: 16px; left: 16px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .18em; color: var(--ink-2); text-transform: uppercase;}
-.svc .viz .label b{ color: var(--gold); font-weight: 500;}
-.svc .viz svg{ position: absolute; inset: 0; width:100%; height:100%;}
-.toc{ position: sticky; top: 96px; border: 1px solid var(--line); padding: 16px 20px; background: color-mix(in oklab, var(--bg) 86%, transparent); z-index: 3; margin-bottom: 40px;
-  display:flex; gap: 22px; overflow-x: auto; font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase;}
-.toc a{ color: var(--ink-2); white-space: nowrap; padding: 4px 0; border-bottom: 1px solid transparent;}
-.toc a:hover{ color: var(--gold); border-color: var(--gold);}
-.toc a b{ color: var(--gold); margin-right: 6px; font-weight: 500;}
-@media (max-width: 900px){ .svc{ grid-template-columns: 1fr; gap: 32px;} .svc .side, .svc .viz{ position: static; } .offer{ grid-template-columns: 1fr;} .offer .it{ border-left: 0 !important;}}
-</style></head>
-<body data-theme="dark" data-accent="violet" data-font="serif-italic" data-hero="neural">
+<div class="menu-overlay" id="menu">
+  <button class="menu-close" id="menu-close">×</button>
+  <nav><ul class="menu-links">
+    <li><a href="index.html">Index <span class="arr">↗</span></a></li>
+    <li><a href="about.html">About <span class="arr">↗</span></a></li>
+    <li><a href="services.html">Services <span class="arr">↗</span></a></li>
+    <li><a href="works.html">Works <span class="arr">↗</span></a></li>
+    <li><a href="team.html">Team <span class="arr">↗</span></a></li>
+    <li><a href="careers.html">Careers <span class="arr">↗</span></a></li>
+    <li><a href="news.html">News <span class="arr">↗</span></a></li>
+    <li><a href="company.html">Company <span class="arr">↗</span></a></li>
+    <li><a href="contact.html">Contact <span class="arr">↗</span></a></li>
+  </ul></nav>
+  <div class="menu-foot"><span>© 2026 合同会社 Neuron Worx</span><span>Tokyo, Japan</span></div>
+</div>
 
-<canvas id="bg-canvas"></canvas>
-<div class="bg-vignette"></div>
-
-<header class="chrome-top">
+<nav class="site-nav">
   <a class="logo" href="index.html">
-    <span class="logo-mark">
-      <svg viewBox="0 0 24 24" fill="none">
-        <defs><linearGradient id="nwlg2" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="#d4b274"/><stop offset="1" stop-color="#fae7b4"/>
-        </linearGradient></defs>
-        <circle cx="6"  cy="6"  r="1.8" fill="currentColor"/>
-        <circle cx="18" cy="6"  r="1.8" fill="currentColor"/>
-        <circle cx="6"  cy="18" r="1.8" fill="currentColor"/>
-        <circle cx="18" cy="18" r="1.8" fill="currentColor"/>
-        <circle cx="12" cy="12" r="3"   fill="url(#nwlg2)"/>
-        <path d="M6 6 L12 12 L18 6 M6 18 L12 12 L18 18" stroke="currentColor" stroke-width="0.8"/>
-      </svg>
-    </span>
+    <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none"><defs><linearGradient id="nwlg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#252745"/><stop offset="1" stop-color="#3a3d70"/></linearGradient></defs><circle cx="6" cy="6" r="1.8" fill="currentColor"/><circle cx="18" cy="6" r="1.8" fill="currentColor"/><circle cx="6" cy="18" r="1.8" fill="currentColor"/><circle cx="18" cy="18" r="1.8" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="url(#nwlg)"/><path d="M6 6 L12 12 L18 6 M6 18 L12 12 L18 18" stroke="currentColor" stroke-width="0.85"/></svg></span>
     NEURON WORX
   </a>
-  <nav class="nav">
-    <a href="index.html">Index</a>
-    <a href="about.html">About</a>
-    <a href="services.html" class="on">Services</a>
-    <a href="works.html">Works</a>
-    <a href="team.html">Team</a>
-    <a href="careers.html">Careers</a>
-    <a href="news.html">News</a>
-    <a href="company.html">Company</a>
-  </nav>
-  <a class="cta-top" href="contact.html">Contact &#x2192;</a>
-</header>
-
-<div class="chrome-bottom">
-  <div><span class="tick">●</span>&nbsp; LIVE · 2026</div>
-  <div><span id="clock">--:--:--</span>&nbsp; JST · 35.676°N 139.650°E</div>
-  <div>N°<span id="cursor-coord">000,000</span></div>
-</div>
-  <div><span id="clock" class="now">--:--:--</span>&nbsp;&nbsp;JST &middot; TYO 35.676&deg;N, 139.650&deg;E</div>
-  <div>N&#xB0;<span id="cursor-coord">000,000</span></div>
-</div>
-
-<div class="tweaks" id="tweaks">
-  <h4>TWEAKS <span class="close" id="tweaks-close">&#xD7;</span></h4>
-  <div class="tw-row"><span class="label">Theme</span><div class="tw-opts" data-key="theme">
-    <button class="tw-opt" data-val="dark">Dark</button>
-    <button class="tw-opt" data-val="light">Light</button>
-  </div></div>
-  <div class="tw-row"><span class="label">Accent</span><div class="tw-opts" data-key="accent">
-    <button class="tw-opt" data-val="violet">Violet</button>
-    <button class="tw-opt" data-val="gold">Gold</button>
-    <button class="tw-opt" data-val="crimson">Crimson</button>
-    <button class="tw-opt" data-val="mono">Mono</button>
-  </div></div>
-  <div class="tw-row"><span class="label">Display Font</span><div class="tw-opts" data-key="font">
-    <button class="tw-opt" data-val="serif-italic">Italic</button>
-    <button class="tw-opt" data-val="serif-roman">Roman</button>
-    <button class="tw-opt" data-val="mincho">&#26126;&#26397;</button>
-    <button class="tw-opt" data-val="mono">Mono</button>
-  </div></div>
-  <div class="tw-row"><span class="label">Background</span><div class="tw-opts" data-key="heroLayout">
-    <button class="tw-opt" data-val="neural">Wireframe</button>
-    <button class="tw-opt" data-val="grid">Circuit</button>
-    <button class="tw-opt" data-val="noise">Warp</button>
-  </div></div>
-  <div class="tw-row"><span class="label">Motion <span id="mi-val" style="float:right;color:var(--gold)">2</span></span>
-    <input type="range" class="tw-range" id="mi" min="0" max="3" step="1" value="2"/>
+  <div class="nav-right">
+    <a class="nav-contact" href="contact.html">CONTACT</a>
+    <button class="nav-hamburger" id="menu-open"><span></span><span></span><span></span></button>
   </div>
-</div>
-
-
+</nav>
 
 <main>
-<section class="page-head container reveal">
-  <div class="eyebrow">N° 03 ─ SERVICES</div>
-  <h1 class="page-h1"><em class="">Four</em><br/>divisions.</h1>
-  <p class="page-kicker">独立して動き、内部で相互参照する四つの事業。PoCで終わらせない、運営まで伴走することを前提としたスコープで提供する。</p>
-  <div class="page-meta">
-    <div>01 AI<b>Intelligence / 知性</b></div><div>02 Talent<b>People / 人材</b></div><div>03 F&amp;B<b>Appetite / 食</b></div><div>04 Real Estate<b>Ground / 空間</b></div>
+  <div class="ph">
+    <p class="ph-label">Services — 事業内容</p>
+    <h1 class="ph-title">SERVICES</h1>
+    <p class="ph-sub">Neuron Worxは五つの事業領域において、クライアントの成長を支援します。コンサルファーム出身者、元スタートアップCEO、トップクリエイターが専門性を活かしてプロジェクトに取り組みます。</p>
   </div>
-</section>
 
-<div class="container">
-  <div class="toc">
-    <a href="#ai"><b>01</b>AI Consulting</a>
-    <a href="#talent"><b>02</b>Talent</a>
-    <a href="#fnb"><b>03</b>F&amp;B</a>
-    <a href="#real"><b>04</b>Real Estate</a>
-    <a href="#fifth"><b>∑</b>Fifth — 事業接続</a>
-  </div>
-</div>
-
-<section class="container reveal" id="ai">
-  <div class="svc">
-    <div class="side">
-      <h2 class="bignum">01</h2>
-      <h2>Intelligence.</h2>
-      <div class="jp">AIコンサルティング事業</div>
-      <p class="lead"><b>LLM時代の事業再設計。</b>AIを「導入」するのではなく、AIを前提に事業を組み直す。戦略・組織・実装の三層に同時に手を入れ、PoCで終わらない内製運用まで伴走する。</p>
-      <div class="offer">
-        <div class="it"><div class="n">01a</div><h4>Strategy</h4><p>AIを前提にした事業計画、投資シナリオ、組織設計のアドバイザリ。</p></div>
-        <div class="it"><div class="n">01b</div><h4>Build</h4><p>RAG基盤・エージェント・Fine-tuning。内製化を前提とした実装。</p></div>
-        <div class="it"><div class="n">01c</div><h4>Enable</h4><p>社内教育、プロンプトエンジニアリング、AIリテラシーの底上げ。</p></div>
-        <div class="it"><div class="n">01d</div><h4>Run</h4><p>MLOps、評価、ガードレール設計まで含む継続運用パッケージ。</p></div>
+  <div class="svc-block" id="ai">
+    <div class="svc-inner reveal">
+      <div>
+        <p class="svc-num">01 / AI・DX</p>
+        <h2 class="svc-name">AI・DX<br/>コンサル</h2>
+        <p class="svc-name-en">AI &amp; DX Consulting</p>
       </div>
-      <div class="pricing">
-        <div class="head"><span>PRICING</span><b>from ¥2.4M / mo</b></div>
-        <ul>
-          <li>Strategy Advisory<small>3ヶ月〜 · ¥2.4M/mo〜</small></li>
-          <li>Build + Enable<small>6ヶ月伴走 · ¥4.8M/mo〜</small></li>
-          <li>Run (MLOps)<small>月次契約 · ¥1.6M/mo〜</small></li>
+      <div>
+        <p class="svc-desc">AI・デジタルトランスフォーメーションの戦略立案から実行支援まで、企業変革をトータルでサポートします。最新のLLM技術や自動化ツールを活用し、業務効率化と新しい価値創出を実現します。</p>
+        <ul class="svc-list">
+          <li>AI導入戦略の立案・推進</li>
+          <li>LLMを活用した業務プロセス改善</li>
+          <li>DX推進ロードマップの策定</li>
+          <li>FC本部・大企業向けDXコンサルティング</li>
+          <li>システム選定・ベンダー選定支援</li>
+          <li>データ活用・分析基盤の構築支援</li>
         </ul>
       </div>
     </div>
-    <div class="viz">
-      <div class="label">// VIZ <b>01</b> · NEURAL LAYERS</div>
-      <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
-        <g stroke="var(--gold)" stroke-opacity=".45" stroke-width=".6" fill="none">
-          <g><circle cx="50" cy="120" r="6"/><circle cx="50" cy="200" r="6"/><circle cx="50" cy="280" r="6"/><circle cx="50" cy="360" r="6"/></g>
-          <g><circle cx="200" cy="80" r="6"/><circle cx="200" cy="160" r="6"/><circle cx="200" cy="240" r="6"/><circle cx="200" cy="320" r="6"/><circle cx="200" cy="400" r="6"/></g>
-          <g><circle cx="350" cy="120" r="6"/><circle cx="350" cy="200" r="6"/><circle cx="350" cy="280" r="6"/><circle cx="350" cy="360" r="6"/></g>
-          <g stroke-opacity=".25">
-            <line x1="50" y1="120" x2="200" y2="80"/><line x1="50" y1="120" x2="200" y2="160"/><line x1="50" y1="120" x2="200" y2="240"/>
-            <line x1="50" y1="200" x2="200" y2="80"/><line x1="50" y1="200" x2="200" y2="160"/><line x1="50" y1="200" x2="200" y2="240"/><line x1="50" y1="200" x2="200" y2="320"/>
-            <line x1="50" y1="280" x2="200" y2="160"/><line x1="50" y1="280" x2="200" y2="240"/><line x1="50" y1="280" x2="200" y2="320"/><line x1="50" y1="280" x2="200" y2="400"/>
-            <line x1="50" y1="360" x2="200" y2="240"/><line x1="50" y1="360" x2="200" y2="320"/><line x1="50" y1="360" x2="200" y2="400"/>
-            <line x1="200" y1="80" x2="350" y2="120"/><line x1="200" y1="80" x2="350" y2="200"/>
-            <line x1="200" y1="160" x2="350" y2="120"/><line x1="200" y1="160" x2="350" y2="200"/><line x1="200" y1="160" x2="350" y2="280"/>
-            <line x1="200" y1="240" x2="350" y2="200"/><line x1="200" y1="240" x2="350" y2="280"/><line x1="200" y1="240" x2="350" y2="360"/>
-            <line x1="200" y1="320" x2="350" y2="280"/><line x1="200" y1="320" x2="350" y2="360"/>
-            <line x1="200" y1="400" x2="350" y2="360"/>
-          </g>
-        </g>
-        <g font-family="var(--mono)" font-size="9" fill="var(--ink-3)">
-          <text x="38" y="460">INPUT</text><text x="180" y="460">HIDDEN</text><text x="335" y="460">OUTPUT</text>
-        </g>
-      </svg>
-    </div>
   </div>
-</section>
 
-<section class="container reveal" id="talent">
-  <div class="svc">
-    <div class="side">
-      <h2 class="bignum">02</h2>
-      <h2>People.</h2>
-      <div class="jp">採用コンサルティング事業</div>
-      <p class="lead"><b>母集団形成ではなく、組織設計としての採用。</b>CxO採用、エンジニア採用の仕組み化、人的資本の言語化まで。数字で追える採用へ。</p>
-      <div class="offer">
-        <div class="it"><div class="n">02a</div><h4>Exec Search</h4><p>CEO/CTO/CxO級のエグゼクティブサーチ。リテイナー形式。</p></div>
-        <div class="it"><div class="n">02b</div><h4>Hiring Design</h4><p>職種・JD・面接プロセス・評価体系の再設計。</p></div>
-        <div class="it"><div class="n">02c</div><h4>Employer Brand</h4><p>採用広報、採用サイト、採用ピッチ資料、全媒体の運用。</p></div>
-        <div class="it"><div class="n">02d</div><h4>Onboarding</h4><p>入社後3ヶ月のオンボーディング設計、定着率の改善。</p></div>
+  <div class="svc-block" id="sap">
+    <div class="svc-inner reveal">
+      <div>
+        <p class="svc-num">02 / SAP</p>
+        <h2 class="svc-name">SAP<br/>コンサル</h2>
+        <p class="svc-name-en">SAP Consulting</p>
       </div>
-      <div class="pricing">
-        <div class="head"><span>PRICING</span><b>commission / retainer</b></div>
-        <ul>
-          <li>Exec Search<small>年収の30% · リテイナー¥1.2M〜</small></li>
-          <li>Hiring Design<small>3ヶ月〜 · ¥1.8M/mo〜</small></li>
-          <li>Employer Brand<small>月次 · ¥800k/mo〜</small></li>
+      <div>
+        <p class="svc-desc">SAP ERPの導入・移行・運用保守において、豊富な経験を持つコンサルタントが伴走支援します。業務要件の整理から本番稼働後のサポートまで、一貫した体制でプロジェクトを成功に導きます。</p>
+        <ul class="svc-list">
+          <li>SAP導入・バージョンアップ支援</li>
+          <li>S/4HANA移行プロジェクト管理</li>
+          <li>業務要件定義・フィット&amp;ギャップ分析</li>
+          <li>カスタマイズ開発・テスト支援</li>
+          <li>運用保守・ユーザー教育</li>
+          <li>ABAP開発・インターフェース設計</li>
         </ul>
       </div>
     </div>
-    <div class="viz">
-      <div class="label">// VIZ <b>02</b> · ORG GRAPH</div>
-      <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
-        <g stroke="var(--gold)" stroke-opacity=".4" stroke-width=".6">
-          <line x1="200" y1="100" x2="100" y2="200"/><line x1="200" y1="100" x2="300" y2="200"/>
-          <line x1="100" y1="200" x2="50" y2="320"/><line x1="100" y1="200" x2="150" y2="320"/>
-          <line x1="300" y1="200" x2="250" y2="320"/><line x1="300" y1="200" x2="350" y2="320"/>
-          <line x1="50" y1="320" x2="30" y2="430"/><line x1="50" y1="320" x2="80" y2="430"/>
-          <line x1="150" y1="320" x2="130" y2="430"/><line x1="150" y1="320" x2="180" y2="430"/>
-          <line x1="250" y1="320" x2="230" y2="430"/><line x1="250" y1="320" x2="280" y2="430"/>
-          <line x1="350" y1="320" x2="330" y2="430"/><line x1="350" y1="320" x2="380" y2="430"/>
-        </g>
-        <g fill="var(--gold)"><circle cx="200" cy="100" r="7"/></g>
-        <g fill="var(--ink)" fill-opacity=".8"><circle cx="100" cy="200" r="5"/><circle cx="300" cy="200" r="5"/></g>
-        <g fill="var(--ink)" fill-opacity=".5"><circle cx="50" cy="320" r="4"/><circle cx="150" cy="320" r="4"/><circle cx="250" cy="320" r="4"/><circle cx="350" cy="320" r="4"/></g>
-        <g fill="var(--ink-2)" fill-opacity=".5"><circle cx="30" cy="430" r="3"/><circle cx="80" cy="430" r="3"/><circle cx="130" cy="430" r="3"/><circle cx="180" cy="430" r="3"/><circle cx="230" cy="430" r="3"/><circle cx="280" cy="430" r="3"/><circle cx="330" cy="430" r="3"/><circle cx="380" cy="430" r="3"/></g>
-        <g font-family="var(--mono)" font-size="9" fill="var(--ink-3)">
-          <text x="184" y="80">CEO</text><text x="78" y="180">CxO</text><text x="278" y="180">CxO</text>
-        </g>
-      </svg>
-    </div>
   </div>
-</section>
 
-<section class="container reveal" id="fnb">
-  <div class="svc">
-    <div class="side">
-      <h2 class="bignum">03</h2>
-      <h2>Appetite.</h2>
-      <div class="jp">飲食店事業</div>
-      <p class="lead"><b>現場の事業者として、飲食を運営する。</b>神楽坂に直営二店舗。仕込みと原価のデータ化と、人の手でしか成立しない味。現場からしか出てこないナレッジを、他事業にも還流させる。</p>
-      <div class="offer">
-        <div class="it"><div class="n">03a</div><h4>Kitsune Bistro</h4><p>会員制ビストロ。14席。季節のコースのみ。</p></div>
-        <div class="it"><div class="n">03b</div><h4>Sakura Counter</h4><p>カウンター7席。日本酒ペアリングに特化。</p></div>
-        <div class="it"><div class="n">03c</div><h4>Menu R&amp;D</h4><p>他社向けメニュー開発・テストキッチン提供。</p></div>
-        <div class="it"><div class="n">03d</div><h4>AI in Kitchen</h4><p>原価予測・仕込み最適化の自社ツールをライセンス提供。</p></div>
+  <div class="svc-block" id="branding">
+    <div class="svc-inner reveal">
+      <div>
+        <p class="svc-num">03 / BRANDING</p>
+        <h2 class="svc-name">採用<br/>ブランディング</h2>
+        <p class="svc-name-en">Recruitment Branding</p>
       </div>
-      <div class="pricing">
-        <div class="head"><span>RESERVATIONS</span><b>members-only</b></div>
-        <ul>
-          <li>Kitsune Bistro<small>神楽坂 · Dinner ¥18,000〜</small></li>
-          <li>Sakura Counter<small>神楽坂 · Omakase ¥24,000〜</small></li>
-          <li>Consulting<small>店舗立ち上げ ¥3.6M〜</small></li>
+      <div>
+        <p class="svc-desc">採用を「母集団形成」ではなく「ブランディング」として設計します。企業の魅力を言語化し、採用広報・SNS・求人票を統一した世界観で構築することで、自然と優秀な人材が集まる仕組みをつくります。</p>
+        <ul class="svc-list">
+          <li>採用ブランド戦略の策定</li>
+          <li>採用コンセプト・メッセージ開発</li>
+          <li>採用サイト・LP制作ディレクション</li>
+          <li>求人票のライティング・最適化</li>
+          <li>SNS採用広報の運用支援</li>
+          <li>採用動画・コンテンツ制作</li>
         </ul>
       </div>
     </div>
-    <div class="viz">
-      <div class="label">// VIZ <b>03</b> · PLATING</div>
-      <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
-        <g fill="none" stroke="var(--gold)" stroke-opacity=".5" stroke-width=".6">
-          <circle cx="200" cy="250" r="160"/><circle cx="200" cy="250" r="120"/><circle cx="200" cy="250" r="80"/>
-          <circle cx="200" cy="250" r="40"/>
-        </g>
-        <g fill="var(--gold)" fill-opacity=".7">
-          <circle cx="200" cy="170" r="4"/><circle cx="140" cy="220" r="3"/><circle cx="260" cy="220" r="3"/>
-          <circle cx="180" cy="280" r="5"/><circle cx="230" cy="300" r="3"/>
-        </g>
-        <g stroke="var(--ink)" stroke-opacity=".3" stroke-width=".4" fill="none">
-          <path d="M120 170 Q 200 120 280 170"/>
-          <path d="M110 330 Q 200 380 290 330"/>
-        </g>
-        <g font-family="var(--mono)" font-size="9" fill="var(--ink-3)">
-          <text x="180" y="460">COURSE · 07</text>
-        </g>
-      </svg>
-    </div>
   </div>
-</section>
 
-<section class="container reveal" id="real">
-  <div class="svc">
-    <div class="side">
-      <h2 class="bignum">04</h2>
-      <h2>Ground.</h2>
-      <div class="jp">不動産事業</div>
-      <p class="lead"><b>デベロッパーではない、空間の編集者。</b>中小規模物件の用途転換、賃貸運用、小規模開発。AIと人材と食の実装先として不動産を捉え直す。</p>
-      <div class="offer">
-        <div class="it"><div class="n">04a</div><h4>Asset Mgmt</h4><p>中小規模オフィス・レジデンスの運用代行。</p></div>
-        <div class="it"><div class="n">04b</div><h4>Adaptive Reuse</h4><p>築古物件の用途転換・リブランディング。</p></div>
-        <div class="it"><div class="n">04c</div><h4>Leasing</h4><p>テナント誘致、契約設計、原状回復までの一括。</p></div>
-        <div class="it"><div class="n">04d</div><h4>PropTech</h4><p>AIを使った需要予測・内覧オペレーション最適化。</p></div>
+  <div class="svc-block" id="sns">
+    <div class="svc-inner reveal">
+      <div>
+        <p class="svc-num">04 / SNS</p>
+        <h2 class="svc-name">SNS<br/>運用代行</h2>
+        <p class="svc-name-en">SNS Management</p>
       </div>
-      <div class="pricing">
-        <div class="head"><span>PORTFOLIO</span><b>3 owned · 12 managed</b></div>
-        <ul>
-          <li>Asset Mgmt<small>年間管理料 AUMの1.5%〜</small></li>
-          <li>Adaptive Reuse<small>プロジェクト制 ¥8M〜</small></li>
-          <li>PropTech<small>SaaS ¥120k/mo〜</small></li>
+      <div>
+        <p class="svc-desc">YouTube・TikTok・Instagram・X（旧Twitter）など、各プラットフォームに特化した運用戦略を立案し、コンテンツ制作から分析・改善まで一貫して対応します。フォロワー数ではなく、事業インパクトの最大化を目指します。</p>
+        <ul class="svc-list">
+          <li>SNS戦略立案・アカウント設計</li>
+          <li>YouTube動画の企画・撮影・編集・投稿</li>
+          <li>TikTokショート動画の制作・運用</li>
+          <li>Instagramフィード・リール運用</li>
+          <li>X（旧Twitter）運用・エンゲージメント向上</li>
+          <li>データ分析・レポーティング・改善提案</li>
         </ul>
       </div>
     </div>
-    <div class="viz">
-      <div class="label">// VIZ <b>04</b> · SITE PLAN</div>
-      <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
-        <g fill="none" stroke="var(--gold)" stroke-opacity=".4" stroke-width=".6">
-          <rect x="60" y="60" width="280" height="380"/>
-          <rect x="90" y="90" width="100" height="140"/>
-          <rect x="210" y="90" width="130" height="90"/>
-          <rect x="90" y="260" width="250" height="80"/>
-          <rect x="90" y="360" width="130" height="60"/>
-          <rect x="240" y="200" width="100" height="60"/>
-          <rect x="240" y="360" width="100" height="60"/>
-          <line x1="60" y1="250" x2="340" y2="250" stroke-dasharray="2 3"/>
-          <line x1="200" y1="60" x2="200" y2="440" stroke-dasharray="2 3"/>
-        </g>
-        <g fill="var(--gold)" fill-opacity=".6">
-          <circle cx="140" cy="160" r="3"/><circle cx="275" cy="135" r="3"/><circle cx="215" cy="300" r="3"/><circle cx="290" cy="230" r="3"/>
-        </g>
-        <g font-family="var(--mono)" font-size="9" fill="var(--ink-3)">
-          <text x="60" y="470">1/250 · SITE</text>
-        </g>
-      </svg>
+  </div>
+
+  <div class="svc-block" id="fnb">
+    <div class="svc-inner reveal">
+      <div>
+        <p class="svc-num">05 / F&amp;B</p>
+        <h2 class="svc-name">飲食事業</h2>
+        <p class="svc-name-en">Food &amp; Beverage</p>
+      </div>
+      <div>
+        <p class="svc-desc">東京都内において飲食店を直営運営しています。現場で積み上げたオペレーション・原価管理・マーケティングのノウハウは、他の事業領域にも活かされています。</p>
+        <ul class="svc-list">
+          <li>都内飲食店の直営運営</li>
+          <li>原価管理・オペレーション最適化</li>
+          <li>デジタルマーケティングとの連携</li>
+        </ul>
+      </div>
     </div>
   </div>
-</section>
-
-<section class="container reveal" id="fifth">
-  <div class="sec-head"><div><span class="num">∑</span>&nbsp;&nbsp;FIFTH ─ 第五の事業</div><h2><em class="serif-it">The</em><br/>fifth.</h2><div class="right">四事業を掛け合わせてのみ現れる事業。<br/>組合せは Cn2 = 6 通り。</div></div>
-  <div class="manifesto-body" style="font-family: var(--serif-jp); color: var(--ink-2); font-size: 15px; line-height: 2.1; max-width: 64ch;">
-    <p>AI × 採用 = 社員の成長をデータで追うOS。AI × 飲食 = 厨房のためのエージェント。AI × 不動産 = 需要と内覧の最適化。採用 × 飲食 = 料理人エージェンシー。採用 × 不動産 = 運営管理人材ネットワーク。飲食 × 不動産 = 空間の価値を食で底上げする事業。</p>
-    <p>このページにはまだ名前のついていない第五の事業がある。あなたの会社とだけ発生する接続があるなら、それが次の第五になる。</p>
-  </div>
-  <div style="margin-top: 32px;"><a class="btn gold" href="contact.html"><span class="dot"></span>接続を相談する</a></div>
-</section>
 </main>
 
-<div class="end-mark"><span class="">SERVICES</span></div>
-
-<footer class="end">
-  <div class="end-wrap">
+<footer class="site-footer">
+  <div class="footer-grid">
     <div>
-      <div style="font-family:var(--mono);font-size:13px;letter-spacing:.22em;margin-bottom:18px;color:var(--ink);">NEURON · WORX</div>
-      <div style="font-family:var(--serif-jp);color:var(--ink-2);line-height:1.9;font-size:14px;max-width:42ch;">
-        合同会社 Neuron Worx は、AI・人材・食・不動産の四領域を編む東京の事業体です。異領域の接続を本業とします。
-      </div>
-      <div class="rule-gold" style="margin:24px 0 0;max-width:320px;"><span class="dot"></span>EST. 2021 · TOKYO</div>
+      <div style="font-family:var(--sans);font-size:11px;font-weight:800;letter-spacing:.24em;color:var(--ink);margin-bottom:16px;text-transform:uppercase;">Neuron Worx</div>
+      <p style="font-family:var(--sans);font-size:13px;color:var(--ink-3);line-height:1.9;max-width:36ch;">合同会社 Neuron Worx。AI・DXコンサル、SAPコンサル、採用ブランディング、SNS運用代行、飲食事業。</p>
+      <p style="font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--ink-3);margin-top:20px;">設立 2026年2月 · 東京都渋谷区</p>
     </div>
-    <div>
-      <h5>Sitemap</h5>
-      <ul>
-        <li><a href="index.html">Index</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="works.html">Works</a></li>
-      </ul>
-    </div>
-    <div>
-      <h5>Company</h5>
-      <ul>
-        <li><a href="team.html">Team</a></li>
-        <li><a href="careers.html">Careers</a></li>
-        <li><a href="news.html">News</a></li>
-        <li><a href="company.html">Company Info</a></li>
-      </ul>
-    </div>
-    <div>
-      <h5>Contact</h5>
-      <ul>
-        <li><a href="mailto:hello@neuronworx.co.jp">hello@neuronworx.co.jp</a></li>
-        <li><a href="mailto:press@neuronworx.co.jp">press@neuronworx.co.jp</a></li>
-        <li><a href="mailto:careers@neuronworx.co.jp">careers@neuronworx.co.jp</a></li>
-        <li><a href="contact.html">→ お問い合わせ</a></li>
-      </ul>
-    </div>
+    <div><h5>Sitemap</h5><ul><li><a href="index.html">Index</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="works.html">Works</a></li></ul></div>
+    <div><h5>Company</h5><ul><li><a href="team.html">Team</a></li><li><a href="careers.html">Careers</a></li><li><a href="news.html">News</a></li><li><a href="company.html">Company</a></li></ul></div>
+    <div><h5>Contact</h5><ul><li><a href="mailto:hello@neuronworx.com">hello@neuronworx.com</a></li><li><a href="contact.html">→ お問い合わせ</a></li></ul></div>
   </div>
-  <div class="end-mark-row">
-    <div>© 2026 合同会社 Neuron Worx</div>
-    <div>Built in Tokyo · Signal OK</div>
-  </div>
+  <div class="footer-copy"><span>© 2026 合同会社 Neuron Worx</span><span>Built in Tokyo</span></div>
 </footer>
-<script src="assets/app.js"></script>
-
-<div class="tweaks" id="tweaks">
-  <h4>TWEAKS <span class="close" id="tweaks-close">×</span></h4>
-  <div class="tw-row"><span class="label">Theme</span><div class="tw-opts" data-key="theme">
-    <button class="tw-opt" data-val="dark">Dark</button>
-    <button class="tw-opt" data-val="light">Light</button>
-  </div></div>
-  <div class="tw-row"><span class="label">Accent</span><div class="tw-opts" data-key="accent">
-    <button class="tw-opt" data-val="violet">Violet</button>
-    <button class="tw-opt" data-val="gold">Gold</button>
-    <button class="tw-opt" data-val="crimson">Crimson</button>
-    <button class="tw-opt" data-val="mono">Mono</button>
-  </div></div>
-  <div class="tw-row"><span class="label">Font</span><div class="tw-opts" data-key="font">
-    <button class="tw-opt" data-val="serif-italic">Italic</button>
-    <button class="tw-opt" data-val="serif-roman">Roman</button>
-    <button class="tw-opt" data-val="mincho">明朝</button>
-    <button class="tw-opt" data-val="mono">Mono</button>
-  </div></div>
-  <div class="tw-row"><span class="label">Background</span><div class="tw-opts" data-key="heroLayout">
-    <button class="tw-opt" data-val="neural">Wireframe</button>
-    <button class="tw-opt" data-val="grid">Circuit</button>
-    <button class="tw-opt" data-val="noise">Warp</button>
-  </div></div>
-  <div class="tw-row"><span class="label">Motion <span id="mi-val" style="float:right;color:var(--gold)">2</span></span>
-    <input type="range" class="tw-range" id="mi" min="0" max="3" step="1" value="2"/>
-  </div>
-</div>
 <div class="page-trans" id="page-trans"></div>
-</body></html>
+<script src="assets/app.js"></script>
+</body>
+</html>
