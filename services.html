@@ -218,6 +218,26 @@ p,.ph-desc,.prose,.svc-desc,.job-desc,.tc-bio,.wk-t small{
   .ph-bottom{flex-direction:column;align-items:flex-start;}
 }
 @media(max-width:600px){.team-grid{grid-template-columns:1fr;}}
+/* ── Page-nav (sticky in-page navigation) ── */
+.page-nav{
+  position:sticky;top:52px;z-index:40;
+  background:color-mix(in oklab,var(--bg) 92%,transparent);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--line);
+  padding:0 48px;
+  display:flex;gap:0;overflow-x:auto;
+  scrollbar-width:none;
+}
+.page-nav::-webkit-scrollbar{display:none;}
+.pn-link{
+  font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-3);padding:16px 18px;white-space:nowrap;
+  border-bottom:2px solid transparent;
+  transition:color .2s,border-color .2s;flex-shrink:0;
+}
+.pn-link:hover{color:var(--ink);}
+.pn-link.active{color:var(--ink);border-bottom-color:var(--accent);}
+@media(max-width:900px){.page-nav{padding:0 16px;}.pn-link{padding:14px 12px;font-size:9px;}}
 </style>
 </head>
 <body data-theme="dark" data-accent="orange" data-font="sans">
@@ -253,6 +273,15 @@ p,.ph-desc,.prose,.svc-desc,.job-desc,.tc-bio,.wk-t small{
       <a class="btn" href="/contact">お問い合わせ →</a>
     </div>
   </section>
+
+  <!-- In-page sticky navigation -->
+  <nav class="page-nav" aria-label="サービス内ナビゲーション">
+    <a class="pn-link" href="#ai">01 · AI・DXコンサル</a>
+    <a class="pn-link" href="#sap">02 · SAPコンサル</a>
+    <a class="pn-link" href="#branding">03 · 採用ブランディング</a>
+    <a class="pn-link" href="#sns">04 · SNS運用代行</a>
+    <a class="pn-link" href="#fnb">05 · 飲食事業</a>
+  </nav>
 
   <div class="svc-item reveal" id="ai">
     <div class="svc-head">
@@ -361,5 +390,39 @@ p,.ph-desc,.prose,.svc-desc,.job-desc,.tc-bio,.wk-t small{
 </footer>
 <div class="page-trans" id="page-trans"></div>
 <script src="assets/app.js"></script>
+<script>
+/* ── Active section highlight as user scrolls ── */
+(function(){
+  const links = document.querySelectorAll('.pn-link');
+  const ids   = ['ai','sap','branding','sns','fnb'];
+
+  function setActive(id){
+    links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#'+id));
+  }
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) setActive(entry.target.id);
+    });
+  }, { rootMargin: `-${52+48}px 0px -55% 0px`, threshold: 0 });
+
+  ids.forEach(id => {
+    const el = document.getElementById(id);
+    if(el) obs.observe(el);
+  });
+
+  /* Smooth scroll offset (fixed nav height) */
+  document.querySelectorAll('.pn-link').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const id  = link.getAttribute('href').slice(1);
+      const el  = document.getElementById(id);
+      if(!el) return;
+      const top = el.getBoundingClientRect().top + window.scrollY - 52 - 48;
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
+})();
+</script>
 </body>
 </html>

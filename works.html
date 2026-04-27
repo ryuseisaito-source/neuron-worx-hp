@@ -218,6 +218,12 @@ p,.ph-desc,.prose,.svc-desc,.job-desc,.tc-bio,.wk-t small{
   .ph-bottom{flex-direction:column;align-items:flex-start;}
 }
 @media(max-width:600px){.team-grid{grid-template-columns:1fr;}}
+.page-nav{position:sticky;top:52px;z-index:40;background:color-mix(in oklab,var(--bg) 92%,transparent);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);padding:0 48px;display:flex;gap:0;overflow-x:auto;scrollbar-width:none;}
+.page-nav::-webkit-scrollbar{display:none;}
+.pn-link{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);padding:16px 18px;white-space:nowrap;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;flex-shrink:0;}
+.pn-link:hover{color:var(--ink);}
+.pn-link.active{color:var(--ink);border-bottom-color:var(--accent);}
+@media(max-width:900px){.page-nav{padding:0 16px;}.pn-link{padding:14px 12px;font-size:9px;}}
 </style>
 </head>
 <body data-theme="dark" data-accent="orange" data-font="sans">
@@ -253,7 +259,12 @@ p,.ph-desc,.prose,.svc-desc,.job-desc,.tc-bio,.wk-t small{
     </div>
   </section>
 
-  <section class="sec reveal">
+  <nav class="page-nav" aria-label="実績カテゴリ">
+    <a class="pn-link" href="#sec-ai">AI・DX / SAP</a>
+    <a class="pn-link" href="#sec-sns">SNS運用代行</a>
+  </nav>
+
+  <section class="sec reveal" id="sec-ai">
     <div class="sec-hdr"><span><span class="n">01 — 02</span>&nbsp;&nbsp;AI・DX / SAP</span></div>
     <div class="wk-list">
       <div class="wk-row">
@@ -271,7 +282,7 @@ p,.ph-desc,.prose,.svc-desc,.job-desc,.tc-bio,.wk-t small{
     </div>
   </section>
 
-  <section class="sec reveal">
+  <section class="sec reveal" id="sec-sns">
     <div class="sec-hdr"><span><span class="n">03 — 06</span>&nbsp;&nbsp;SNS運用代行</span></div>
     <div class="wk-list">
       <div class="wk-row">
@@ -316,5 +327,24 @@ p,.ph-desc,.prose,.svc-desc,.job-desc,.tc-bio,.wk-t small{
 </footer>
 <div class="page-trans" id="page-trans"></div>
 <script src="assets/app.js"></script>
+<script>
+(function(){
+  const links = document.querySelectorAll('.pn-link');
+  function setActive(id){
+    links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#'+id));
+  }
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) setActive(e.target.id); });
+  }, { rootMargin:`-${52+48}px 0px -55% 0px`, threshold:0 });
+  ['sec-ai','sec-sns'].forEach(id => { const el=document.getElementById(id); if(el) obs.observe(el); });
+  links.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const el = document.getElementById(link.getAttribute('href').slice(1));
+      if(el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 100, behavior:'smooth' });
+    });
+  });
+})();
+</script>
 </body>
 </html>
