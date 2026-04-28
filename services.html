@@ -4,14 +4,14 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Services — Neuron Worx</title>
-  <meta name="description" content="AI・DXコンサル、SAPコンサル、採用ブランディング、SNS運用代行、飲食事業の5つの事業領域でクライアントを支援します。"/>
-  <meta property="og:title" content="Services — Neuron Worx"/>
-  <meta property="og:description" content="AI・DXコンサル、SAPコンサル、採用ブランディング、SNS運用代行、飲食事業の5つの事業領域でクライアントを支援します。"/>
-  <meta property="og:type" content="website"/>
-  <meta property="og:url" content="https://neuronworx.com/services"/>
-  <meta property="og:site_name" content="Neuron Worx"/>
-  <meta property="og:locale" content="ja_JP"/>
-  <link rel="canonical" href="https://neuronworx.com/services"/>
+<meta name="description" content="Neuron Worxの事業内容。AI・DXコンサル、SAPコンサル、採用ブランディング、SNS運用代行、飲食事業の5つの領域でクライアントを支援します。"/>
+<meta property="og:title" content="Services — Neuron Worx"/>
+<meta property="og:description" content="AI・DXコンサル、SAPコンサル、採用ブランディング、SNS運用代行、飲食事業。"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://neuronworx.com/services"/>
+<meta property="og:site_name" content="Neuron Worx"/>
+<meta property="og:locale" content="ja_JP"/>
+<link rel="canonical" href="https://neuronworx.com/services"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700;900&display=swap"/>
@@ -21,227 +21,54 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 #bg-canvas{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.4;}
 main{padding-top:52px;position:relative;z-index:1;}
+h1,h2,h3,h4{text-wrap:balance;word-break:keep-all;overflow-wrap:normal;}
+p{text-wrap:pretty;word-break:auto-phrase;overflow-wrap:break-word;line-break:strict;}
 
-/* ── 日本語組版 ──
-   word-break:auto-phrase … 句読点・助詞の直前などで自然に折り返す (Chrome 119+)
-   text-wrap:balance      … 見出し行の長さを均等に揃える
-   text-wrap:pretty       … 本文の最終行が1単語だけにならないよう調整
-   line-break:strict      … 禁則処理（句読点が行頭に来ない等）を厳密に適用 */
-h1,h2,h3,h4{
-  text-wrap:balance;
-  word-break:keep-all;
-  overflow-wrap:normal;
-}
-p,.ph-desc,.prose,.svc-desc,.job-desc,.tc-bio,.wk-t small{
-  text-wrap:pretty;
-  word-break:auto-phrase;
-  overflow-wrap:break-word;
-  line-break:strict;
-}
-
-.page-hero{
-  min-height:58vh;padding:64px 48px 52px;
-  display:flex;flex-direction:column;justify-content:flex-end;
-  border-bottom:1px solid var(--line);position:relative;z-index:1;
-}
-.ph-eyebrow{
-  display:flex;align-items:center;gap:14px;
-  font-family:var(--mono);font-size:10px;letter-spacing:.22em;
-  text-transform:uppercase;color:var(--ink-3);margin-bottom:44px;
-}
+.page-hero{min-height:52vh;padding:64px 48px 52px;display:flex;flex-direction:column;justify-content:flex-end;border-bottom:1px solid var(--line);position:relative;z-index:1;}
+.ph-eyebrow{display:flex;align-items:center;gap:14px;font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);margin-bottom:44px;}
 .ph-eyebrow::before{content:"";width:20px;height:1px;background:var(--accent);flex-shrink:0;}
-.ph-title{
-  font-family:var(--display);font-style:var(--display-style);
-  font-weight:var(--display-weight);
-  font-size:clamp(60px,11vw,168px);
-  line-height:.84;letter-spacing:-.045em;
-  text-transform:uppercase;color:var(--ink);
-}
-.ph-title .accent{color:var(--accent);}
-.ph-bottom{
-  border-top:1px solid var(--line);padding-top:28px;margin-top:36px;
-  display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;
-}
-.ph-desc{
-  font-family:"Noto Sans JP","Inter",sans-serif;
-  font-size:clamp(13px,1.3vw,17px);line-height:1.75;
-  color:var(--ink-2);max-width:46ch;
-}
+.ph-title{font-family:var(--display);font-style:var(--display-style);font-weight:var(--display-weight);font-size:clamp(60px,11vw,168px);line-height:.84;letter-spacing:-.045em;text-transform:uppercase;color:var(--ink);}
+.ph-bottom{border-top:1px solid var(--line);padding-top:28px;margin-top:36px;display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;}
+.ph-desc{font-family:"Noto Sans JP","Inter",sans-serif;font-size:clamp(13px,1.3vw,17px);line-height:1.75;color:var(--ink-2);max-width:46ch;}
 
-.sec{padding:72px 48px;border-bottom:1px solid var(--line);position:relative;z-index:1;}
-.sec-hdr{
-  display:flex;align-items:center;justify-content:space-between;
-  border-top:1px solid var(--line);padding-top:14px;margin-bottom:56px;
-  font-family:var(--mono);font-size:10px;letter-spacing:.18em;
-  text-transform:uppercase;color:var(--ink-3);
+/* Service rows — link to individual pages */
+.svc-list{position:relative;z-index:1;}
+.svc-row{
+  display:grid;grid-template-columns:96px 1fr 200px auto;
+  align-items:center;gap:32px;
+  padding:40px 48px;border-bottom:1px solid var(--line);
+  text-decoration:none;color:inherit;
+  position:relative;transition:background .2s;
 }
-.sec-hdr .n{color:var(--accent);}
-
-.svc-item{border-bottom:1px solid var(--line);position:relative;}
-.svc-item::before{
+.svc-row::before{
   content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
   background:var(--accent);transform:scaleY(0);transform-origin:bottom;
   transition:transform .35s cubic-bezier(.2,.8,.2,1);
 }
-.svc-item:hover::before{transform:scaleY(1);}
-.svc-head{
-  display:grid;grid-template-columns:96px 1fr auto;
-  align-items:center;gap:32px;padding:40px 48px;
-}
+.svc-row:hover::before{transform:scaleY(1);}
+.svc-row:hover{background:rgba(37,39,69,.08);}
 .svc-num{display:flex;flex-direction:column;gap:4px;}
 .svc-num .idx{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--ink-3);}
-.svc-num .big{
-  font-family:var(--display);font-style:var(--display-style);font-weight:var(--display-weight);
-  font-size:52px;line-height:1;color:var(--accent);letter-spacing:-.04em;
-}
-.svc-name{
-  font-family:var(--display);font-style:var(--display-style);font-weight:var(--display-weight);
-  font-size:clamp(28px,3.8vw,60px);line-height:1.05;letter-spacing:-.025em;color:var(--ink);
-  word-break:keep-all;
-}
-.svc-name-en{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin-top:8px;}
+.svc-num .big{font-family:var(--display);font-style:var(--display-style);font-weight:var(--display-weight);font-size:52px;line-height:1;color:var(--accent);letter-spacing:-.04em;}
+.svc-name-wrap{}
+.svc-name{font-family:var(--display);font-style:var(--display-style);font-weight:var(--display-weight);font-size:clamp(24px,3vw,52px);line-height:1.05;letter-spacing:-.025em;color:var(--ink);}
+.svc-en{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin-top:8px;}
+.svc-brief{font-family:var(--sans);font-size:13px;color:var(--ink-3);line-height:1.7;max-width:40ch;}
 .svc-arr{font-size:22px;color:var(--ink-3);flex-shrink:0;transition:transform .25s,color .2s;}
-.svc-item:hover .svc-arr{transform:translateX(8px);color:var(--accent);}
-.svc-body{padding:0 48px 52px 176px;}
-.svc-desc{font-family:var(--sans);font-size:15px;line-height:2;color:var(--ink-2);max-width:56ch;margin-bottom:28px;}
-.svc-ul{list-style:none;border-top:1px solid var(--line);}
-.svc-ul li{
-  display:flex;align-items:baseline;gap:14px;
-  padding:13px 0;border-bottom:1px solid var(--line);
-  font-family:var(--sans);font-size:14px;color:var(--ink-2);line-height:1.7;
-}
-.svc-ul li::before{content:"—";color:var(--accent);flex-shrink:0;font-family:var(--mono);font-size:11px;}
+.svc-row:hover .svc-arr{transform:translateX(8px);color:var(--accent);}
 
-.wk-list{border-top:1px solid var(--line);}
-.wk-row{
-  display:grid;grid-template-columns:64px 1fr 180px 32px;
-  align-items:baseline;gap:24px;
-  padding:28px 0;border-bottom:1px solid var(--line);
-  cursor:pointer;position:relative;transition:padding .2s;
-}
-.wk-row::before{
-  content:"";position:absolute;left:-48px;top:0;bottom:0;
-  width:3px;background:var(--accent);
-  transform:scaleY(0);transform-origin:top;
-  transition:transform .28s cubic-bezier(.2,.8,.2,1);
-}
-.wk-row:hover::before{transform:scaleY(1);}
-.wk-row:hover{padding-left:8px;}
-.wk-n{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--ink-3);}
-.wk-t{
-  font-family:var(--display);font-style:var(--display-style);font-weight:var(--display-weight);
-  font-size:clamp(18px,2.2vw,34px);letter-spacing:-.015em;line-height:1.05;color:var(--ink);
-  word-break:keep-all;
-}
-.wk-t small{display:block;font-family:var(--sans);font-style:normal;font-size:12px;color:var(--ink-3);margin-top:5px;font-weight:400;word-break:auto-phrase;}
-.wk-cat{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);}
-.wk-arr{color:var(--ink-3);font-family:var(--mono);transition:color .2s,transform .2s;}
-.wk-row:hover .wk-arr{color:var(--accent);transform:translateX(4px);}
-
-.co-dl{border-top:1px solid var(--line);}
-.co-row{
-  display:grid;grid-template-columns:200px 1fr;
-  padding:20px 0;border-bottom:1px solid var(--line);
-  font-family:var(--sans);font-size:14px;line-height:1.8;gap:32px;
-}
-.co-row dt{color:var(--ink-3);font-weight:600;letter-spacing:.04em;}
-.co-row dd{color:var(--ink-2);}
-
-.prose{font-family:"Noto Sans JP","Inter",sans-serif;font-size:15px;line-height:2.1;color:var(--ink-2);max-width:60ch;}
-.prose p+p{margin-top:1.1em;}
-.prose b{color:var(--ink);font-weight:700;}
-
-.ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;}
-.ct-block{margin-bottom:40px;}
-.ct-label{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);margin-bottom:12px;}
-.ct-val{font-family:var(--sans);font-size:17px;color:var(--ink);line-height:1.5;}
-.ct-note{font-family:var(--sans);font-size:13px;color:var(--ink-3);margin-top:6px;}
-
-.job-list{border-top:1px solid var(--line);}
-.job-item{
-  display:grid;grid-template-columns:160px 1fr;gap:32px;
-  padding:40px 0;border-bottom:1px solid var(--line);
-}
-.job-type{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);padding-top:6px;}
-.job-title{
-  font-family:var(--display);font-style:var(--display-style);font-weight:var(--display-weight);
-  font-size:clamp(20px,2.5vw,38px);letter-spacing:-.02em;color:var(--ink);margin-bottom:12px;line-height:1.1;
-  word-break:keep-all;
-}
-.job-desc{font-family:var(--sans);font-size:14px;color:var(--ink-2);line-height:1.9;max-width:56ch;}
-
-.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line);border-left:1px solid var(--line);}
-.team-card{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:40px 32px;}
-.tc-role{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
-.tc-name{
-  font-family:var(--display);font-style:var(--display-style);font-weight:var(--display-weight);
-  font-size:clamp(20px,2.2vw,36px);letter-spacing:-.02em;color:var(--ink);margin-bottom:12px;line-height:1.1;
-  word-break:keep-all;
-}
-.tc-bio{font-family:var(--sans);font-size:13px;color:var(--ink-3);line-height:1.9;}
-
-.news-list{border-top:1px solid var(--line);}
-.news-row{
-  display:grid;grid-template-columns:140px 1fr auto;
-  align-items:baseline;gap:24px;
-  padding:26px 0;border-bottom:1px solid var(--line);cursor:pointer;
-  transition:padding .2s;position:relative;
-}
-.news-row::before{content:"";position:absolute;left:-48px;top:0;bottom:0;width:3px;background:var(--accent);transform:scaleY(0);transform-origin:top;transition:transform .28s cubic-bezier(.2,.8,.2,1);}
-.news-row:hover::before{transform:scaleY(1);}
-.news-row:hover{padding-left:8px;}
-.nw-date{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--ink-3);}
-.nw-title{font-family:var(--display);font-style:var(--display-style);font-weight:var(--display-weight);font-size:clamp(18px,2vw,30px);letter-spacing:-.015em;color:var(--ink);line-height:1.1;word-break:keep-all;}
-.nw-cat{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-top:6px;}
-.nw-arr{color:var(--ink-3);font-family:var(--mono);transition:color .2s,transform .2s;}
-.news-row:hover .nw-arr{color:var(--accent);transform:translateX(4px);}
-
-.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:13px 26px;border:1px solid var(--line-2);color:var(--ink);cursor:pointer;transition:all .2s;}
-.btn:hover{background:var(--ink);color:var(--bg);border-color:var(--ink);}
-.btn.primary{background:var(--accent);color:#000;border-color:var(--accent);}
-.btn.primary:hover{background:var(--bg);color:var(--accent);border-color:var(--accent);}
-
+@media(max-width:1100px){.svc-row{grid-template-columns:64px 1fr auto;}.svc-brief{display:none;}}
 @media(max-width:900px){
   .page-hero{padding:80px 24px 48px;min-height:auto;}
-  .sec{padding:56px 24px;}
-  .svc-head{grid-template-columns:64px 1fr auto;gap:16px;padding:32px 24px;}
+  .svc-row{padding:28px 24px;gap:16px;}
   .svc-num .big{font-size:36px;}
-  .svc-body{padding:0 24px 40px;}
-  .wk-row{grid-template-columns:40px 1fr;}.wk-cat,.wk-arr{display:none;}
-  .wk-row::before{left:-24px;}
-  .co-row{grid-template-columns:1fr;gap:4px;}
-  .ct-grid{grid-template-columns:1fr;gap:40px;}
-  .job-item{grid-template-columns:1fr;gap:12px;}
-  .team-grid{grid-template-columns:1fr 1fr;}
-  .news-row{grid-template-columns:100px 1fr;}.nw-arr{display:none;}
-  .news-row::before{left:-24px;}
   .ph-bottom{flex-direction:column;align-items:flex-start;}
 }
-@media(max-width:600px){.team-grid{grid-template-columns:1fr;}}
-/* ── Page-nav (sticky in-page navigation) ── */
-.page-nav{
-  position:sticky;top:52px;z-index:40;
-  background:color-mix(in oklab,var(--bg) 92%,transparent);
-  backdrop-filter:blur(16px);
-  border-bottom:1px solid var(--line);
-  padding:0 48px;
-  display:flex;gap:0;overflow-x:auto;
-  scrollbar-width:none;
-}
-.page-nav::-webkit-scrollbar{display:none;}
-.pn-link{
-  font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--ink-3);padding:16px 18px;white-space:nowrap;
-  border-bottom:2px solid transparent;
-  transition:color .2s,border-color .2s;flex-shrink:0;
-}
-.pn-link:hover{color:var(--ink);}
-.pn-link.active{color:var(--ink);border-bottom-color:var(--accent);}
-@media(max-width:900px){.page-nav{padding:0 16px;}.pn-link{padding:14px 12px;font-size:9px;}}
 </style>
 </head>
 <body data-theme="dark" data-accent="orange" data-font="sans">
 <canvas id="bg-canvas"></canvas>
+
 <div class="menu-overlay" id="menu">
   <button class="menu-close" id="menu-close">×</button>
   <nav><ul class="menu-links">
@@ -257,6 +84,7 @@ p,.ph-desc,.prose,.svc-desc,.job-desc,.tc-bio,.wk-t small{
   </ul></nav>
   <div class="menu-foot"><span>© 2026 合同会社 Neuron Worx</span><span>Tokyo, Japan</span></div>
 </div>
+
 <nav class="site-nav">
   <a class="logo" href="/"><span class="logo-mark"><svg viewBox="0 0 24 24" fill="none"><defs><linearGradient id="nwlg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#252745"/><stop offset="1" stop-color="#3a3d70"/></linearGradient></defs><circle cx="6" cy="6" r="1.8" fill="currentColor"/><circle cx="18" cy="6" r="1.8" fill="currentColor"/><circle cx="6" cy="18" r="1.8" fill="currentColor"/><circle cx="18" cy="18" r="1.8" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="url(#nwlg)"/><path d="M6 6 L12 12 L18 6 M6 18 L12 12 L18 18" stroke="currentColor" stroke-width="0.85"/></svg></span>NEURON WORX</a>
   <div class="nav-right">
@@ -264,117 +92,66 @@ p,.ph-desc,.prose,.svc-desc,.job-desc,.tc-bio,.wk-t small{
     <button class="nav-hamburger" id="menu-open"><span></span><span></span><span></span></button>
   </div>
 </nav>
+
 <main>
   <section class="page-hero">
     <div class="ph-eyebrow"><span>N°&thinsp;02</span><span>Services — 事業内容</span></div>
     <h1 class="ph-title">SERVICES</h1>
     <div class="ph-bottom">
-      <p class="ph-desc">五つの事業領域において、クライアントの成長を支援します。コンサルファーム出身者、元スタートアップCEO、トップクリエイターが専門性を活かして取り組みます。</p>
-      <a class="btn" href="/contact">お問い合わせ →</a>
+      <p class="ph-desc">五つの事業領域で、クライアントの成長を支援します。各事業をクリックして詳細をご覧ください。</p>
+      <a class="btn" href="/contact" style="display:inline-flex;align-items:center;gap:10px;font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:13px 26px;border:1px solid var(--line-2);color:var(--ink);transition:all .2s;">お問い合わせ →</a>
     </div>
   </section>
 
-  <!-- In-page sticky navigation -->
-  <nav class="page-nav" aria-label="サービス内ナビゲーション">
-    <a class="pn-link" href="#ai">01 · AI・DXコンサル</a>
-    <a class="pn-link" href="#sap">02 · SAPコンサル</a>
-    <a class="pn-link" href="#branding">03 · 採用ブランディング</a>
-    <a class="pn-link" href="#sns">04 · SNS運用代行</a>
-    <a class="pn-link" href="#fnb">05 · 飲食事業</a>
-  </nav>
-
-  <div class="svc-item reveal" id="ai">
-    <div class="svc-head">
+  <div class="svc-list">
+    <a class="svc-row reveal" href="/services/ai">
       <div class="svc-num"><span class="idx">DIV</span><span class="big">01</span></div>
-      <div><div class="svc-name">AI・DXコンサル</div><div class="svc-name-en">AI &amp; DX Consulting</div></div>
+      <div class="svc-name-wrap">
+        <div class="svc-name">AI・DXコンサル</div>
+        <div class="svc-en">AI &amp; DX Consulting</div>
+      </div>
+      <p class="svc-brief">LLMを活用した業務改善、FC本部のDX推進など。戦略立案から実行まで一貫支援。</p>
       <span class="svc-arr">→</span>
-    </div>
-    <div class="svc-body">
-      <p class="svc-desc">AI・デジタルトランスフォーメーションの戦略立案から実行支援まで、企業変革をトータルでサポートします。最新のLLM技術や自動化ツールを活用し、業務効率化と新しい価値創出を実現します。</p>
-      <ul class="svc-ul">
-        <li>AI導入戦略の立案・推進</li>
-        <li>LLMを活用した業務プロセス改善</li>
-        <li>DX推進ロードマップの策定</li>
-        <li>FC本部・大企業向けDXコンサルティング</li>
-        <li>システム選定・ベンダー選定支援</li>
-        <li>データ活用・分析基盤の構築支援</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="svc-item reveal" id="sap">
-    <div class="svc-head">
+    </a>
+    <a class="svc-row reveal" href="/services/sap">
       <div class="svc-num"><span class="idx">DIV</span><span class="big">02</span></div>
-      <div><div class="svc-name">SAPコンサル</div><div class="svc-name-en">SAP Consulting</div></div>
+      <div class="svc-name-wrap">
+        <div class="svc-name">SAPコンサル</div>
+        <div class="svc-en">SAP Consulting</div>
+      </div>
+      <p class="svc-brief">SAP導入・S/4HANA移行・運用保守。要件定義から本番稼働まで伴走。</p>
       <span class="svc-arr">→</span>
-    </div>
-    <div class="svc-body">
-      <p class="svc-desc">SAP ERPの導入・移行・運用保守において、豊富な経験を持つコンサルタントが伴走します。業務要件の整理から本番稼働後のサポートまで、一貫した体制でプロジェクトを成功に導きます。</p>
-      <ul class="svc-ul">
-        <li>SAP導入・バージョンアップ支援</li>
-        <li>S/4HANA移行プロジェクト管理</li>
-        <li>業務要件定義・フィット&amp;ギャップ分析</li>
-        <li>カスタマイズ開発・テスト支援</li>
-        <li>運用保守・ユーザー教育</li>
-        <li>ABAP開発・インターフェース設計</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="svc-item reveal" id="branding">
-    <div class="svc-head">
+    </a>
+    <a class="svc-row reveal" href="/services/branding">
       <div class="svc-num"><span class="idx">DIV</span><span class="big">03</span></div>
-      <div><div class="svc-name">採用ブランディング</div><div class="svc-name-en">Recruitment Branding</div></div>
+      <div class="svc-name-wrap">
+        <div class="svc-name">採用ブランディング</div>
+        <div class="svc-en">Recruitment Branding</div>
+      </div>
+      <p class="svc-brief">採用をブランディングとして設計。企業の魅力を言語化し、選ばれる組織へ。</p>
       <span class="svc-arr">→</span>
-    </div>
-    <div class="svc-body">
-      <p class="svc-desc">採用を「母集団形成」ではなく「ブランディング」として設計します。企業の魅力を言語化し、採用広報・SNS・求人票を統一した世界観で構築することで、自然と優秀な人材が集まる仕組みをつくります。</p>
-      <ul class="svc-ul">
-        <li>採用ブランド戦略の策定</li>
-        <li>採用コンセプト・メッセージ開発</li>
-        <li>採用サイト・LP制作ディレクション</li>
-        <li>求人票のライティング・最適化</li>
-        <li>SNS採用広報の運用支援</li>
-        <li>採用動画・コンテンツ制作</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="svc-item reveal" id="sns">
-    <div class="svc-head">
+    </a>
+    <a class="svc-row reveal" href="/services/sns">
       <div class="svc-num"><span class="idx">DIV</span><span class="big">04</span></div>
-      <div><div class="svc-name">SNS運用代行</div><div class="svc-name-en">SNS Management</div></div>
+      <div class="svc-name-wrap">
+        <div class="svc-name">SNS運用代行</div>
+        <div class="svc-en">SNS Management</div>
+      </div>
+      <p class="svc-brief">YouTube・TikTok・Instagram・X。戦略立案から制作・分析まで一貫対応。</p>
       <span class="svc-arr">→</span>
-    </div>
-    <div class="svc-body">
-      <p class="svc-desc">YouTube・TikTok・Instagram・X（旧Twitter）など、各プラットフォームに特化した運用戦略を立案し、コンテンツ制作から分析・改善まで一貫して対応します。</p>
-      <ul class="svc-ul">
-        <li>SNS戦略立案・アカウント設計</li>
-        <li>YouTube動画の企画・撮影・編集・投稿</li>
-        <li>TikTokショート動画の制作・運用</li>
-        <li>Instagramフィード・リール運用</li>
-        <li>X（旧Twitter）運用・エンゲージメント向上</li>
-        <li>データ分析・レポーティング・改善提案</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="svc-item reveal" id="fnb">
-    <div class="svc-head">
+    </a>
+    <a class="svc-row reveal" href="/services/fnb">
       <div class="svc-num"><span class="idx">DIV</span><span class="big">05</span></div>
-      <div><div class="svc-name">飲食事業</div><div class="svc-name-en">Food &amp; Beverage</div></div>
+      <div class="svc-name-wrap">
+        <div class="svc-name">飲食事業</div>
+        <div class="svc-en">Food &amp; Beverage</div>
+      </div>
+      <p class="svc-brief">東京都内での直営飲食店運営。現場ノウハウを他事業に活かす。</p>
       <span class="svc-arr">→</span>
-    </div>
-    <div class="svc-body">
-      <p class="svc-desc">東京都内において飲食店を直営運営しています。現場で積み上げたオペレーション・原価管理・マーケティングのノウハウは、他の事業領域にも活かされています。</p>
-      <ul class="svc-ul">
-        <li>都内飲食店の直営運営</li>
-        <li>原価管理・オペレーション最適化</li>
-        <li>デジタルマーケティングとの連携</li>
-      </ul>
-    </div>
+    </a>
   </div>
 </main>
+
 <footer class="site-footer">
   <div class="footer-grid">
     <div>
@@ -390,39 +167,5 @@ p,.ph-desc,.prose,.svc-desc,.job-desc,.tc-bio,.wk-t small{
 </footer>
 <div class="page-trans" id="page-trans"></div>
 <script src="assets/app.js"></script>
-<script>
-/* ── Active section highlight as user scrolls ── */
-(function(){
-  const links = document.querySelectorAll('.pn-link');
-  const ids   = ['ai','sap','branding','sns','fnb'];
-
-  function setActive(id){
-    links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#'+id));
-  }
-
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting) setActive(entry.target.id);
-    });
-  }, { rootMargin: `-${52+48}px 0px -55% 0px`, threshold: 0 });
-
-  ids.forEach(id => {
-    const el = document.getElementById(id);
-    if(el) obs.observe(el);
-  });
-
-  /* Smooth scroll offset (fixed nav height) */
-  document.querySelectorAll('.pn-link').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      const id  = link.getAttribute('href').slice(1);
-      const el  = document.getElementById(id);
-      if(!el) return;
-      const top = el.getBoundingClientRect().top + window.scrollY - 52 - 48;
-      window.scrollTo({ top, behavior: 'smooth' });
-    });
-  });
-})();
-</script>
 </body>
 </html>

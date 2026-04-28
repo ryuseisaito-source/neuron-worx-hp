@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AI・DXコンサル — Neuron Worx</title>
+<meta name="description" content="Neuron WorxのAI・DXコンサル。AI・デジタルトランスフォーメーションの戦略立案から実行支援まで、企業変革をトータルでサポートします。最新のLLM技術や自動化ツールを活用し、業務効率化と新しい"/>
+<meta property="og:title" content="AI・DXコンサル — Neuron Worx"/>
+<meta property="og:description" content="Neuron WorxのAI・DXコンサル。AI・デジタルトランスフォーメーションの戦略立案から実行支援まで、企業変革をトータルでサポートします。最新のLLM技術や自動化ツールを活用し、業務効率化と新しい"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://neuronworx.com/services/ai"/>
+<meta property="og:site_name" content="Neuron Worx"/>
+<meta property="og:locale" content="ja_JP"/>
+<link rel="canonical" href="https://neuronworx.com/services/ai"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700;900&display=swap"/>
+<link rel="stylesheet" href="../assets/theme.css"/>
+<script>const TWEAK_DEFAULTS={"theme":"dark","accent":"orange","font":"sans"};</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+#bg-canvas{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.4;}
+main{padding-top:52px;position:relative;z-index:1;}
+h1,h2,h3,h4{text-wrap:balance;word-break:keep-all;overflow-wrap:normal;}
+p,.ph-desc,.prose,.svc-body-desc{text-wrap:pretty;word-break:auto-phrase;overflow-wrap:break-word;line-break:strict;}
+
+/* Page hero */
+.page-hero{min-height:60vh;padding:64px 48px 52px;display:flex;flex-direction:column;justify-content:flex-end;border-bottom:1px solid var(--line);position:relative;z-index:1;}
+.ph-eyebrow{display:flex;align-items:center;gap:14px;font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);margin-bottom:44px;}
+.ph-eyebrow::before{content:"";width:20px;height:1px;background:var(--accent);flex-shrink:0;}
+.ph-back{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);transition:color .2s;}
+.ph-back:hover{color:var(--accent);}
+.ph-title{font-family:var(--display);font-style:var(--display-style);font-weight:var(--display-weight);font-size:clamp(56px,10vw,152px);line-height:.86;letter-spacing:-.04em;text-transform:uppercase;color:var(--ink);}
+.ph-bottom{border-top:1px solid var(--line);padding-top:28px;margin-top:36px;display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;}
+.ph-desc{font-family:"Noto Sans JP","Inter",sans-serif;font-size:clamp(13px,1.3vw,17px);line-height:1.75;color:var(--ink-2);max-width:46ch;}
+
+/* Content sections */
+.sec{padding:72px 48px;border-bottom:1px solid var(--line);position:relative;z-index:1;}
+.sec-hdr{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding-top:14px;margin-bottom:56px;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);}
+.sec-hdr .n{color:var(--accent);}
+
+/* Service body */
+.svc-body-desc{font-family:var(--sans);font-size:16px;line-height:2.1;color:var(--ink-2);max-width:60ch;margin-bottom:48px;}
+.svc-ul{list-style:none;border-top:1px solid var(--line);}
+.svc-ul li{display:flex;align-items:baseline;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);font-family:var(--sans);font-size:15px;color:var(--ink-2);line-height:1.7;}
+.svc-ul li::before{content:"—";color:var(--accent);flex-shrink:0;font-family:var(--mono);font-size:11px;}
+
+/* Works list */
+.wk-list{border-top:1px solid var(--line);}
+.wk-row{display:grid;grid-template-columns:64px 1fr 140px;align-items:baseline;gap:24px;padding:24px 0;border-bottom:1px solid var(--line);}
+.wk-n{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--ink-3);}
+.wk-t{font-family:var(--display);font-style:var(--display-style);font-weight:var(--display-weight);font-size:clamp(18px,2vw,30px);letter-spacing:-.015em;line-height:1.1;color:var(--ink);word-break:keep-all;}
+.wk-t small{display:block;font-family:var(--sans);font-style:normal;font-size:12px;color:var(--ink-3);margin-top:5px;font-weight:400;word-break:auto-phrase;}
+.wk-cat{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);}
+
+/* CTA */
+.s-cta{padding:80px 48px;position:relative;z-index:1;border-bottom:1px solid var(--line);}
+.cta-text{font-family:var(--display);font-style:var(--display-style);font-weight:var(--display-weight);font-size:clamp(36px,6vw,96px);line-height:.9;letter-spacing:-.04em;text-transform:uppercase;color:var(--ink);margin-bottom:40px;}
+.cta-text .accent{color:var(--accent);}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:13px 26px;border:1px solid var(--line-2);color:var(--ink);cursor:pointer;transition:all .2s;}
+.btn:hover{background:var(--ink);color:var(--bg);border-color:var(--ink);}
+.btn.primary{background:var(--accent);color:#000;border-color:var(--accent);}
+
+@media(max-width:900px){
+  .page-hero{padding:80px 24px 48px;min-height:auto;}
+  .sec{padding:56px 24px;}
+  .s-cta{padding:56px 24px;}
+  .wk-row{grid-template-columns:40px 1fr;}.wk-cat{display:none;}
+  .ph-bottom{flex-direction:column;align-items:flex-start;}
+}
+</style>
+</head>
+<body data-theme="dark" data-accent="orange" data-font="sans">
+<canvas id="bg-canvas"></canvas>
+<div class="menu-overlay" id="menu">
+  <button class="menu-close" id="menu-close">×</button>
+  <nav><ul class="menu-links">
+    <li><a href="/">Index <span class="arr">↗</span></a></li>
+    <li><a href="/about">About <span class="arr">↗</span></a></li>
+    <li><a href="/services">Services <span class="arr">↗</span></a></li>
+    <li><a href="/works">Works <span class="arr">↗</span></a></li>
+    <li><a href="/team">Team <span class="arr">↗</span></a></li>
+    <li><a href="/careers">Careers <span class="arr">↗</span></a></li>
+    <li><a href="/news">News <span class="arr">↗</span></a></li>
+    <li><a href="/company">Company <span class="arr">↗</span></a></li>
+    <li><a href="/contact">Contact <span class="arr">↗</span></a></li>
+  </ul></nav>
+  <div class="menu-foot"><span>© 2026 合同会社 Neuron Worx</span><span>Tokyo, Japan</span></div>
+</div>
+<nav class="site-nav">
+  <a class="logo" href="/"><span class="logo-mark"><svg viewBox="0 0 24 24" fill="none"><defs><linearGradient id="nwlg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#252745"/><stop offset="1" stop-color="#3a3d70"/></linearGradient></defs><circle cx="6" cy="6" r="1.8" fill="currentColor"/><circle cx="18" cy="6" r="1.8" fill="currentColor"/><circle cx="6" cy="18" r="1.8" fill="currentColor"/><circle cx="18" cy="18" r="1.8" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="url(#nwlg)"/><path d="M6 6 L12 12 L18 6 M6 18 L12 12 L18 18" stroke="currentColor" stroke-width="0.85"/></svg></span>NEURON WORX</a>
+  <div class="nav-right">
+    <a class="nav-contact" href="/contact">CONTACT</a>
+    <button class="nav-hamburger" id="menu-open"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<main>
+  <section class="page-hero">
+    <div class="ph-eyebrow">
+      <a class="ph-back" href="/services">← Services</a>
+      <span>N°&thinsp;01</span>
+    </div>
+    <h1 class="ph-title">AI・DXコンサル</h1>
+    <div class="ph-bottom">
+      <p class="ph-desc">AI・デジタルトランスフォーメーションの戦略立案から実行支援まで、企業変革をトータルでサポートします。最新のLLM技術や自動化ツールを活用し、業務効率化と新しい価値創出を実現します。</p>
+      <a class="btn primary" href="/contact">相談する →</a>
+    </div>
+  </section>
+
+  <section class="sec reveal">
+    <div class="sec-hdr"><span><span class="n">—</span>&nbsp;&nbsp;サービス内容</span></div>
+    <p class="svc-body-desc">AI・デジタルトランスフォーメーションの戦略立案から実行支援まで、企業変革をトータルでサポートします。最新のLLM技術や自動化ツールを活用し、業務効率化と新しい価値創出を実現します。</p>
+    <ul class="svc-ul">
+      <li>AI導入戦略の立案・推進</li>
+      <li>LLMを活用した業務プロセス改善</li>
+      <li>DX推進ロードマップの策定</li>
+      <li>FC本部・大企業向けDXコンサルティング</li>
+      <li>システム選定・ベンダー選定支援</li>
+      <li>データ活用・分析基盤の構築支援</li>
+    </ul>
+  </section>
+
+    <section class="sec reveal">
+    <div class="sec-hdr"><span><span class="n">—</span>&nbsp;&nbsp;代表例</span></div>
+    <div class="wk-list">
+      <div class="wk-row"><div class="wk-n">001</div><div class="wk-t">FC本部のDXコンサル<small>フランチャイズ本部のデジタルトランスフォーメーション推進・業務効率化支援</small></div><div class="wk-cat">AI / DX</div></div>
+    </div>
+  </section>
+
+  <section class="s-cta reveal">
+    <h2 class="cta-text">お気軽に<br/><span class="accent">ご相談ください。</span></h2>
+    <a class="btn primary" href="/contact">お問い合わせ →</a>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <div style="font-family:var(--sans);font-size:11px;font-weight:800;letter-spacing:.24em;color:var(--ink);margin-bottom:16px;text-transform:uppercase;">Neuron Worx</div>
+      <p style="font-family:var(--sans);font-size:13px;color:var(--ink-3);line-height:1.9;max-width:36ch;">合同会社 Neuron Worx。AI・DXコンサル、SAPコンサル、採用ブランディング、SNS運用代行、飲食事業。</p>
+      <p style="font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--ink-3);margin-top:20px;">設立 2026年1月 · 東京都渋谷区</p>
+    </div>
+    <div><h5>Sitemap</h5><ul><li><a href="/">Index</a></li><li><a href="/about">About</a></li><li><a href="/services">Services</a></li><li><a href="/works">Works</a></li></ul></div>
+    <div><h5>Company</h5><ul><li><a href="/team">Team</a></li><li><a href="/careers">Careers</a></li><li><a href="/news">News</a></li><li><a href="/company">Company</a></li></ul></div>
+    <div><h5>Contact</h5><ul><li><a href="/contact">→ お問い合わせ</a></li><li><a href="/careers">→ 採用情報</a></li></ul></div>
+  </div>
+  <div class="footer-copy"><span>© 2026 合同会社 Neuron Worx</span><span>Built in Tokyo</span></div>
+</footer>
+<div class="page-trans" id="page-trans"></div>
+<script src="../assets/app.js"></script>
+</body>
+</html>
