@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>採用ブランディング — Neuron Worx</title>
-<meta name="description" content="Neuron Worxの採用ブランディング。採用を「母集団形成」ではなく「ブランディング」として設計します。企業の魅力を言語化し、採用広報・SNS・求人票を統一した世界観で構築することで、自然と優秀な人材"/>
-<meta property="og:title" content="採用ブランディング — Neuron Worx"/>
-<meta property="og:description" content="Neuron Worxの採用ブランディング。採用を「母集団形成」ではなく「ブランディング」として設計します。企業の魅力を言語化し、採用広報・SNS・求人票を統一した世界観で構築することで、自然と優秀な人材"/>
+<title>採用支援 — Neuron Worx</title>
+<meta name="description" content="Neuron Worxの採用支援。採用を「母集団形成」ではなく「ブランディング」として設計します。企業の魅力を言語化し、採用広報・SNS・求人票を統一した世界観で構築することで、自然と優秀な人材"/>
+<meta property="og:title" content="採用支援 — Neuron Worx"/>
+<meta property="og:description" content="Neuron Worxの採用支援。採用を「母集団形成」ではなく「ブランディング」として設計します。企業の魅力を言語化し、採用広報・SNS・求人票を統一した世界観で構築することで、自然と優秀な人材"/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://neuronworx.com/services/branding"/>
 <meta property="og:site_name" content="Neuron Worx"/>
@@ -53,6 +53,28 @@ p,.ph-desc,.prose,.svc-body-desc{text-wrap:pretty;word-break:auto-phrase;overflo
 .wk-t small{display:block;font-family:var(--sans);font-style:normal;font-size:12px;color:var(--ink-3);margin-top:5px;font-weight:400;word-break:auto-phrase;}
 .wk-cat{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);}
 
+/* Platform cards */
+.platform-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);}
+.platform-card{
+  display:flex;flex-direction:column;gap:16px;
+  padding:48px 40px;background:var(--bg);
+  text-decoration:none;color:inherit;
+  transition:background .2s;position:relative;
+}
+.platform-card:hover{background:color-mix(in srgb,var(--accent) 6%,var(--bg));}
+.pc-label{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);}
+.pc-title{
+  font-family:var(--display);font-style:var(--display-style);font-weight:var(--display-weight);
+  font-size:clamp(28px,3.5vw,52px);line-height:1;letter-spacing:-.03em;color:var(--ink);
+}
+.pc-desc{font-family:var(--sans);font-size:14px;line-height:1.85;color:var(--ink-2);max-width:36ch;}
+.pc-link{
+  font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--accent);margin-top:auto;transition:letter-spacing .2s;
+}
+.platform-card:hover .pc-link{letter-spacing:.28em;}
+@media(max-width:700px){.platform-grid{grid-template-columns:1fr;}}
+
 /* CTA */
 .s-cta{padding:80px 48px;position:relative;z-index:1;border-bottom:1px solid var(--line);}
 .cta-text{font-family:var(--display);font-style:var(--display-style);font-weight:var(--display-weight);font-size:clamp(36px,6vw,96px);line-height:.9;letter-spacing:-.04em;text-transform:uppercase;color:var(--ink);margin-bottom:40px;}
@@ -77,8 +99,8 @@ p,.ph-desc,.prose,.svc-body-desc{text-wrap:pretty;word-break:auto-phrase;overflo
       "@type": "WebPage",
       "@id": "https://neuronworx.com/services/branding",
       "url": "https://neuronworx.com/services/branding",
-      "name": "採用ブランディング — Neuron Worx",
-      "description": "Neuron Worxの採用ブランディング。採用を「母集団形成」ではなく「ブランディング」として設計します。",
+      "name": "採用支援 — Neuron Worx",
+      "description": "Neuron Worxの採用支援。採用を「母集団形成」ではなく「ブランディング」として設計します。",
       "inLanguage": "ja",
       "isPartOf": { "@id": "https://neuronworx.com/#website" },
       "provider": { "@id": "https://neuronworx.com/#organization" }
@@ -88,7 +110,7 @@ p,.ph-desc,.prose,.svc-body-desc{text-wrap:pretty;word-break:auto-phrase;overflo
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://neuronworx.com" },
         { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://neuronworx.com/services" },
-        { "@type": "ListItem", "position": 3, "name": "採用ブランディング", "item": "https://neuronworx.com/services/branding" }
+        { "@type": "ListItem", "position": 3, "name": "採用支援", "item": "https://neuronworx.com/services/branding" }
       ]
     }
   ]
@@ -125,16 +147,36 @@ p,.ph-desc,.prose,.svc-body-desc{text-wrap:pretty;word-break:auto-phrase;overflo
       <a class="ph-back" href="/services">← Services</a>
       <span>N°&thinsp;03</span>
     </div>
-    <h1 class="ph-title">採用ブランディング</h1>
+    <h1 class="ph-title">採用支援</h1>
     <div class="ph-bottom">
-      <p class="ph-desc">採用を「母集団形成」ではなく「ブランディング」として設計します。企業の魅力を言語化し、採用広報・SNS・求人票を統一した世界観で構築することで、自然と優秀な人材が集まる仕組みをつくります。</p>
+      <p class="ph-desc">企業の採用課題を、戦略立案から実行支援まで一貫してサポートします。採用広報・求人票・SNS運用・採用サイト制作など、多角的なアプローチで優秀な人材が自然と集まる仕組みをつくります。</p>
       <a class="btn primary" href="/contact">相談する →</a>
+    </div>
+  </section>
+
+  <!-- 採用プラットフォームへの導線 -->
+  <section class="sec reveal">
+    <div class="sec-hdr"><span><span class="n">—</span>&nbsp;&nbsp;採用プラットフォーム</span></div>
+    <p class="svc-body-desc">Neuron Worxが運営する採用・インターン情報プラットフォームをご利用いただけます。</p>
+    <div class="platform-grid">
+      <a class="platform-card" href="#" target="_blank" rel="noopener">
+        <div class="pc-label">Platform 01</div>
+        <div class="pc-title">早慶特化<br/>インターン・就活</div>
+        <div class="pc-desc">早稲田・慶應の学生に向けた、厳選されたインターンシップ・就活情報を提供するプラットフォーム。</div>
+        <div class="pc-link">サイトへ →</div>
+      </a>
+      <a class="platform-card" href="#" target="_blank" rel="noopener">
+        <div class="pc-label">Platform 02</div>
+        <div class="pc-title">全学生向け<br/>インターン情報</div>
+        <div class="pc-desc">全国の学生を対象とした、インターンシップ・アルバイト・キャリア情報を掲載するプラットフォーム。</div>
+        <div class="pc-link">サイトへ →</div>
+      </a>
     </div>
   </section>
 
   <section class="sec reveal">
     <div class="sec-hdr"><span><span class="n">—</span>&nbsp;&nbsp;サービス内容</span></div>
-    <p class="svc-body-desc">採用を「母集団形成」ではなく「ブランディング」として設計します。企業の魅力を言語化し、採用広報・SNS・求人票を統一した世界観で構築することで、自然と優秀な人材が集まる仕組みをつくります。</p>
+    <p class="svc-body-desc">企業の採用課題を、戦略設計から実行まで一気通貫でサポートします。</p>
     <ul class="svc-ul">
       <li>採用ブランド戦略の策定</li>
       <li>採用コンセプト・メッセージ開発</li>
@@ -148,8 +190,8 @@ p,.ph-desc,.prose,.svc-body-desc{text-wrap:pretty;word-break:auto-phrase;overflo
     <section class="sec reveal">
     <div class="sec-hdr"><span><span class="n">—</span>&nbsp;&nbsp;代表例</span></div>
     <div class="wk-list">
-      <div class="wk-row"><div class="wk-n">003</div><div class="wk-t">Series C FinTech<small>採用ブランディング設計・エンジニア組織 30→56名</small></div><div class="wk-cat">Branding</div></div>
-      <div class="wk-row"><div class="wk-n">004</div><div class="wk-t">老舗旅館グループ<small>採用ブランディング×需要予測AI 同時導入</small></div><div class="wk-cat">Branding</div></div>
+      <div class="wk-row"><div class="wk-n">003</div><div class="wk-t">Series C FinTech<small>採用支援設計・エンジニア組織 30→56名</small></div><div class="wk-cat">Branding</div></div>
+      <div class="wk-row"><div class="wk-n">004</div><div class="wk-t">老舗旅館グループ<small>採用支援×需要予測AI 同時導入</small></div><div class="wk-cat">Branding</div></div>
     </div>
   </section>
 
@@ -162,7 +204,7 @@ p,.ph-desc,.prose,.svc-body-desc{text-wrap:pretty;word-break:auto-phrase;overflo
   <div class="footer-grid">
     <div>
       <div style="font-family:var(--sans);font-size:11px;font-weight:800;letter-spacing:.24em;color:var(--ink);margin-bottom:16px;text-transform:uppercase;">Neuron Worx</div>
-      <p style="font-family:var(--sans);font-size:13px;color:var(--ink-3);line-height:1.9;max-width:36ch;">合同会社 Neuron Worx。AI・DXコンサル、SAPコンサル、採用ブランディング、SNS運用代行、飲食事業。</p>
+      <p style="font-family:var(--sans);font-size:13px;color:var(--ink-3);line-height:1.9;max-width:36ch;">合同会社 Neuron Worx。AI・DXコンサル、SAPコンサル、採用支援、SNS運用代行、飲食事業。</p>
       <p style="font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--ink-3);margin-top:20px;">設立 2026年1月 · 東京都渋谷区</p>
     </div>
     <div><h5>Sitemap</h5><ul><li><a href="/">Index</a></li><li><a href="/about">About</a></li><li><a href="/services">Services</a></li><li><a href="/works">Works</a></li></ul></div>
