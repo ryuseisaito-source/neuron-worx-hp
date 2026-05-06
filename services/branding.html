@@ -90,6 +90,22 @@ p,.ph-desc,.prose,.svc-body-desc{text-wrap:pretty;word-break:auto-phrase;overflo
   .wk-row{grid-template-columns:40px 1fr;}.wk-cat{display:none;}
   .ph-bottom{flex-direction:column;align-items:flex-start;}
 }
+
+@media(max-width:600px){
+  .page-hero{padding:72px 16px 40px;min-height:auto;}
+  .ph-title{font-size:clamp(44px,13vw,96px);}
+  .ph-bottom{gap:20px;}
+  .sec{padding:44px 16px;}
+  .s-cta{padding:44px 16px;}
+  .wk-row{padding:18px 0;gap:12px;}
+  .svc-body-desc{font-size:15px;}
+  .svc-ul li{font-size:14px;padding:14px 0;}
+  .cta-text{font-size:clamp(32px,10vw,64px);}
+}
+@media(max-width:480px){
+  .ph-title{font-size:clamp(40px,12vw,72px);}
+  .ph-eyebrow{margin-bottom:28px;}
+}
 </style>
 <script type="application/ld+json">
 {
