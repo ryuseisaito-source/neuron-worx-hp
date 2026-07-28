@@ -4,9 +4,9 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>採用支援 — Neuron Worx</title>
-<meta name="description" content="Neuron Worxの採用支援。採用を「母集団形成」ではなく「ブランディング」として設計します。企業の魅力を言語化し、採用広報・SNS・求人票を統一した世界観で構築することで、自然と優秀な人材"/>
+<meta name="description" content="Neuron Worxの採用支援。早稲田生ネットワークを活かし、早稲田生50名参加型ワンデイインターンを企画・運営。集客リスクゼロで、優秀な学生との深い接点形成を支援します。"/>
 <meta property="og:title" content="採用支援 — Neuron Worx"/>
-<meta property="og:description" content="Neuron Worxの採用支援。採用を「母集団形成」ではなく「ブランディング」として設計します。企業の魅力を言語化し、採用広報・SNS・求人票を統一した世界観で構築することで、自然と優秀な人材"/>
+<meta property="og:description" content="Neuron Worxの採用支援。早稲田生ネットワークを活かし、早稲田生50名参加型ワンデイインターンを企画・運営。集客リスクゼロで、優秀な学生との深い接点形成を支援します。"/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://neuronworx.com/services/branding"/>
 <meta property="og:site_name" content="Neuron Worx"/>
@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700;900&display=swap"/>
 <link rel="stylesheet" href="../assets/theme.css"/>
-<script>const TWEAK_DEFAULTS={"theme":"dark","accent":"orange","font":"sans"};</script>
+<script>const TWEAK_DEFAULTS={"theme":"light","accent":"orange","font":"sans"};</script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 #bg-canvas{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.4;}
@@ -53,7 +53,54 @@ p,.ph-desc,.prose,.svc-body-desc{text-wrap:pretty;word-break:auto-phrase;overflo
 .wk-t small{display:block;font-family:var(--sans);font-style:normal;font-size:12px;color:var(--ink-3);margin-top:5px;font-weight:400;word-break:auto-phrase;}
 .wk-cat{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);}
 
-/* Platform cards */
+/* Support scope grid (A-D) */
+.scope-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:8px;}
+.scope-card{background:var(--bg);padding:32px 24px;display:flex;flex-direction:column;gap:14px;}
+.scope-letter{font-family:var(--display);font-style:var(--display-style);font-weight:var(--display-weight);font-size:28px;color:var(--accent);line-height:1;}
+.scope-name{font-family:var(--sans);font-weight:700;font-size:15px;color:var(--ink);}
+.scope-desc{font-family:var(--sans);font-size:13px;line-height:1.7;color:var(--ink-2);}
+
+/* Flow steps */
+.flow-row{display:flex;flex-wrap:wrap;align-items:center;gap:0;border-top:1px solid var(--line);margin-top:8px;}
+.flow-step{flex:1 1 160px;padding:24px 20px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);}
+.flow-step:last-child{border-right:none;}
+.flow-n{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--ink-3);margin-bottom:8px;}
+.flow-t{font-family:var(--sans);font-weight:700;font-size:15px;color:var(--ink);margin-bottom:6px;}
+.flow-d{font-family:var(--sans);font-size:12px;color:var(--ink-3);line-height:1.6;}
+
+/* Comparison table */
+.cmp-table{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:13px;margin-top:8px;}
+.cmp-table th,.cmp-table td{border:1px solid var(--line);padding:14px 16px;text-align:left;line-height:1.6;vertical-align:top;}
+.cmp-table th{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:500;background:var(--bg-1);}
+.cmp-table td.hl{color:var(--ink);font-weight:700;background:color-mix(in srgb,var(--accent) 5%,var(--bg));}
+.cmp-wrap{overflow-x:auto;}
+
+/* Pricing */
+.price-box{border:1px solid var(--line-2);margin-top:8px;}
+.price-row{display:flex;flex-wrap:wrap;align-items:stretch;border-bottom:1px solid var(--line);}
+.price-cell{flex:1 1 260px;padding:32px;}
+.price-cell+.price-cell{border-left:1px solid var(--line);}
+.price-label{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);margin-bottom:12px;}
+.price-num{font-family:var(--display);font-style:var(--display-style);font-weight:var(--display-weight);font-size:clamp(32px,4vw,56px);color:var(--ink);line-height:1;}
+.price-num .accent{color:var(--accent);}
+.price-num small{font-family:var(--sans);font-size:14px;font-weight:400;color:var(--ink-2);margin-left:6px;}
+.price-note{font-family:var(--sans);font-size:12px;color:var(--ink-3);margin-top:10px;line-height:1.6;}
+.price-points{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-top:none;}
+.pp-card{background:var(--bg);padding:24px;}
+.pp-n{font-family:var(--mono);font-size:10px;color:var(--accent);margin-bottom:10px;}
+.pp-t{font-family:var(--sans);font-weight:700;font-size:14px;color:var(--ink);margin-bottom:6px;}
+.pp-d{font-family:var(--sans);font-size:12px;color:var(--ink-3);line-height:1.6;}
+
+@media(max-width:900px){
+  .scope-grid{grid-template-columns:repeat(2,1fr);}
+  .price-points{grid-template-columns:1fr;}
+}
+@media(max-width:600px){
+  .scope-grid{grid-template-columns:1fr;}
+  .flow-step{flex:1 1 100%;border-right:none;}
+}
+
+/* 採用プラットフォーム: 一旦非掲載（2026-07-22）。復元時はこのブロックとHTML側のコメントを有効化
 .platform-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);}
 .platform-card{
   display:flex;flex-direction:column;gap:16px;
@@ -74,6 +121,7 @@ p,.ph-desc,.prose,.svc-body-desc{text-wrap:pretty;word-break:auto-phrase;overflo
 }
 .platform-card:hover .pc-link{letter-spacing:.28em;}
 @media(max-width:700px){.platform-grid{grid-template-columns:1fr;}}
+*/
 
 /* CTA */
 .s-cta{padding:80px 48px;position:relative;z-index:1;border-bottom:1px solid var(--line);}
@@ -116,7 +164,7 @@ p,.ph-desc,.prose,.svc-body-desc{text-wrap:pretty;word-break:auto-phrase;overflo
       "@id": "https://neuronworx.com/services/branding",
       "url": "https://neuronworx.com/services/branding",
       "name": "採用支援 — Neuron Worx",
-      "description": "Neuron Worxの採用支援。採用を「母集団形成」ではなく「ブランディング」として設計します。",
+      "description": "Neuron Worxの採用支援。早稲田生ネットワークを活かし、早稲田生50名参加型ワンデイインターンを企画・運営します。",
       "inLanguage": "ja",
       "isPartOf": { "@id": "https://neuronworx.com/#website" },
       "provider": { "@id": "https://neuronworx.com/#organization" }
@@ -133,7 +181,7 @@ p,.ph-desc,.prose,.svc-body-desc{text-wrap:pretty;word-break:auto-phrase;overflo
 }
 </script>
 </head>
-<body data-theme="dark" data-accent="orange" data-font="sans">
+<body data-theme="light" data-accent="orange" data-font="sans">
 <canvas id="bg-canvas"></canvas>
 <div class="menu-overlay" id="menu">
   <button class="menu-close" id="menu-close">×</button>
@@ -151,7 +199,7 @@ p,.ph-desc,.prose,.svc-body-desc{text-wrap:pretty;word-break:auto-phrase;overflo
   <div class="menu-foot"><span>© 2026 合同会社 Neuron Worx</span><span>Tokyo, Japan</span></div>
 </div>
 <nav class="site-nav">
-  <a class="logo" href="/"><span class="logo-mark"><svg viewBox="0 0 24 24" fill="none"><defs><linearGradient id="nwlg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#252745"/><stop offset="1" stop-color="#3a3d70"/></linearGradient></defs><circle cx="6" cy="6" r="1.8" fill="currentColor"/><circle cx="18" cy="6" r="1.8" fill="currentColor"/><circle cx="6" cy="18" r="1.8" fill="currentColor"/><circle cx="18" cy="18" r="1.8" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="url(#nwlg)"/><path d="M6 6 L12 12 L18 6 M6 18 L12 12 L18 18" stroke="currentColor" stroke-width="0.85"/></svg></span>NEURON WORX</a>
+  <a class="logo" href="/"><span class="logo-mark"><svg viewBox="0 0 24 24" fill="none"><defs><linearGradient id="nwlg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0038ff"/><stop offset="1" stop-color="#00c2ff"/></linearGradient></defs><circle cx="6" cy="6" r="1.8" fill="currentColor"/><circle cx="18" cy="6" r="1.8" fill="currentColor"/><circle cx="6" cy="18" r="1.8" fill="currentColor"/><circle cx="18" cy="18" r="1.8" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="url(#nwlg)"/><path d="M6 6 L12 12 L18 6 M6 18 L12 12 L18 18" stroke="currentColor" stroke-width="0.85"/></svg></span>NEURON WORX</a>
   <div class="nav-right">
     <a class="nav-contact" href="/contact">CONTACT</a>
     <button class="nav-hamburger" id="menu-open"><span></span><span></span><span></span></button>
@@ -161,54 +209,127 @@ p,.ph-desc,.prose,.svc-body-desc{text-wrap:pretty;word-break:auto-phrase;overflo
   <section class="page-hero">
     <div class="ph-eyebrow">
       <a class="ph-back" href="/services">← Services</a>
-      <span>N°&thinsp;03</span>
+      <span>N°&thinsp;02</span>
     </div>
     <h1 class="ph-title">採用支援</h1>
     <div class="ph-bottom">
-      <p class="ph-desc">企業の採用課題を、戦略立案から実行支援まで一貫してサポートします。採用広報・求人票・SNS運用・採用サイト制作など、多角的なアプローチで優秀な人材が自然と集まる仕組みをつくります。</p>
+      <p class="ph-desc">早稲田生ネットワークを活かし、早稲田生を中心とした優秀な学生との接点形成から、採用活動の成果最大化までを支援します。独自のコミュニティとデータベースで、質の高い学生との出会いを実現します。</p>
       <a class="btn primary" href="/contact">相談する →</a>
     </div>
   </section>
 
-  <!-- 採用プラットフォームへの導線 -->
   <section class="sec reveal">
-    <div class="sec-hdr"><span><span class="n">—</span>&nbsp;&nbsp;採用プラットフォーム</span></div>
-    <p class="svc-body-desc">Neuron Worxが運営する採用・インターン情報プラットフォームをご利用いただけます。</p>
-    <div class="platform-grid">
-      <a class="platform-card" href="https://recruit.neuronworx.com" target="_blank" rel="noopener">
-        <div class="pc-label">Platform 01</div>
-        <div class="pc-title">早慶特化<br/>インターン・就活</div>
-        <div class="pc-desc">早稲田・慶應の学生に向けた、厳選されたインターンシップ・就活情報を提供するプラットフォーム。</div>
-        <div class="pc-link">recruit.neuronworx.com →</div>
-      </a>
-      <a class="platform-card" href="https://intern.neuronworx.com" target="_blank" rel="noopener">
-        <div class="pc-label">Platform 02</div>
-        <div class="pc-title">全学生向け<br/>インターン情報</div>
-        <div class="pc-desc">全国の学生を対象とした、インターンシップ・アルバイト・キャリア情報を掲載するプラットフォーム。</div>
-        <div class="pc-link">intern.neuronworx.com →</div>
-      </a>
-    </div>
-  </section>
-
-  <section class="sec reveal">
-    <div class="sec-hdr"><span><span class="n">—</span>&nbsp;&nbsp;サービス内容</span></div>
-    <p class="svc-body-desc">企業の採用課題を、戦略設計から実行まで一気通貫でサポートします。</p>
+    <div class="sec-hdr"><span><span class="n">—</span>&nbsp;&nbsp;早稲田生50名参加型ワンデイインターン</span></div>
+    <p class="svc-body-desc">早稲田生を中心に、優秀な学生50名と直接つながれる1日完結のインターンイベントを企画・運営します。合同説明会とは異なり、少人数グループでの座談会形式を通じて、学生一人ひとりと深い接点を持つことができます。</p>
     <ul class="svc-ul">
-      <li>採用ブランド戦略の策定</li>
-      <li>採用コンセプト・メッセージ開発</li>
-      <li>採用サイト・LP制作ディレクション</li>
-      <li>求人票のライティング・最適化</li>
-      <li>SNS採用広報の運用支援</li>
-      <li>採用動画・コンテンツ制作</li>
+      <li>早稲田生を中心に、約50名規模の学生集客を想定</li>
+      <li>企業理解と学生接点を両立する1dayプログラムを企画・運営</li>
     </ul>
   </section>
 
-    <section class="sec reveal">
-    <div class="sec-hdr"><span><span class="n">—</span>&nbsp;&nbsp;代表例</span></div>
-    <div class="wk-list">
-      <div class="wk-row"><div class="wk-n">003</div><div class="wk-t">Series C FinTech<small>採用支援設計・エンジニア組織 30→56名</small></div><div class="wk-cat">Branding</div></div>
-      <div class="wk-row"><div class="wk-n">004</div><div class="wk-t">老舗旅館グループ<small>採用支援×需要予測AI 同時導入</small></div><div class="wk-cat">Branding</div></div>
+  <section class="sec reveal">
+    <div class="sec-hdr"><span><span class="n">—</span>&nbsp;&nbsp;ご支援範囲</span></div>
+    <div class="scope-grid">
+      <div class="scope-card">
+        <div class="scope-letter">A</div>
+        <div class="scope-name">集客・動員</div>
+        <div class="scope-desc">早稲田生50名規模の集客を支援</div>
+      </div>
+      <div class="scope-card">
+        <div class="scope-letter">B</div>
+        <div class="scope-name">企画設計</div>
+        <div class="scope-desc">1dayプログラムの内容を設計</div>
+      </div>
+      <div class="scope-card">
+        <div class="scope-letter">C</div>
+        <div class="scope-name">学生接点</div>
+        <div class="scope-desc">座談会や交流の場を設計</div>
+      </div>
+      <div class="scope-card">
+        <div class="scope-letter">D</div>
+        <div class="scope-name">開催後フォロー</div>
+        <div class="scope-desc">アンケート・次回導線まで支援</div>
+      </div>
     </div>
+  </section>
+
+  <section class="sec reveal">
+    <div class="sec-hdr"><span><span class="n">—</span>&nbsp;&nbsp;実施の流れ</span></div>
+    <div class="flow-row">
+      <div class="flow-step"><div class="flow-n">01 / 募集設計</div><div class="flow-t">対象・内容整理</div></div>
+      <div class="flow-step"><div class="flow-n">02 / 学生集客</div><div class="flow-t">告知・動員</div></div>
+      <div class="flow-step"><div class="flow-n">03 / 当日実施</div><div class="flow-t">講義・座談会</div></div>
+      <div class="flow-step"><div class="flow-n">04 / フォローアップ</div><div class="flow-t">アンケート・次回接点</div></div>
+    </div>
+    <ul class="svc-ul" style="margin-top:8px;">
+      <li>優秀層との初期接点を短期間で創出</li>
+      <li>イベント単体で完結しやすい企画設計</li>
+      <li>次回選考や継続接点へつなげやすい運営</li>
+    </ul>
+  </section>
+
+  <section class="sec reveal">
+    <div class="sec-hdr"><span><span class="n">—</span>&nbsp;&nbsp;求人媒体・エージェントとの違い</span></div>
+    <p class="svc-body-desc">求人掲載型やエージェント型と異なり、学生DBと学生コミュニティを活用して採用広報情報を学生へ届けます。「待つ採用」より「攻める採用」——スカウト方式で、ターゲット学生に確実にリーチし応募へつなげます。</p>
+    <div class="cmp-wrap">
+      <table class="cmp-table">
+        <tr><th>比較項目</th><th>求人媒体型</th><th>エージェント型</th><th>学生DB（弊社）</th></tr>
+        <tr><td>仕組み</td><td>求人広告を見て学生が応募</td><td>エージェントを介して学生とマッチング面談</td><td class="hl">学生DBから直接スカウト</td></tr>
+        <tr><td>特徴</td><td>低コストで大量集客</td><td>エージェント伴走支援</td><td class="hl">ピンポイント獲得、応募意欲高学生</td></tr>
+        <tr><td>採用率</td><td>中（競合多）</td><td>高（スクリーニング済）</td><td class="hl">高（直接アプローチ）</td></tr>
+        <tr><td>学生層</td><td>幅広い</td><td>質重視</td><td class="hl">早稲田生</td></tr>
+        <tr><td>料金モデル</td><td>月額/掲載定額</td><td>成果報酬（伴走支援のため高）</td><td class="hl">学生DB利用料（低単価）</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="sec reveal">
+    <div class="sec-hdr"><span><span class="n">—</span>&nbsp;&nbsp;新卒ワンデイインターンの強み</span></div>
+    <p class="svc-body-desc">合説とは異なり、学生一人一人と深い接点を持つことができます。早稲田の中でも特に熱量が高く、就活意欲のある学生コミュニティから、弊社ネットワークを通じて50名を確実に動員し、接点を持てます。</p>
+  </section>
+
+  <section class="sec reveal">
+    <div class="sec-hdr"><span><span class="n">—</span>&nbsp;&nbsp;ワンデイインターン料金プラン</span></div>
+    <p class="svc-body-desc">集客リスクなく、優秀学生との深い接点形成を支援し、貴社の採用活動をサポートします。「何人来るか分からない合同説明会」より「早大優秀層50名を確約するワンデイ」——集客リスクをゼロにしながら、より深い接点を実現します。</p>
+    <div class="price-box">
+      <div class="price-row">
+        <div class="price-cell">
+          <div class="price-label">初期費用</div>
+          <div class="price-num"><span class="accent">0</span><small>円</small></div>
+          <div class="price-note">採用ニーズのヒアリング／学生集客の設計／当日運営の事前調整／参加学生との接点形成</div>
+        </div>
+        <div class="price-cell">
+          <div class="price-label">サービス利用料（早大生50名・確定動員）</div>
+          <div class="price-num"><span class="accent">50</span><small>万円 / 社</small></div>
+          <div class="price-note">5名×10グループ・1社〜5社で実施可能／月1〜2回開催（採用シーズン集中）／1社のみの開催の場合は+会場代／集客リスクは当社が負担</div>
+        </div>
+      </div>
+      <div class="price-points">
+        <div class="pp-card">
+          <div class="pp-n">1</div>
+          <div class="pp-t">初期費用0円</div>
+          <div class="pp-d">導入時の費用負担なく開始できます。</div>
+        </div>
+        <div class="pp-card">
+          <div class="pp-n">2</div>
+          <div class="pp-t">50名の確定動員</div>
+          <div class="pp-d">事前に定めた人数を確定動員します。</div>
+        </div>
+        <div class="pp-card">
+          <div class="pp-n">3</div>
+          <div class="pp-t">深い学生接点</div>
+          <div class="pp-d">少人数グループ形式で、合説よりも深く接点形成できます。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec reveal">
+    <div class="sec-hdr"><span><span class="n">—</span>&nbsp;&nbsp;その他の採用支援メニュー</span></div>
+    <ul class="svc-ul">
+      <li>採用マーケティング支援 — 半期戦略から施策実行まで一気通貫で伴走し、認知拡大・母集団形成・応募数最大化を実現</li>
+      <li>長期インターン紹介 — 早大生を中心とした学生人材の、業務委託型・長期インターン紹介</li>
+    </ul>
   </section>
 
   <section class="s-cta reveal">
@@ -220,7 +341,7 @@ p,.ph-desc,.prose,.svc-body-desc{text-wrap:pretty;word-break:auto-phrase;overflo
   <div class="footer-grid">
     <div>
       <div style="font-family:var(--sans);font-size:11px;font-weight:800;letter-spacing:.24em;color:var(--ink);margin-bottom:16px;text-transform:uppercase;">Neuron Worx</div>
-      <p style="font-family:var(--sans);font-size:13px;color:var(--ink-3);line-height:1.9;max-width:36ch;">合同会社 Neuron Worx。AI・DXコンサル、SAPコンサル、採用支援、SNS運用代行、飲食事業。</p>
+      <p style="font-family:var(--sans);font-size:13px;color:var(--ink-3);line-height:1.9;max-width:36ch;">合同会社 Neuron Worx。採用支援、飲食事業、AI・DX・SAPコンサル。</p>
       <p style="font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--ink-3);margin-top:20px;">設立 2026年1月 · 東京都渋谷区</p>
     </div>
     <div><h5>Sitemap</h5><ul><li><a href="/">Index</a></li><li><a href="/about">About</a></li><li><a href="/services">Services</a></li><li><a href="/works">Works</a></li></ul></div>

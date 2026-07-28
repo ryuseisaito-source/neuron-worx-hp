@@ -4,9 +4,9 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Neuron Worx — 合同会社ニューロンワークス</title>
-  <meta name="description" content="合同会社Neuron Worx。AI・DXコンサル、SAPコンサル、採用支援、SNS運用代行、飲食事業。東京・渋谷発のコンサルティング会社。"/>
+  <meta name="description" content="合同会社Neuron Worx。採用支援、飲食事業、AI・DX・SAPコンサル。東京・渋谷発のコンサルティング会社。"/>
   <meta property="og:title" content="Neuron Worx — 合同会社ニューロンワークス"/>
-  <meta property="og:description" content="合同会社Neuron Worx。AI・DXコンサル、SAPコンサル、採用支援、SNS運用代行、飲食事業。東京・渋谷発のコンサルティング会社。"/>
+  <meta property="og:description" content="合同会社Neuron Worx。採用支援、飲食事業、AI・DX・SAPコンサル。東京・渋谷発のコンサルティング会社。"/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://neuronworx.com"/>
   <meta property="og:site_name" content="Neuron Worx"/>
@@ -18,95 +18,14 @@
 <link rel="stylesheet" href="assets/theme.css"/>
 
 <!--
-  LOADER  ——  Inspired by RYDEN's scrolling strip marquee.
-  Multiple black horizontal bands with "NEURON WORX" text
-  scrolling in alternating directions. ガガガ energy.
+  INTRO SEQUENCE — replicates ryden.co.jp's post-load reveal:
+  1) scattered squares pop in over the hero
+  2) a black band sweeps across with a fast looping wordmark ticker
+  3) the band collapses as the hero wordmark drops in letter by letter
 -->
-<style>
-#nw-loader{
-  position:fixed;inset:0;z-index:9999;
-  background:#080808;
-  display:flex;flex-direction:column;align-items:stretch;justify-content:center;
-  overflow:hidden;
-  transition:opacity .5s ease;
-}
-#nw-loader.out{opacity:0;pointer-events:none;}
-
-.nwl-strip{
-  display:flex;align-items:center;
-  height:72px;
-  overflow:hidden;
-  border-bottom:1px solid rgba(255,255,255,.06);
-  position:relative;
-}
-.nwl-strip:first-child{border-top:1px solid rgba(255,255,255,.06);}
-
-/* even strips get the accent color text */
-.nwl-strip:nth-child(2n) .nwl-track{color:#252745;}
-.nwl-strip:nth-child(2n){background:#0d0d0d;}
-
-.nwl-track{
-  display:inline-flex;align-items:center;gap:0;
-  white-space:nowrap;
-  font-family:"Inter","Noto Sans JP",sans-serif;
-  font-weight:900;
-  font-size:36px;
-  letter-spacing:-.01em;
-  text-transform:uppercase;
-  color:#f0ede5;
-  /* default: scroll left */
-  animation:scroll-l 6s linear infinite;
-}
-.nwl-strip:nth-child(2n) .nwl-track{
-  /* even rows: scroll right */
-  animation:scroll-r 5s linear infinite;
-}
-.nwl-strip:nth-child(3n) .nwl-track{
-  animation-duration:8s;
-}
-.nwl-strip:nth-child(5) .nwl-track{
-  animation-duration:4.5s;
-}
-
-@keyframes scroll-l{
-  from{transform:translateX(0);}
-  to{transform:translateX(-50%);}
-}
-@keyframes scroll-r{
-  from{transform:translateX(-50%);}
-  to{transform:translateX(0);}
-}
-
-.nwl-sep{
-  display:inline-block;
-  width:48px;height:48px;
-  background:#252745;
-  margin:0 28px;
-  flex-shrink:0;
-}
-.nwl-strip:nth-child(2n) .nwl-sep{background:#f0ede5;}
-
-@media(max-width:600px){
-  .nwl-strip{height:52px;}
-  .nwl-track{font-size:24px;}
-  .nwl-sep{width:32px;height:32px;margin:0 16px;}
-}
-</style>
-
-<div id="nw-loader" aria-hidden="true">
-  <!-- 7 scrolling strips -->
-  <div class="nwl-strip"><div class="nwl-track">NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span></div></div>
-  <div class="nwl-strip"><div class="nwl-track">NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span></div></div>
-  <div class="nwl-strip"><div class="nwl-track">NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span></div></div>
-  <div class="nwl-strip"><div class="nwl-track">NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span></div></div>
-  <div class="nwl-strip"><div class="nwl-track">NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span></div></div>
-  <div class="nwl-strip"><div class="nwl-track">NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span></div></div>
-  <div class="nwl-strip"><div class="nwl-track">NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span> NEURON WORX <span class="nwl-sep"></span></div></div>
-</div>
-
 <script>
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "theme":  "dark",
+  "theme":  "light",
   "accent": "orange",
   "font":   "sans"
 }/*EDITMODE-END*/;
@@ -125,10 +44,9 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 
 /* ── HERO ── */
 .s-hero{
-  min-height:100svh;
   display:flex;flex-direction:column;justify-content:flex-end;
   position:relative;z-index:1;
-  padding-top:52px;
+  padding-top:84px;
 }
 .hero-title{
   font-family:var(--display);font-style:var(--display-style);
@@ -139,9 +57,63 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   padding:0 48px;
 }
 .hero-title .accent{color:var(--accent);}
+.hero-title .hl{
+  display:inline-block;
+  opacity:0;
+  transform:translateY(-.3em);
+  transition:opacity .5s cubic-bezier(.2,.8,.2,1),transform .5s cubic-bezier(.2,.8,.2,1);
+}
+.hero-title.in .hl{opacity:1;transform:translateY(0);}
+
+/* ── INTRO SEQUENCE ── */
+#intro-stage{position:absolute;inset:0;z-index:4;pointer-events:none;overflow:hidden;}
+.intro-sq{
+  position:absolute;width:20px;height:20px;background:var(--ink);
+  opacity:0;transform:scale(.4);
+  animation:sqPop 1.6s cubic-bezier(.2,.8,.2,1) forwards;
+}
+@keyframes sqPop{
+  0%{opacity:0;transform:scale(.4);}
+  14%{opacity:1;transform:scale(1);}
+  74%{opacity:1;transform:scale(1);}
+  100%{opacity:0;transform:scale(.6);}
+}
+.intro-band{
+  position:absolute;left:0;right:0;top:50%;height:0;
+  background:#000;overflow:hidden;
+  transform:translateY(-50%) scale(1);
+  transition:height .5s cubic-bezier(.2,.8,.2,1),background-color .2s linear,
+    transform .5s cubic-bezier(.3,1,.4,1),opacity .45s ease-in;
+}
+#intro-stage.band-in .intro-band{height:200px;}
+#intro-stage.band-invert .intro-band{background:var(--accent);height:250px;}
+#intro-stage.band-burst .intro-band{transform:translateY(-50%) scale(2.5);opacity:0;}
+.intro-band-track{
+  position:absolute;top:0;left:0;height:100%;display:flex;align-items:center;
+  white-space:nowrap;
+  font-family:var(--sans);font-weight:900;font-size:88px;letter-spacing:-.02em;
+  text-transform:uppercase;color:var(--accent-2);
+  animation:introMarquee 1s linear infinite;
+  transition:opacity .2s linear;
+}
+#intro-stage.band-invert .intro-band-track{opacity:0;}
+.intro-band-sep{opacity:.4;margin:0 28px;font-size:28px;}
+@keyframes introMarquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.intro-band-settle{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-family:var(--sans);font-weight:900;font-size:88px;letter-spacing:-.02em;
+  text-transform:uppercase;color:#000;
+  opacity:0;
+  transition:opacity .2s linear;
+}
+#intro-stage.band-invert .intro-band-settle{opacity:1;}
+@media(max-width:600px){
+  #intro-stage.band-in .intro-band{height:110px;}
+  .intro-band-track,.intro-band-settle{font-size:44px;}
+}
 .hero-bottom{
   display:grid;grid-template-columns:1fr auto;gap:48px;align-items:end;
-  padding:28px 48px 48px;
+  padding:36px 48px 68px;
   border-top:1px solid var(--line);margin-top:28px;
 }
 .hero-copy{
@@ -231,7 +203,7 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   transition:transform .3s cubic-bezier(.2,.8,.2,1);
 }
 .div-row:hover::after{transform:scaleY(1);}
-.div-row:hover{background:rgba(255,68,0,.04);}
+.div-row:hover{background:rgba(0,56,255,.05);}
 .div-num{
   display:flex;flex-direction:column;gap:4px;
 }
@@ -277,7 +249,7 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   transition:width .28s cubic-bezier(.2,.8,.2,1);
 }
 .work-row:hover::before{width:3px;}
-.work-row:hover{background:rgba(255,68,0,.04);}
+.work-row:hover{background:rgba(0,56,255,.05);}
 .wn{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--ink-3);}
 .wt{
   font-family:var(--display);font-style:var(--display-style);
@@ -379,7 +351,7 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
       "@id": "https://neuronworx.com/#website",
       "url": "https://neuronworx.com",
       "name": "Neuron Worx",
-      "description": "合同会社Neuron Worx。AI・DXコンサル、SAPコンサル、採用支援、SNS運用代行、飲食事業。東京・渋谷発のコンサルティング会社。",
+      "description": "合同会社Neuron Worx。採用支援、飲食事業、AI・DX・SAPコンサル。東京・渋谷発のコンサルティング会社。",
       "inLanguage": "ja"
     },
     {
@@ -397,14 +369,14 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
         "addressRegion": "東京都",
         "addressCountry": "JP"
       },
-      "description": "AI・DXコンサル、SAPコンサル、採用支援、SNS運用代行、飲食事業",
+      "description": "採用支援、飲食事業、AI・DX・SAPコンサル",
       "areaServed": "JP"
     }
   ]
 }
 </script>
 </head>
-<body data-theme="dark" data-accent="orange" data-font="sans">
+<body data-theme="light" data-accent="orange" data-font="sans">
 
 <canvas id="bg-canvas"></canvas>
 
@@ -435,7 +407,7 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
     <span class="logo-mark">
       <svg viewBox="0 0 24 24" fill="none">
         <defs><linearGradient id="nwlg" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="#252745"/><stop offset="1" stop-color="#3a3d70"/>
+          <stop offset="0" stop-color="#0038ff"/><stop offset="1" stop-color="#00c2ff"/>
         </linearGradient></defs>
         <circle cx="6"  cy="6"  r="1.8" fill="currentColor"/>
         <circle cx="18" cy="6"  r="1.8" fill="currentColor"/>
@@ -459,7 +431,7 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 <div class="tweaks" id="tweaks">
   <h4>TWEAKS <span class="close" id="tweaks-close">×</span></h4>
   <div class="tw-row"><span class="label">Accent</span><div class="tw-opts" data-key="accent">
-    <button class="tw-opt" data-val="orange">Orange</button>
+    <button class="tw-opt" data-val="orange">Blue</button>
     <button class="tw-opt" data-val="white">White</button>
     <button class="tw-opt" data-val="lime">Lime</button>
     <button class="tw-opt" data-val="cyan">Cyan</button>
@@ -475,17 +447,38 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 
   <!-- HERO -->
   <section class="s-hero">
-    <h1 class="hero-title">
-      NEURON<br/>WORX<span class="accent">.</span>
+    <div id="intro-stage" aria-hidden="true">
+      <div class="intro-sq" style="top:16%;left:2%;animation-delay:20ms"></div>
+      <div class="intro-sq" style="top:70%;left:8%;animation-delay:260ms;width:14px;height:14px;"></div>
+      <div class="intro-sq" style="top:28%;left:15%;animation-delay:90ms;width:26px;height:26px;"></div>
+      <div class="intro-sq" style="top:82%;left:22%;animation-delay:180ms"></div>
+      <div class="intro-sq" style="top:20%;left:30%;animation-delay:230ms;width:14px;height:14px;"></div>
+      <div class="intro-sq" style="top:75%;left:38%;animation-delay:60ms"></div>
+      <div class="intro-sq" style="top:14%;left:46%;animation-delay:310ms;width:26px;height:26px;"></div>
+      <div class="intro-sq" style="top:85%;left:53%;animation-delay:140ms;width:14px;height:14px;"></div>
+      <div class="intro-sq" style="top:24%;left:61%;animation-delay:200ms"></div>
+      <div class="intro-sq" style="top:72%;left:68%;animation-delay:40ms;width:26px;height:26px;"></div>
+      <div class="intro-sq" style="top:18%;left:76%;animation-delay:270ms;width:14px;height:14px;"></div>
+      <div class="intro-sq" style="top:80%;left:83%;animation-delay:110ms"></div>
+      <div class="intro-sq" style="top:30%;left:90%;animation-delay:340ms;width:26px;height:26px;"></div>
+      <div class="intro-sq" style="top:60%;left:95%;animation-delay:160ms;width:14px;height:14px;"></div>
+      <div class="intro-band">
+        <div class="intro-band-track">NEURON WORX <span class="intro-band-sep">■</span> NEURON WORX <span class="intro-band-sep">■</span> NEURON WORX <span class="intro-band-sep">■</span> NEURON WORX <span class="intro-band-sep">■</span> NEURON WORX <span class="intro-band-sep">■</span> NEURON WORX <span class="intro-band-sep">■</span> NEURON WORX <span class="intro-band-sep">■</span> NEURON WORX <span class="intro-band-sep">■</span> NEURON WORX <span class="intro-band-sep">■</span> NEURON WORX <span class="intro-band-sep">■</span> NEURON WORX <span class="intro-band-sep">■</span> NEURON WORX <span class="intro-band-sep">■</span> NEURON WORX <span class="intro-band-sep">■</span> NEURON WORX <span class="intro-band-sep">■</span> NEURON WORX <span class="intro-band-sep">■</span> NEURON WORX <span class="intro-band-sep">■</span></div>
+        <div class="intro-band-settle" id="intro-band-settle">NEURON WORX</div>
+      </div>
+    </div>
+    <h1 class="hero-title" id="hero-title">
+      <span class="hl-line"><span class="hl">N</span><span class="hl">E</span><span class="hl">U</span><span class="hl">R</span><span class="hl">O</span><span class="hl">N</span></span><br/>
+      <span class="hl-line"><span class="hl">W</span><span class="hl">O</span><span class="hl">R</span><span class="hl">X</span><span class="hl accent">.</span></span>
     </h1>
     <div class="hero-bottom">
       <p class="hero-copy">
-        <b>多様な領域で、確かな成果を。</b>AI・DXコンサル、採用支援、SNS運用代行、飲食事業。異なる専門性を持つメンバーが、クライアントの成長を全力で支援します。
+        <b>多様な領域で、確かな成果を。</b>採用支援、飲食事業、AI・DX・SAPコンサル。異なる専門性を持つメンバーが、クライアントの成長を全力で支援します。
       </p>
       <div class="hero-meta">
         N°&thinsp;001 — Tokyo LLC
         <br/>設立 2026年1月
-        <br/>AI · SAP · Brand · SNS · F&amp;B
+        <br/>Recruit · F&amp;B · AI · SAP
       </div>
     </div>
   </section>
@@ -494,12 +487,12 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   <div class="s-ticker">
     <div class="ticker-row">
       <div class="ticker-track">
-        AI CONSULTING <span class="ticker-sep">◆</span> RECRUITMENT BRANDING <span class="ticker-sep">◆</span> SNS MANAGEMENT <span class="ticker-sep">◆</span> FOOD &amp; BEVERAGE <span class="ticker-sep">◆</span> TOKYO · JAPAN <span class="ticker-sep">◆</span> EST. 2026 <span class="ticker-sep">◆</span> AI CONSULTING <span class="ticker-sep">◆</span> RECRUITMENT BRANDING <span class="ticker-sep">◆</span> SNS MANAGEMENT <span class="ticker-sep">◆</span> FOOD &amp; BEVERAGE <span class="ticker-sep">◆</span> TOKYO · JAPAN <span class="ticker-sep">◆</span> EST. 2026 <span class="ticker-sep">◆</span>
+        RECRUITMENT BRANDING <span class="ticker-sep">◆</span> FOOD &amp; BEVERAGE <span class="ticker-sep">◆</span> AI CONSULTING <span class="ticker-sep">◆</span> TOKYO · JAPAN <span class="ticker-sep">◆</span> EST. 2026 <span class="ticker-sep">◆</span> RECRUITMENT BRANDING <span class="ticker-sep">◆</span> FOOD &amp; BEVERAGE <span class="ticker-sep">◆</span> AI CONSULTING <span class="ticker-sep">◆</span> TOKYO · JAPAN <span class="ticker-sep">◆</span> EST. 2026 <span class="ticker-sep">◆</span>
       </div>
     </div>
     <div class="ticker-row">
       <div class="ticker-track">
-        知性を編む <span class="ticker-sep">◆</span> 事業を接続する <span class="ticker-sep">◆</span> 合同会社ニューロンワークス <span class="ticker-sep">◆</span> NEURON WORX <span class="ticker-sep">◆</span> 四つの事業 <span class="ticker-sep">◆</span> 異領域の接続 <span class="ticker-sep">◆</span> 知性を編む <span class="ticker-sep">◆</span> 事業を接続する <span class="ticker-sep">◆</span> 合同会社ニューロンワークス <span class="ticker-sep">◆</span> NEURON WORX <span class="ticker-sep">◆</span> 四つの事業 <span class="ticker-sep">◆</span> 異領域の接続 <span class="ticker-sep">◆</span>
+        知性を編む <span class="ticker-sep">◆</span> 事業を接続する <span class="ticker-sep">◆</span> 合同会社ニューロンワークス <span class="ticker-sep">◆</span> NEURON WORX <span class="ticker-sep">◆</span> 三つの事業 <span class="ticker-sep">◆</span> 異領域の接続 <span class="ticker-sep">◆</span> 知性を編む <span class="ticker-sep">◆</span> 事業を接続する <span class="ticker-sep">◆</span> 合同会社ニューロンワークス <span class="ticker-sep">◆</span> NEURON WORX <span class="ticker-sep">◆</span> 三つの事業 <span class="ticker-sep">◆</span> 異領域の接続 <span class="ticker-sep">◆</span>
       </div>
     </div>
   </div>
@@ -511,53 +504,37 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
       多様な領域で挑戦し、<em>確かな成果</em>をお届けすること。それが Neuron Worx の約束です。
     </h2>
     <p class="stmt-sub reveal">
-      コンサルファーム出身者、スタートアップの元CEO、トップクリエイターなど、異なるバックグラウンドを持つプロフェッショナルが集結。AI・DXからSAP、採用支援、SNS運用代行、飲食事業まで、多彩な領域でクライアントの成長を支えています。
+      コンサルファーム出身者、スタートアップの元CEO、トップクリエイターなど、異なるバックグラウンドを持つプロフェッショナルが集結。採用支援、飲食事業、AI・DXからSAPまで、多彩な領域でクライアントの成長を支えています。
     </p>
   </section>
 
   <!-- DIVISIONS -->
   <section class="s-divisions">
     <div class="div-header">
-      <span class="div-label">Divisions — 五つの事業</span>
+      <span class="div-label">Divisions — 三つの事業</span>
       <a class="div-all" href="/services">すべて見る →</a>
     </div>
-    <a class="div-row reveal" href="/services/ai">
-      <div class="div-num"><span class="idx">DIV</span><span class="big">01</span></div>
-      <div class="div-info">
-        <div class="div-name">AI・DXコンサル</div>
-        <div class="div-jp">AI &amp; DX Consulting</div>
-      </div>
-      <span class="div-arrow">→</span>
-    </a>
-    <a class="div-row reveal" href="/services/sap">
-      <div class="div-num"><span class="idx">DIV</span><span class="big">02</span></div>
-      <div class="div-info">
-        <div class="div-name">SAPコンサル</div>
-        <div class="div-jp">SAP Consulting</div>
-      </div>
-      <span class="div-arrow">→</span>
-    </a>
     <a class="div-row reveal" href="/services/branding">
-      <div class="div-num"><span class="idx">DIV</span><span class="big">03</span></div>
+      <div class="div-num"><span class="idx">DIV</span><span class="big">01</span></div>
       <div class="div-info">
         <div class="div-name">採用支援</div>
         <div class="div-jp">Recruitment Support</div>
       </div>
       <span class="div-arrow">→</span>
     </a>
-    <a class="div-row reveal" href="/services/sns">
-      <div class="div-num"><span class="idx">DIV</span><span class="big">04</span></div>
-      <div class="div-info">
-        <div class="div-name">SNS運用代行</div>
-        <div class="div-jp">SNS Management</div>
-      </div>
-      <span class="div-arrow">→</span>
-    </a>
     <a class="div-row reveal" href="/services/fnb">
-      <div class="div-num"><span class="idx">DIV</span><span class="big">05</span></div>
+      <div class="div-num"><span class="idx">DIV</span><span class="big">02</span></div>
       <div class="div-info">
         <div class="div-name">飲食事業</div>
         <div class="div-jp">Food &amp; Beverage</div>
+      </div>
+      <span class="div-arrow">→</span>
+    </a>
+    <a class="div-row reveal" href="/services/ai">
+      <div class="div-num"><span class="idx">DIV</span><span class="big">03</span></div>
+      <div class="div-info">
+        <div class="div-name">AI・DX・SAPコンサル</div>
+        <div class="div-jp">AI, DX &amp; SAP Consulting</div>
       </div>
       <span class="div-arrow">→</span>
     </a>
@@ -582,7 +559,7 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   <div class="footer-grid">
     <div>
       <div style="font-family:var(--sans);font-size:11px;font-weight:800;letter-spacing:.24em;color:var(--ink);margin-bottom:16px;text-transform:uppercase;">Neuron Worx</div>
-      <p style="font-family:var(--sans);font-size:13px;color:var(--ink-3);line-height:1.9;max-width:36ch;">合同会社 Neuron Worx。AI・DXコンサル、SAPコンサル、採用支援、SNS運用代行、飲食事業。</p>
+      <p style="font-family:var(--sans);font-size:13px;color:var(--ink-3);line-height:1.9;max-width:36ch;">合同会社 Neuron Worx。採用支援、飲食事業、AI・DX・SAPコンサル。</p>
       <p style="font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--ink-3);margin-top:20px;">設立 2026年1月 · 東京都渋谷区</p>
     </div>
     <div>
@@ -620,28 +597,37 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 <div class="page-trans" id="page-trans"></div>
 
 <script>
-/* ─── Loader exit ─── */
+/* ─── Intro sequence ─── */
 (function(){
-  const loader = document.getElementById('nw-loader');
-  if(!loader) return;
-  function dismiss(){
-    loader.classList.add('out');
-    setTimeout(()=>{ loader.style.display='none'; }, 520);
+  const stage = document.getElementById('intro-stage');
+  const title = document.getElementById('hero-title');
+  if(!stage || !title) return;
+  title.querySelectorAll('.hl').forEach((el,i)=>{ el.style.transitionDelay = (i*32)+'ms'; });
+  const settle = document.getElementById('intro-band-settle');
+  function run(){
+    setTimeout(()=>{ stage.classList.add('band-in'); }, 480);
+    setTimeout(()=>{
+      stage.classList.add('band-invert');
+      if(settle){
+        ['XONWEUR ORN','ONRU WXOER','NEURON WORX'].forEach((txt,i)=>{
+          setTimeout(()=>{ settle.textContent = txt; }, i*110);
+        });
+      }
+    }, 950);
+    setTimeout(()=>{
+      stage.classList.add('band-burst');
+      title.classList.add('in');
+    }, 1300);
+    setTimeout(()=>{ stage.remove(); }, 1850);
   }
-  const MIN = 1800; // show the strips long enough to enjoy them
-  const t0 = Date.now();
-  function tryDismiss(){
-    const wait = Math.max(0, MIN - (Date.now()-t0));
-    setTimeout(dismiss, wait);
-  }
-  if(document.readyState==='complete') tryDismiss();
-  else { window.addEventListener('load', tryDismiss); setTimeout(dismiss, 4000); }
+  if(document.readyState==='complete') run();
+  else window.addEventListener('load', run);
 })();
 
 /* ─── Tweaks ─── */
 const state = Object.assign({}, TWEAK_DEFAULTS);
 const ACCENT_VARS = {
-  orange: {a:'#252745', a2:'#3a3d70'},
+  orange: {a:'#0038ff', a2:'#00c2ff'},
   white:  {a:'#f0ede5', a2:'#cccccc'},
   lime:   {a:'#aaff00', a2:'#ccff44'},
   cyan:   {a:'#00ccff', a2:'#44ddff'},

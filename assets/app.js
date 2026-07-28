@@ -1,12 +1,12 @@
 /* NEURON WORX — app.js v6  (all pages) */
 (function(){
   const ACCENT_VARS = {
-    orange:{a:'#252745',a2:'#3a3d70'},
+    orange:{a:'#0038ff',a2:'#00c2ff'},
     white: {a:'#f0ede5',a2:'#cccccc'},
     lime:  {a:'#aaff00',a2:'#ccff44'},
     cyan:  {a:'#00ccff',a2:'#44ddff'},
   };
-  const DEFS = window.TWEAK_DEFAULTS||{theme:'dark',accent:'orange',font:'sans'};
+  const DEFS = window.TWEAK_DEFAULTS||{theme:'light',accent:'orange',font:'sans'};
   const state = Object.assign({},DEFS);
 
   function applyState(){

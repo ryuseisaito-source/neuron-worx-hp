@@ -1,6 +1,10 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    { "source": "/services/sap", "destination": "/services/ai", "permanent": true },
+    { "source": "/services/sns", "destination": "/services", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/(.*)",

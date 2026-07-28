@@ -1,23 +1,23 @@
 /* ==========================================================
-   NEURON WORX — Design System v6
-   Black base · white contrast · orange accent
+   NEURON WORX — Design System v7
+   White base · dark ink contrast · fluorescent blue accent
    "ごちゃごちゃかつ綺麗" editorial energy
 ========================================================== */
 
 :root {
-  --bg:       #080808;
-  --bg-1:     #0e0e0e;
-  --bg-2:     #141414;
-  --bg-3:     #1c1c1c;
-  --ink:      #f0ede5;
-  --ink-2:    #888888;
-  --ink-3:    #444444;
-  --line:     rgba(255,255,255,.08);
-  --line-2:   rgba(255,255,255,.14);
-  --white:    #f0ede5;
+  --bg:       #ffffff;
+  --bg-1:     #f4f6fb;
+  --bg-2:     #eaeef6;
+  --bg-3:     #dde3ee;
+  --ink:      #0b0e14;
+  --ink-2:    #565f6e;
+  --ink-3:    #8a92a0;
+  --line:     rgba(10,14,25,.08);
+  --line-2:   rgba(10,14,25,.14);
+  --white:    #ffffff;
 
-  --orange:   #252745;
-  --orange-2: #3a3d70;
+  --orange:   #0038ff;
+  --orange-2: #00c2ff;
 
   --accent:   var(--orange);
   --accent-2: var(--orange-2);
@@ -73,7 +73,7 @@ img{display:block;max-width:100%;}
   display:flex;align-items:center;justify-content:space-between;
   padding:0 32px;
   border-bottom:1px solid var(--line);
-  background:rgba(8,8,8,.9);
+  background:rgba(255,255,255,.85);
   backdrop-filter:blur(16px);
 }
 .logo{
